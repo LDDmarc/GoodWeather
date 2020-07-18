@@ -117,7 +117,6 @@ class DataManager {
                 return
             }
         }
-        
     }
     
     private func updateCityWeather(cityName: String?, with json: JSON, completion: @escaping DataManagerCompletionHandler) {
