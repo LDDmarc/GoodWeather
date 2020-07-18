@@ -9,7 +9,7 @@
 import Foundation
 import SwiftyJSON
 
-protocol DataBaseProtocol: class {
+protocol DataBaseProtocol {
     func updateWeatherFor(cityName: String?, with json: JSON) -> Bool
     func updateForecastFor(cityName: String?, with json: JSON) -> Bool
     func createNewCity(with json: JSON) -> Bool

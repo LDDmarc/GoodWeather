@@ -5,7 +5,7 @@
 //  Created by Дарья Леонова on 02.07.2020.
 //  Copyright © 2020 Дарья Леонова. All rights reserved.
 //
-// swiftlint:disable trailing_whitespace
+
 import Foundation
 import CoreData
 import SwiftyJSON
@@ -14,7 +14,7 @@ enum DataManagerError {
     case noData
     case noConnection
     case wrongURL
-    case coreDataError
+    case dataBaseError
     case jsonError
     case wrongName
     case wrongCoordinates
@@ -39,15 +39,18 @@ typealias DataManagerCompletionHandler = (DataManagerError?) -> Void
 
 class DataManager {
     
+    let dataBase: DataBaseProtocol
+    
     let forecastHour: Int = 15
    
     private let persistentContainer: NSPersistentContainer
     var context: NSManagedObjectContext {
         return persistentContainer.viewContext
     }
-    
-    init(persistentContainer: NSPersistentContainer) {
+    // TODO: context -> dataBase
+    init(persistentContainer: NSPersistentContainer, dataBase: DataBaseProtocol) {
         self.persistentContainer = persistentContainer
+        self.dataBase = dataBase
     }
     
     func getCurrentWeather(completion: @escaping DataManagerCompletionHandler) {
@@ -60,7 +63,7 @@ class DataManager {
                 }
             }
         } catch {
-            completion(.coreDataError)
+            completion(.dataBaseError)
             return
         }
     }
@@ -82,8 +85,10 @@ class DataManager {
             }
             do {
                 let json = try JSON(data: data)
-                self.updateCityWeather(cityName: name, with: json) { (error) in
-                    completion(error)
+                if self.dataBase.updateWeatherFor(cityName: name, with: json) {
+                    completion(nil)
+                } else {
+                    completion(.dataBaseError)
                 }
             } catch {
                 completion(.jsonError)
@@ -109,74 +114,13 @@ class DataManager {
             }
             do {
                 let json = try JSON(data: data)
-                self.updateCityForecast(cityName: name, with: json) { (error) in
-                    completion(error)
+                if self.dataBase.updateForecastFor(cityName: name, with: json) {
+                    completion(nil)
+                } else {
+                    completion(.dataBaseError)
                 }
             } catch {
                 completion(.jsonError)
-                return
-            }
-        }
-    }
-    
-    private func updateCityWeather(cityName: String?, with json: JSON, completion: @escaping DataManagerCompletionHandler) {
-        let backgroundContext = self.persistentContainer.newBackgroundContext()
-        backgroundContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
-        backgroundContext.undoManager = nil
-        
-        backgroundContext.performAndWait {
-            let req = NSFetchRequest<NSFetchRequestResult>(entityName: "City")
-            if let name = cityName {
-                req.predicate = NSPredicate(format: "name == %@", name)
-            }
-            do {
-                let citiesForUpdate = try backgroundContext.fetch(req) as? [City]
-                if let cities = citiesForUpdate,
-                    let cityForUpdate = cities.first {
-                    cityForUpdate.update(with: json)
-                }
-                if backgroundContext.hasChanges {
-                    try backgroundContext.save()
-                    backgroundContext.reset()
-                }
-                completion(nil)
-            } catch {
-                completion(.coreDataError)
-                return
-            }
-        }
-    }
-    
-    private func updateCityForecast(cityName: String?, with json: JSON, completion: @escaping DataManagerCompletionHandler) {
-        let backgroundContext = self.persistentContainer.newBackgroundContext()
-        backgroundContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
-        backgroundContext.undoManager = nil
-        
-        backgroundContext.performAndWait {
-            let req = NSFetchRequest<NSFetchRequestResult>(entityName: "City")
-            if let name = cityName {
-                req.predicate = NSPredicate(format: "name == %@", name)
-            }
-            do {
-                let citiesForUpdate = try backgroundContext.fetch(req) as? [City]
-                if let cities = citiesForUpdate,
-                    let cityForUpdate = cities.first,
-                    let forecast = cityForUpdate.forecast {
-                    for counter in 0..<40 {
-                        let jsonWeather = json["list"][counter]
-                        if let weather = forecast.object(at: counter) as? Weather {
-                            weather.update(with: jsonWeather)
-                        }
-                    }
-
-                }
-                if backgroundContext.hasChanges {
-                    try backgroundContext.save()
-                    backgroundContext.reset()
-                }
-                completion(nil)
-            } catch {
-                completion(.coreDataError)
                 return
             }
         }
@@ -193,29 +137,10 @@ class DataManager {
         }
         do {
             let json = try JSON(data: data)
-            let backgroundContext = self.persistentContainer.newBackgroundContext()
-            backgroundContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
-            backgroundContext.undoManager = nil
-            
-            backgroundContext.performAndWait {
-                guard let city = NSEntityDescription.insertNewObject(forEntityName: "City", into: backgroundContext) as? City else { return }
-                guard let weather = NSEntityDescription.insertNewObject(forEntityName: "Weather", into: backgroundContext) as? Weather else { return }
-                city.currentWeather = weather
-                weather.city = city
-                
-                for _ in 0..<40 {
-                    guard let weather = NSEntityDescription.insertNewObject(forEntityName: "Weather", into: backgroundContext) as? Weather else { return }
-                    weather.cityForecast = city
-                    city.addToForecast(weather)
-                }
-                city.update(with: json)
-                do {
-                    try backgroundContext.save()
-                    completion(nil)
-                } catch {
-                    completion(.coreDataError)
-                }
-                backgroundContext.reset()
+            if self.dataBase.createNewCity(with: json) {
+                completion(nil)
+            } else {
+                completion(.dataBaseError)
             }
         } catch {
             completion(.jsonError)

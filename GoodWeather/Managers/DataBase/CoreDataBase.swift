@@ -11,44 +11,8 @@ import CoreData
 import SwiftyJSON
 
 class CoreDataBase: DataBaseProtocol {
-    
-    private let persistentContainer: NSPersistentContainer
-    var context: NSManagedObjectContext {
-        return persistentContainer.viewContext
-    }
-    
-    init(persistentContainer: NSPersistentContainer) {
-        self.persistentContainer = persistentContainer
-    }
-    
-    func createNewCity(with json: JSON) -> Bool {
-        var isSuccess = false
-        let backgroundContext = self.persistentContainer.newBackgroundContext()
-        backgroundContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
-        backgroundContext.undoManager = nil
-        
-        backgroundContext.performAndWait {
-            guard let city = NSEntityDescription.insertNewObject(forEntityName: "City", into: backgroundContext) as? City else { return }
-            guard let weather = NSEntityDescription.insertNewObject(forEntityName: "Weather", into: backgroundContext) as? Weather else { return }
-            city.currentWeather = weather
-            weather.city = city
-            
-            for _ in 0..<40 {
-                guard let weather = NSEntityDescription.insertNewObject(forEntityName: "Weather", into: backgroundContext) as? Weather else { return }
-                weather.cityForecast = city
-                city.addToForecast(weather)
-            }
-            city.update(with: json)
-            do {
-                try backgroundContext.save()
-                isSuccess = true
-            } catch {
-                isSuccess = false
-            }
-            backgroundContext.reset()
-        }
-        return isSuccess
-    }
+
+    private let persistentContainer: NSPersistentContainer = CoreDataManager.shared.persistentContainer
     
     func updateWeatherFor(cityName: String?, with json: JSON) -> Bool {
         var isSuccess = false
@@ -110,6 +74,35 @@ class CoreDataBase: DataBaseProtocol {
             } catch {
                 isSuccess = false
             }
+        }
+        return isSuccess
+    }
+    
+    func createNewCity(with json: JSON) -> Bool {
+        var isSuccess = false
+        let backgroundContext = self.persistentContainer.newBackgroundContext()
+        backgroundContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+        backgroundContext.undoManager = nil
+        
+        backgroundContext.performAndWait {
+            guard let city = NSEntityDescription.insertNewObject(forEntityName: "City", into: backgroundContext) as? City else { return }
+            guard let weather = NSEntityDescription.insertNewObject(forEntityName: "Weather", into: backgroundContext) as? Weather else { return }
+            city.currentWeather = weather
+            weather.city = city
+            
+            for _ in 0..<40 {
+                guard let weather = NSEntityDescription.insertNewObject(forEntityName: "Weather", into: backgroundContext) as? Weather else { return }
+                weather.cityForecast = city
+                city.addToForecast(weather)
+            }
+            city.update(with: json)
+            do {
+                try backgroundContext.save()
+                isSuccess = true
+            } catch {
+                isSuccess = false
+            }
+            backgroundContext.reset()
         }
         return isSuccess
     }
