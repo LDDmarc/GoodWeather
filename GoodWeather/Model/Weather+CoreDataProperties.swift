@@ -33,8 +33,9 @@ extension Weather {
     @NSManaged public var temperatureMax: Double
     @NSManaged public var temperatureMin: Double
     @NSManaged public var windDegree: Double
-    @NSManaged public var winSpeed: Double
     @NSManaged public var windSpeed: Double
+    @NSManaged public var winSpeed: Double
+    @NSManaged public var windDirection: String?
     @NSManaged public var city: City?
     @NSManaged public var cityForecast: City?
 
