@@ -36,7 +36,8 @@ class CurrentWeatherTableViewController: UITableViewController {
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.addTarget(self, action: #selector(updateWeather), for: .valueChanged)
         
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+//        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        tableView.rowHeight = 60.0
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addCity))
        
@@ -88,12 +89,13 @@ class CurrentWeatherTableViewController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? CurrentWeatherTableViewCell else {
+            return UITableViewCell()
+        }
         let city = fetchedResultsController.object(at: indexPath)
-        
-        cell.textLabel?.text = city.name
-        
+        let viewModel = CurrentWeatherViewModel(city: city)
+        cell.viewModel = viewModel
+        cell.viewModel.setViewModel()
         return cell
     }
 }

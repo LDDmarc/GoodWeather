@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		BC496D8624C42F09000F9AAE /* CurrentWeatherTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC496D8524C42F09000F9AAE /* CurrentWeatherTableViewController.swift */; };
+		BC69EFC924C43F2200330108 /* CurrentWeatherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC69EFC824C43F2200330108 /* CurrentWeatherTableViewCell.swift */; };
+		BC69EFCB24C4498E00330108 /* CurrentWeatherViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC69EFCA24C4498E00330108 /* CurrentWeatherViewModel.swift */; };
+		BC69EFCD24C449A600330108 /* CurrentWeatherViewModelProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC69EFCC24C449A600330108 /* CurrentWeatherViewModelProtocol.swift */; };
 		BC86900A24C2E9E700CF5F8A /* DataBaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC86900924C2E9E700CF5F8A /* DataBaseProtocol.swift */; };
 		BC86900D24C2EB1A00CF5F8A /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC86900B24C2EB1A00CF5F8A /* DataManager.swift */; };
 		BC86900E24C2EB1A00CF5F8A /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC86900C24C2EB1A00CF5F8A /* NetworkManager.swift */; };
@@ -31,6 +34,9 @@
 		44FA8FAEB3604B9B6983D55C /* Pods-GoodWeather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoodWeather.debug.xcconfig"; path = "Target Support Files/Pods-GoodWeather/Pods-GoodWeather.debug.xcconfig"; sourceTree = "<group>"; };
 		945E6528CE8DA721BF77729F /* Pods-GoodWeather.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoodWeather.release.xcconfig"; path = "Target Support Files/Pods-GoodWeather/Pods-GoodWeather.release.xcconfig"; sourceTree = "<group>"; };
 		BC496D8524C42F09000F9AAE /* CurrentWeatherTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherTableViewController.swift; sourceTree = "<group>"; };
+		BC69EFC824C43F2200330108 /* CurrentWeatherTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherTableViewCell.swift; sourceTree = "<group>"; };
+		BC69EFCA24C4498E00330108 /* CurrentWeatherViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherViewModel.swift; sourceTree = "<group>"; };
+		BC69EFCC24C449A600330108 /* CurrentWeatherViewModelProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherViewModelProtocol.swift; sourceTree = "<group>"; };
 		BC86900924C2E9E700CF5F8A /* DataBaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBaseProtocol.swift; sourceTree = "<group>"; };
 		BC86900B24C2EB1A00CF5F8A /* DataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
 		BC86900C24C2EB1A00CF5F8A /* NetworkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
@@ -132,6 +138,9 @@
 				BCB256D524C059C4005925E4 /* SceneDelegate.swift */,
 				BC86900F24C2EB2100CF5F8A /* Managers */,
 				BCB256D724C059C4005925E4 /* ViewController.swift */,
+				BC69EFCC24C449A600330108 /* CurrentWeatherViewModelProtocol.swift */,
+				BC69EFCA24C4498E00330108 /* CurrentWeatherViewModel.swift */,
+				BC69EFC824C43F2200330108 /* CurrentWeatherTableViewCell.swift */,
 				BC496D8524C42F09000F9AAE /* CurrentWeatherTableViewController.swift */,
 				BCB256D924C059C4005925E4 /* Main.storyboard */,
 				BCB256DC24C059C7005925E4 /* Assets.xcassets */,
@@ -270,9 +279,12 @@
 				BCD82E5324C43748008984BB /* GoodWeather.xcdatamodeld in Sources */,
 				BCD82E5924C4390A008984BB /* City+CoreDataProperties.swift in Sources */,
 				BCB256D824C059C4005925E4 /* ViewController.swift in Sources */,
+				BC69EFC924C43F2200330108 /* CurrentWeatherTableViewCell.swift in Sources */,
+				BC69EFCB24C4498E00330108 /* CurrentWeatherViewModel.swift in Sources */,
 				BCB256D424C059C4005925E4 /* AppDelegate.swift in Sources */,
 				BC86901124C2EB4400CF5F8A /* CoreDataManager.swift in Sources */,
 				BC86900A24C2E9E700CF5F8A /* DataBaseProtocol.swift in Sources */,
+				BC69EFCD24C449A600330108 /* CurrentWeatherViewModelProtocol.swift in Sources */,
 				BC86900D24C2EB1A00CF5F8A /* DataManager.swift in Sources */,
 				BCB256D624C059C4005925E4 /* SceneDelegate.swift in Sources */,
 				BCD82E5A24C4390A008984BB /* Weather+CoreDataClass.swift in Sources */,
