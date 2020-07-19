@@ -15,7 +15,11 @@ class CurrentWeatherTableViewCell: UITableViewCell {
             self.viewModel.dataDidChange = { [unowned self] viewModel in
                 self.cityNameLabel.text = viewModel.cityName
                 if let temperature = viewModel.temperature {
-                    self.temperatureLabel.text = "\(temperature)"
+                    self.temperatureLabel.text = "\(Int(round(temperature)))°"
+                }
+                if let iconName =  viewModel.iconName,
+                    let iconImage = UIImage(named: iconName) {
+                    self.iconImageView.image = iconImage
                 }
             }
         }
@@ -36,7 +40,7 @@ class CurrentWeatherTableViewCell: UITableViewCell {
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+                
         let views = [cityNameLabel, iconImageView, temperatureLabel]
         for view in views {
             view.translatesAutoresizingMaskIntoConstraints = false
@@ -53,7 +57,7 @@ class CurrentWeatherTableViewCell: UITableViewCell {
         
         NSLayoutConstraint.activate([
             cityNameLabel.leadingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.leadingAnchor),
-            cityNameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 24.0),
+            cityNameLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             
             iconImageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             iconImageView.trailingAnchor.constraint(equalTo: contentView.layoutMarginsGuide.trailingAnchor),

@@ -22,7 +22,7 @@ class CurrentWeatherViewModel: CurrentWeatherViewModelProtocol {
         }
     }
     
-    var cityTime: Date? {
+    var iconName: String? {
         didSet {
             self.dataDidChange?(self)
         }
@@ -37,7 +37,7 @@ class CurrentWeatherViewModel: CurrentWeatherViewModelProtocol {
     func setViewModel() {
         cityName = city.name
         guard let weather = city.currentWeather else { return }
-        cityTime = weather.date
+        iconName = weather.icon
         temperature = weather.temperature
     }
     

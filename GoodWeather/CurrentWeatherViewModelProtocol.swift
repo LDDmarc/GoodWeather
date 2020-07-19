@@ -10,7 +10,7 @@ import Foundation
 protocol CurrentWeatherViewModelProtocol: class {
     init(city: City)
     var cityName: String? { get }
-    var cityTime: Date? { get }
+    var iconName: String? { get }
     var temperature: Double? { get }
     func setViewModel()
     var dataDidChange: ((CurrentWeatherViewModelProtocol) -> ())? { get set }
