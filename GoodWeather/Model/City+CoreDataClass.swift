@@ -1,8 +1,8 @@
 //
 //  City+CoreDataClass.swift
-//  WeatherForecast
+//  GoodWeather
 //
-//  Created by Дарья Леонова on 02.07.2020.
+//  Created by Дарья Леонова on 19.07.2020.
 //  Copyright © 2020 Дарья Леонова. All rights reserved.
 //
 //
@@ -13,6 +13,7 @@ import SwiftyJSON
 
 @objc(City)
 public class City: NSManagedObject {
+    
     enum CodingKeys: String {
         case coord
         case lat
@@ -20,6 +21,7 @@ public class City: NSManagedObject {
         case name
         case timeZone = "timezone"
     }
+    
     func update(with json: JSON) {
         lat = json[CodingKeys.coord.rawValue][CodingKeys.lat.rawValue].doubleValue
         lon = json[CodingKeys.coord.rawValue][CodingKeys.lon.rawValue].doubleValue

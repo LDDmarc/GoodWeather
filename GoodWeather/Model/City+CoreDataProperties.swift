@@ -1,14 +1,15 @@
 //
 //  City+CoreDataProperties.swift
-//  WeatherForecast
+//  GoodWeather
 //
-//  Created by Дарья Леонова on 03.07.2020.
+//  Created by Дарья Леонова on 19.07.2020.
 //  Copyright © 2020 Дарья Леонова. All rights reserved.
 //
 //
 
 import Foundation
 import CoreData
+
 
 extension City {
 

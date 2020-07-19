@@ -1,12 +1,12 @@
 //
 //  Weather+CoreDataClass.swift
-//  WeatherForecast
+//  GoodWeather
 //
-//  Created by Дарья Леонова on 02.07.2020.
+//  Created by Дарья Леонова on 19.07.2020.
 //  Copyright © 2020 Дарья Леонова. All rights reserved.
 //
 //
-// swiftlint:disable trailing_whitespace
+
 import Foundation
 import CoreData
 import SwiftyJSON
