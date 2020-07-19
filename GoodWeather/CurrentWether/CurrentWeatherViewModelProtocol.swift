@@ -7,8 +7,11 @@
 //
 
 import Foundation
+
 protocol CurrentWeatherViewModelProtocol: class {
+    
     init(city: City)
+    
     var cityName: String? { get }
     var iconName: String? { get }
     var temperature: Double? { get }

@@ -10,6 +10,10 @@ import UIKit
 
 class CurrentWeatherTableViewCell: UITableViewCell {
     
+    private let cityNameLabel = UILabel()
+    private let temperatureLabel = UILabel()
+    private let iconImageView = UIImageView()
+    
     var viewModel: CurrentWeatherViewModelProtocol! {
         didSet {
             self.viewModel.dataDidChange = { [unowned self] viewModel in
@@ -24,20 +28,9 @@ class CurrentWeatherTableViewCell: UITableViewCell {
             }
         }
     }
+   
+    // MARK: - Set UI
     
-    private let cityNameLabel = UILabel()
-    private let temperatureLabel = UILabel()
-    private let iconImageView = UIImageView()
-    
-//    init(with viewModel: CurrentWeatherViewModelProtocol) {
-//        self.viewModel = viewModel
-//        super.init(style: .default, reuseIdentifier: "d")
-//    }
-//
-//    required init?(coder: NSCoder) {
-//        fatalError()
-//    }
-
     override func awakeFromNib() {
         super.awakeFromNib()
                 

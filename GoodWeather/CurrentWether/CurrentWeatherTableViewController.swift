@@ -12,6 +12,7 @@ import CoreData
 class CurrentWeatherTableViewController: UITableViewController {
 
     let dataManager = DataManager(persistentContainer: CoreDataManager.shared.persistentContainer, dataBase: CoreDataBase())
+    var timer: Timer?
 
     lazy var fetchedResultsController: NSFetchedResultsController<City> = {
         let request: NSFetchRequest = City.fetchRequest()
@@ -29,24 +30,34 @@ class CurrentWeatherTableViewController: UITableViewController {
         return frc
     }()
 
+    // MARK: - View Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.tableFooterView = UIView()
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.addTarget(self, action: #selector(updateWeather), for: .valueChanged)
-        
-//        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+  
         tableView.rowHeight = 60.0
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addCity))
+        
+        timer = Timer.scheduledTimer(timeInterval: 1800,
+                                     target: self,
+                                     selector: #selector(updateWeatherByTimer),
+                                     userInfo: nil,
+                                     repeats: true)
        
         updateWeatherByTimer()
     }
     
+    // MARK: - DataManager
+    
     @objc func updateWeatherByTimer() {
         dataManager.getCurrentWeather { (_) in }
     }
+    
     @objc func updateWeather() {
         dataManager.getCurrentWeather { (dataManagerError) in
             self.showErrorAlert(withError: dataManagerError)

@@ -80,6 +80,17 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		BC69EFCE24C47AA500330108 /* CurrentWether */ = {
+			isa = PBXGroup;
+			children = (
+				BC69EFCC24C449A600330108 /* CurrentWeatherViewModelProtocol.swift */,
+				BC69EFCA24C4498E00330108 /* CurrentWeatherViewModel.swift */,
+				BC69EFC824C43F2200330108 /* CurrentWeatherTableViewCell.swift */,
+				BC496D8524C42F09000F9AAE /* CurrentWeatherTableViewController.swift */,
+			);
+			path = CurrentWether;
+			sourceTree = "<group>";
+		};
 		BC868FFB24C2E47800CF5F8A /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -136,12 +147,9 @@
 				BC868FFB24C2E47800CF5F8A /* Model */,
 				BCB256D324C059C4005925E4 /* AppDelegate.swift */,
 				BCB256D524C059C4005925E4 /* SceneDelegate.swift */,
-				BC86900F24C2EB2100CF5F8A /* Managers */,
 				BCB256D724C059C4005925E4 /* ViewController.swift */,
-				BC69EFCC24C449A600330108 /* CurrentWeatherViewModelProtocol.swift */,
-				BC69EFCA24C4498E00330108 /* CurrentWeatherViewModel.swift */,
-				BC69EFC824C43F2200330108 /* CurrentWeatherTableViewCell.swift */,
-				BC496D8524C42F09000F9AAE /* CurrentWeatherTableViewController.swift */,
+				BC86900F24C2EB2100CF5F8A /* Managers */,
+				BC69EFCE24C47AA500330108 /* CurrentWether */,
 				BCB256D924C059C4005925E4 /* Main.storyboard */,
 				BCB256DC24C059C7005925E4 /* Assets.xcassets */,
 				BCB256DE24C059C7005925E4 /* LaunchScreen.storyboard */,
