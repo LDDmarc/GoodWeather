@@ -176,6 +176,7 @@ extension DateFormatter {
     static func timeDateFormatter() -> DateFormatter {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "ru_RU")
+        dateFormatter.timeZone = TimeZone(identifier: "UTC")
         dateFormatter.dateStyle = .none
         dateFormatter.timeStyle = .short
         return dateFormatter
@@ -184,8 +185,19 @@ extension DateFormatter {
     static func dateDateFormatter() -> DateFormatter {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "ru_RU")
+        dateFormatter.timeZone = TimeZone(identifier: "UTC")
         dateFormatter.dateStyle = .none
         dateFormatter.dateFormat = "dd/MM"
         return dateFormatter
+    }
+}
+
+extension String {
+    func capitalizingFirstLetter() -> String {
+        return prefix(1).capitalized + dropFirst()
+    }
+
+    mutating func capitalizeFirstLetter() {
+        self = self.capitalizingFirstLetter()
     }
 }

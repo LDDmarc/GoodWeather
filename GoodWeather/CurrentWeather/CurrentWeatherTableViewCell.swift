@@ -33,7 +33,8 @@ class CurrentWeatherTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-                
+        selectionStyle = .none
+        
         let views = [cityNameLabel, iconImageView, temperatureLabel]
         for view in views {
             view.translatesAutoresizingMaskIntoConstraints = false

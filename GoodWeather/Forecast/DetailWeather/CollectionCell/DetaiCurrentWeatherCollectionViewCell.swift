@@ -19,7 +19,7 @@ class DetaiCurrentWeatherCollectionViewCell: UICollectionViewCell {
     
     var descrip: String? {
         didSet {
-            descriptionLabel.text = descrip
+            descriptionLabel.text = descrip?.capitalizingFirstLetter()
         }
     }
     var temperature: Double? {
@@ -32,12 +32,13 @@ class DetaiCurrentWeatherCollectionViewCell: UICollectionViewCell {
     var precipitation: Double? {
         didSet {
             guard let precipitation = precipitation else { return }
-            precipitationLabel.text = "\(Int(round(precipitation)))%"
+            precipitationLabel.text = "\(Int(round(precipitation))) %"
         }
     }
-    var windInfo: String? {
+    var windInfo: Wind? {
         didSet {
-            windLabel.text = windInfo
+            guard let windInfo = windInfo else { return }
+            windLabel.text = windInfo.windDirection + " \(Int(round(windInfo.windSpeed))) м/с"
         }
     }
     var sunriseTime: Date? {
@@ -60,4 +61,9 @@ class DetaiCurrentWeatherCollectionViewCell: UICollectionViewCell {
         self.layer.cornerCurve = .continuous
         self.backgroundColor = .blue
     }
+}
+
+protocol DetailCurrentWeatherPresenterProtocol: class {
+    init(view: DetaiCurrentWeatherCollectionViewCell, weather: Weather)
+    func setUI()
 }
