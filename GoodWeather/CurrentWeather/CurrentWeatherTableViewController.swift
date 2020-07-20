@@ -41,6 +41,8 @@ class CurrentWeatherTableViewController: UITableViewController {
   
         tableView.rowHeight = 60.0
         
+        navigationController?.navigationBar.prefersLargeTitles = true
+        title = "Погода"
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addCity))
         
         timer = Timer.scheduledTimer(timeInterval: 1800,
@@ -108,6 +110,12 @@ class CurrentWeatherTableViewController: UITableViewController {
         cell.viewModel = viewModel
         cell.viewModel.setViewModel()
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let city = fetchedResultsController.object(at: indexPath)
+        let vc = ForecastTableViewController(dataManager: dataManager, city: city)
+        navigationController?.pushViewController(vc, animated: true)
     }
 }
 
