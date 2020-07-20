@@ -26,7 +26,7 @@ class DetaiCurrentWeatherCollectionViewCell: UICollectionViewCell {
         didSet {
             guard let temperature = temperature else { return }
             temperatureLabel.text = "\(Int(round(temperature)))°"
-            //TODO: bckgroundcolor
+            setBackground()
         }
     }
     var precipitation: Double? {
@@ -60,6 +60,33 @@ class DetaiCurrentWeatherCollectionViewCell: UICollectionViewCell {
         self.layer.cornerRadius = 20.0
         self.layer.cornerCurve = .continuous
         self.backgroundColor = .blue
+    }
+    
+    private func setBackground() {
+        let gradientLayer = CAGradientLayer()
+        gradientLayer.frame = self.contentView.bounds
+        gradientLayer.startPoint = CGPoint(x: 0.0, y: 1.0)
+        gradientLayer.endPoint = CGPoint(x: 1.0, y: 0.0)
+        gradientLayer.colors = getColors()
+        self.contentView.layer.insertSublayer(gradientLayer, at: 0)
+    }
+    
+    private func getColors() -> [CGColor] {
+        guard let temperature = temperature else {
+            return [UIColor.systemFill.cgColor, UIColor.systemFill.cgColor]
+        }
+        switch temperature {
+        case (-80)...(-20):
+            return [WeatherColor.iceLight.cgColor, WeatherColor.iceDark.cgColor]
+        case (-20)...0:
+            return [WeatherColor.coldLight.cgColor, WeatherColor.coldDark.cgColor]
+        case 0...20:
+            return [WeatherColor.warmLight.cgColor, WeatherColor.warmDark.cgColor]
+        case 20...80:
+            return [WeatherColor.hotLight.cgColor, WeatherColor.hotDark.cgColor]
+        default:
+            return [UIColor.systemFill.cgColor, UIColor.systemFill.cgColor]
+        }
     }
 }
 
