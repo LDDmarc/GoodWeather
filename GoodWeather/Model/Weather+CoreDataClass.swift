@@ -48,7 +48,8 @@ public class Weather: NSManagedObject {
         
         case dateUTC = "dt"
     }
-
+    
+    
     func update(with json: JSON) {
         main = json[CodingKeys.weather.rawValue][0][CodingKeys.main.rawValue].stringValue
         descrip = json[CodingKeys.weather.rawValue][0][CodingKeys.description.rawValue].stringValue
@@ -82,12 +83,61 @@ public class Weather: NSManagedObject {
         }
         
         if let date = date {
-            let calendar = Calendar.current
+            var calendar = Calendar.current
+            calendar.timeZone = TimeZone(secondsFromGMT: 0)!
+//            if let timeZone = cityForecast?.timeZone,
+//                let calendarTimeZone = TimeZone(secondsFromGMT: Int(timeZone)) {
+//                calendar.timeZone = calendarTimeZone
+//            }
+//
             hour = Int64(calendar.component(.hour, from: date))
+            
+            print(hour)
+            
+            if hour == 12 || hour == 13 || hour == 14 {
+                if let index = getIndex(forWeatherWith: date),
+                    index >= 0 {
+                    (self.cityForecast?.dayAndNightWeather?.object(at: index) as? DayAndNightWeather)?.dayWeather = self
+                }
+            }
+            if hour == 0 || hour == 1 || hour == 2 {
+                if let index = getIndex(forWeatherWith: date),
+                    index >= 0 {
+                    (self.cityForecast?.dayAndNightWeather?.object(at: index) as? DayAndNightWeather)?.nightWeather = self
+                }
+            }
         }
     }
     
-    func getWindDirection(by windDegree: Double) -> String {
+    private func getIndex(forWeatherWith date: Date) -> Int? {
+        if let city = cityForecast,
+            let currentWeatherDate = city.currentWeather?.date {
+            let dateDifference = date.timeIntervalSince(currentWeatherDate)
+            var index: Int
+            switch dateDifference {
+            case 0...twentyFourHoursInSeconds - 1:
+                index = 0
+            case twentyFourHoursInSeconds...2 * twentyFourHoursInSeconds - 1:
+                index = 1
+            case 2 * twentyFourHoursInSeconds...3 * twentyFourHoursInSeconds - 1:
+                index = 2
+            case 3 * twentyFourHoursInSeconds...4 * twentyFourHoursInSeconds - 1:
+                index = 3
+            case 4 * twentyFourHoursInSeconds...5 * twentyFourHoursInSeconds - 1:
+                index = 4
+            case 5 * twentyFourHoursInSeconds...6 * twentyFourHoursInSeconds - 1:
+                index = 5
+            default:
+                index = -2
+            }
+            return index
+        }
+        return nil
+    }
+    
+    private let twentyFourHoursInSeconds: Double = 86400
+    
+    private func getWindDirection(by windDegree: Double) -> String {
         switch windDegree {
         case 0...11.25:
             return "с"

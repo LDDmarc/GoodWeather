@@ -55,7 +55,7 @@ class ForecastCollectionViewCell: UICollectionViewCell {
         
         self.layer.cornerRadius = 13.0
         self.layer.cornerCurve = .continuous
-        self.backgroundColor = .systemFill
+        self.backgroundColor = .systemGray4
     }
 
 }

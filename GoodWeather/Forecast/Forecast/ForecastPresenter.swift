@@ -27,5 +27,4 @@ class ForecastPresenter: ForecastPresenterProtocol {
             view.windInfo = Wind(windSpeed: weather.windSpeed, windDirection: windDirection)
         }
     }
-    
 }

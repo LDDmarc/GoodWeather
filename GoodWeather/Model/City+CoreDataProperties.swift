@@ -2,7 +2,7 @@
 //  City+CoreDataProperties.swift
 //  GoodWeather
 //
-//  Created by Дарья Леонова on 19.07.2020.
+//  Created by Дарья Леонова on 30.07.2020.
 //  Copyright © 2020 Дарья Леонова. All rights reserved.
 //
 //
@@ -23,7 +23,43 @@ extension City {
     @NSManaged public var name: String?
     @NSManaged public var timeZone: Int64
     @NSManaged public var currentWeather: Weather?
+    @NSManaged public var dayAndNightWeather: NSOrderedSet?
     @NSManaged public var forecast: NSOrderedSet?
+
+}
+
+// MARK: Generated accessors for dayAndNightWeather
+extension City {
+
+    @objc(insertObject:inDayAndNightWeatherAtIndex:)
+    @NSManaged public func insertIntoDayAndNightWeather(_ value: DayAndNightWeather, at idx: Int)
+
+    @objc(removeObjectFromDayAndNightWeatherAtIndex:)
+    @NSManaged public func removeFromDayAndNightWeather(at idx: Int)
+
+    @objc(insertDayAndNightWeather:atIndexes:)
+    @NSManaged public func insertIntoDayAndNightWeather(_ values: [DayAndNightWeather], at indexes: NSIndexSet)
+
+    @objc(removeDayAndNightWeatherAtIndexes:)
+    @NSManaged public func removeFromDayAndNightWeather(at indexes: NSIndexSet)
+
+    @objc(replaceObjectInDayAndNightWeatherAtIndex:withObject:)
+    @NSManaged public func replaceDayAndNightWeather(at idx: Int, with value: DayAndNightWeather)
+
+    @objc(replaceDayAndNightWeatherAtIndexes:withDayAndNightWeather:)
+    @NSManaged public func replaceDayAndNightWeather(at indexes: NSIndexSet, with values: [DayAndNightWeather])
+
+    @objc(addDayAndNightWeatherObject:)
+    @NSManaged public func addToDayAndNightWeather(_ value: DayAndNightWeather)
+
+    @objc(removeDayAndNightWeatherObject:)
+    @NSManaged public func removeFromDayAndNightWeather(_ value: DayAndNightWeather)
+
+    @objc(addDayAndNightWeather:)
+    @NSManaged public func addToDayAndNightWeather(_ values: NSOrderedSet)
+
+    @objc(removeDayAndNightWeather:)
+    @NSManaged public func removeFromDayAndNightWeather(_ values: NSOrderedSet)
 
 }
 

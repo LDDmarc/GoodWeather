@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19F101" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19G73" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="City" representedClassName="City" syncable="YES">
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="lat" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
@@ -7,7 +7,14 @@
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="timeZone" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="currentWeather" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Weather" inverseName="city" inverseEntity="Weather"/>
+        <relationship name="dayAndNightWeather" optional="YES" toMany="YES" minCount="5" maxCount="5" deletionRule="Nullify" ordered="YES" destinationEntity="DayAndNightWeather" inverseName="city" inverseEntity="DayAndNightWeather"/>
         <relationship name="forecast" optional="YES" toMany="YES" minCount="1" maxCount="40" deletionRule="Cascade" ordered="YES" destinationEntity="Weather" inverseName="cityForecast" inverseEntity="Weather"/>
+    </entity>
+    <entity name="DayAndNightWeather" representedClassName="DayAndNightWeather" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="city" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="City" inverseName="dayAndNightWeather" inverseEntity="City"/>
+        <relationship name="dayWeather" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Weather"/>
+        <relationship name="nightWeather" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Weather"/>
     </entity>
     <entity name="Weather" representedClassName="Weather" syncable="YES">
         <attribute name="clouds" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
@@ -35,7 +42,8 @@
         <relationship name="cityForecast" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="City" inverseName="forecast" inverseEntity="City"/>
     </entity>
     <elements>
-        <element name="City" positionX="-63" positionY="-18" width="128" height="148"/>
-        <element name="Weather" positionX="-54" positionY="27" width="128" height="388"/>
+        <element name="City" positionX="-408.72265625" positionY="-21.62109375" width="128" height="163"/>
+        <element name="DayAndNightWeather" positionX="41.1640625" positionY="239.19140625" width="128" height="103"/>
+        <element name="Weather" positionX="-121.41015625" positionY="-351.65234375" width="128" height="388"/>
     </elements>
 </model>

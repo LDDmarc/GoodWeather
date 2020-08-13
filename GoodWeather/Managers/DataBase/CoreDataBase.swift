@@ -66,6 +66,7 @@ class CoreDataBase: DataBaseProtocol {
                         }
                     }
                 }
+                
                 if backgroundContext.hasChanges {
                     try backgroundContext.save()
                     backgroundContext.reset()
@@ -90,11 +91,18 @@ class CoreDataBase: DataBaseProtocol {
             city.currentWeather = weather
             weather.city = city
             
+            for _ in 0..<5 {
+                guard let dayAndNightWeather = NSEntityDescription.insertNewObject(forEntityName: "DayAndNightWeather", into: backgroundContext) as? DayAndNightWeather else { return }
+                dayAndNightWeather.city = city
+                city.addToDayAndNightWeather(dayAndNightWeather)
+            }
+            
             for _ in 0..<40 {
                 guard let weather = NSEntityDescription.insertNewObject(forEntityName: "Weather", into: backgroundContext) as? Weather else { return }
                 weather.cityForecast = city
                 city.addToForecast(weather)
             }
+            
             city.update(with: json)
             do {
                 try backgroundContext.save()
@@ -106,4 +114,5 @@ class CoreDataBase: DataBaseProtocol {
         }
         return isSuccess
     }
+  
 }

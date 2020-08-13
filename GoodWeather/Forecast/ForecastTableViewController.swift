@@ -33,30 +33,6 @@ class ForecastTableViewController: UITableViewController {
         return frc
     }()
     
-    lazy var forecastFetchedResultsController: NSFetchedResultsController<Weather> = {
-        let request: NSFetchRequest = Weather.fetchRequest()
-        let hours = [13, 14, 15]
-        let predicate = NSPredicate(format: "hour in %@", hours)
-        if let name = city.name {
-            request.predicate = NSPredicate(format: "cityForecast.name == %@", name)
-            request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [NSPredicate(format: "cityForecast.name == %@", name), predicate])
-        } else {
-            request.predicate = predicate
-        }
-        let sort = NSSortDescriptor(key: "date", ascending: true)
-        request.sortDescriptors = [sort]
-        request.fetchBatchSize = 5
-        let frc = NSFetchedResultsController(fetchRequest: request, managedObjectContext: dataManager.context, sectionNameKeyPath: nil, cacheName: nil)
-        do {
-            try frc.performFetch()
-        } catch {
-            let nserror = error as NSError
-            print(nserror.localizedDescription)
-        }
-        frc.delegate = self
-        return frc
-    }()
-    
     required init?(coder: NSCoder) {
         fatalError()
     }
@@ -74,10 +50,8 @@ class ForecastTableViewController: UITableViewController {
         tableView.register(UINib(nibName: String(describing: DetailWeatherTableViewCell.self), bundle: nil), forCellReuseIdentifier: String(describing: DetailWeatherTableViewCell.self))
         tableView.register(UINib(nibName: String(describing: ForecastTableViewCell.self), bundle: nil), forCellReuseIdentifier: String(describing: ForecastTableViewCell.self))
         tableView.tableFooterView = UIView()
-        
-        dataManager.getForecast(forCity: city) { (_) in
-            
-        }
+        title = city.name
+        dataManager.getForecast(forCity: city) { (_) in }
     }
 
     // MARK: - Table view data source
@@ -113,7 +87,8 @@ class ForecastTableViewController: UITableViewController {
     
 }
 
-
 extension ForecastTableViewController: NSFetchedResultsControllerDelegate {
-    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        tableView.reloadData()
+    }
 }

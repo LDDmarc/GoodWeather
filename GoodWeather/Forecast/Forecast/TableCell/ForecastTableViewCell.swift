@@ -16,15 +16,10 @@ class ForecastTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollec
     var dataManager: DataManager!
     var city: City!
 
-    lazy var fetchedResultsController: NSFetchedResultsController<Weather> = {
-        let request: NSFetchRequest = Weather.fetchRequest()
-        let hours = [13, 14, 15]
-        let predicate = NSPredicate(format: "hour in %@", hours)
+    lazy var fetchedResultsController: NSFetchedResultsController<DayAndNightWeather> = {
+        let request: NSFetchRequest = DayAndNightWeather.fetchRequest()
         if let name = city.name {
-            request.predicate = NSPredicate(format: "cityForecast.name == %@", name)
-            request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [NSPredicate(format: "cityForecast.name == %@", name), predicate])
-        } else {
-            request.predicate = predicate
+            request.predicate = NSPredicate(format: "city.name == %@", name)
         }
         let sort = NSSortDescriptor(key: "date", ascending: true)
         request.sortDescriptors = [sort]
@@ -40,6 +35,7 @@ class ForecastTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollec
         return frc
     }()
 
+    var nightWeatherSet = Set<IndexPath>()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -67,8 +63,10 @@ class ForecastTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollec
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: ForecastCollectionViewCell.self), for: indexPath)
             as? ForecastCollectionViewCell else { return UICollectionViewCell() }
         let weather = fetchedResultsController.object(at: indexPath)
-        let presenter = ForecastPresenter(view: cell, weather: weather)
-        presenter.setUI()
+        if let day = weather.dayWeather {
+            let presenter = ForecastPresenter(view: cell, weather: day)
+            presenter.setUI()
+        }
         return cell
     }
     
@@ -77,9 +75,31 @@ class ForecastTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollec
         let height = 197.0
         return CGSize(width: CGFloat(width), height: CGFloat(height))
     }
-
+   
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let dayAndNightWeather = fetchedResultsController.object(at: indexPath)
+        guard let cell = collectionView.cellForItem(at: indexPath) as? ForecastCollectionViewCell else { return }
+        let weather: Weather?
+        if nightWeatherSet.contains(indexPath) {
+            nightWeatherSet.remove(indexPath)
+            weather = dayAndNightWeather.dayWeather
+        } else {
+            nightWeatherSet.insert(indexPath)
+            weather = dayAndNightWeather.nightWeather
+        }
+        guard let cellWeather = weather else { return }
+        let presenter = ForecastPresenter(view: cell, weather: cellWeather)
+       
+        UIView.transition(with: cell, duration: 0.6, options: .transitionFlipFromRight, animations: {
+            
+            presenter.setUI()
+        })
+    }
+    
 }
 
 extension ForecastTableViewCell: NSFetchedResultsControllerDelegate {
-    
+    func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
+        forecastCollectionView.reloadData()
+    }
 }
