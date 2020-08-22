@@ -10,6 +10,9 @@
         <relationship name="dayAndNightWeather" optional="YES" toMany="YES" minCount="5" maxCount="5" deletionRule="Nullify" ordered="YES" destinationEntity="DayAndNightWeather" inverseName="city" inverseEntity="DayAndNightWeather"/>
         <relationship name="forecast" optional="YES" toMany="YES" minCount="1" maxCount="40" deletionRule="Cascade" ordered="YES" destinationEntity="Weather" inverseName="cityForecast" inverseEntity="Weather"/>
     </entity>
+    <entity name="CityName" representedClassName="CityName" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String"/>
+    </entity>
     <entity name="DayAndNightWeather" representedClassName="DayAndNightWeather" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <relationship name="city" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="City" inverseName="dayAndNightWeather" inverseEntity="City"/>
@@ -45,5 +48,6 @@
         <element name="City" positionX="-408.72265625" positionY="-21.62109375" width="128" height="163"/>
         <element name="DayAndNightWeather" positionX="41.1640625" positionY="239.19140625" width="128" height="103"/>
         <element name="Weather" positionX="-121.41015625" positionY="-351.65234375" width="128" height="388"/>
+        <element name="CityName" positionX="-180" positionY="-18" width="128" height="58"/>
     </elements>
 </model>

@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import SwiftyJSON
 
 class CurrentWeatherTableViewController: UITableViewController {
 
@@ -85,6 +86,32 @@ class CurrentWeatherTableViewController: UITableViewController {
     @objc func showView() {
         let vc = SearchViewController(nibName: "SearchViewController", bundle: nil)
         present(vc, animated: true, completion: nil)
+        
+    }
+    
+    @objc func fillCities() {
+        guard let url = Bundle.main.url(forResource: "cities", withExtension: "json") else {
+            print("no file")
+            return
+        }
+        do {
+            let data = try Data(contentsOf: url)
+            let jsonObject = try JSON(data: data)
+            for object in jsonObject["city"].arrayValue {
+                guard let city = NSEntityDescription.insertNewObject(forEntityName: "CityName", into: dataManager.context) as? CityName else { return }
+                city.update(with: object)
+                do {
+                    try dataManager.context.save()
+                } catch  {
+                    print("coredata.error")
+                }
+            }
+            
+        } catch {
+            print("data.error")
+        }
+        
+        
         
     }
     

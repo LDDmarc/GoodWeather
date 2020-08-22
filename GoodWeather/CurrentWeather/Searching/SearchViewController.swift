@@ -7,12 +7,16 @@
 //
 
 import UIKit
+import CoreData
 
 class SearchViewController: UIViewController {
     
     @IBOutlet private weak var textField: SearchTextField!
    
     let tableView = UITableView(frame: CGRect(x: 20, y: 94, width: UIScreen.main.bounds.width - 40, height: 0))
+    
+    var results = [String]()
+    var cities = [CityName]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
