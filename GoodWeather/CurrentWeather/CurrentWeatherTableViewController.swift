@@ -43,14 +43,13 @@ class CurrentWeatherTableViewController: UITableViewController {
         
         navigationController?.navigationBar.prefersLargeTitles = true
         title = "Погода"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addCity))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showView))
         
         timer = Timer.scheduledTimer(timeInterval: 1800,
                                      target: self,
                                      selector: #selector(updateWeatherByTimer),
                                      userInfo: nil,
                                      repeats: true)
-       
         updateWeatherByTimer()
     }
     
@@ -81,6 +80,12 @@ class CurrentWeatherTableViewController: UITableViewController {
         alertController.addAction(confirmAction)
         alertController.addAction(cancelAction)
         present(alertController, animated: true)
+    }
+    
+    @objc func showView() {
+        let vc = SearchViewController(nibName: "SearchViewController", bundle: nil)
+        present(vc, animated: true, completion: nil)
+        
     }
     
     func showErrorAlert(withError dataManagerError: DataManagerError?) {
@@ -119,6 +124,7 @@ class CurrentWeatherTableViewController: UITableViewController {
     }
 }
 
+//MARK: - NSFetchedResultsControllerDelegate
 extension CurrentWeatherTableViewController: NSFetchedResultsControllerDelegate {
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.beginUpdates()
