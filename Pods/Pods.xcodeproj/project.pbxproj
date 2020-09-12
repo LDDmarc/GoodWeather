@@ -7,17 +7,43 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1942F7D3B7722A5637C3FC0BE44B1E6C /* SwiftyJSON-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = A02287654566C4E833D550868E61137D /* SwiftyJSON-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2BF6FBC0A64BF107C5D64C61F1397770 /* SwiftyJSON-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 593C23BE6F81900B7E5D14655827CBEC /* SwiftyJSON-dummy.m */; };
-		464450D037D17ED5EE2322E180A6A9F5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
-		7B4CE5C84161E2BFE477F42DFD634382 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 874D7ABD2F10BB23F044CCCAEFA96E16 /* SwiftyJSON.swift */; };
-		81401108ED91B39994C62DB80B64A4D2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */; };
-		B38E8BB7CD1BB1DAB5B3093CEF4C0AD0 /* Pods-GoodWeather-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1693E23F2C4A8D9EE99DA577A3232190 /* Pods-GoodWeather-dummy.m */; };
-		F04FA79A7477F7F1A69C0062A3D86D2F /* Pods-GoodWeather-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 151B555243DA83A4929597C529DD7784 /* Pods-GoodWeather-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		02877D4336BA428EAC01994213216DBB /* SwiftUIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4F1917F6025AE73887DA24F88BF5DF28 /* SwiftUIColor.swift */; };
+		0A980368E818D6E32777E14273403F91 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 436BAA54A31999B53B3CC7115C55FE50 /* Foundation.framework */; };
+		0B6506C9E760CFA4CED6F639B5EF3E86 /* DynamicColor+XYZ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 217654CD6CD982FD37594AFC55BFC7EB /* DynamicColor+XYZ.swift */; };
+		0B689F3E2CA134B672A54B0C50E3B191 /* DynamicColor+RGBA.swift in Sources */ = {isa = PBXBuildFile; fileRef = 797AA8BC8A7DE5B5FFDFD6C3213148AB /* DynamicColor+RGBA.swift */; };
+		1942F7D3B7722A5637C3FC0BE44B1E6C /* SwiftyJSON-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = B6AE280DA5AB0B33A9EBC06DA314A60B /* SwiftyJSON-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		1FC900F53EBF351A12FB498BE8F8270E /* DynamicColor-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 348228F2DDD1F6A4E7894A83BEB42CF3 /* DynamicColor-dummy.m */; };
+		2BF6FBC0A64BF107C5D64C61F1397770 /* SwiftyJSON-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E8C031376B2A192C082C91AAA1BE5DCB /* SwiftyJSON-dummy.m */; };
+		348B30D9CDB8973542B4B29D9BC988D5 /* Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3E513EFAEE66124A8956A824CF293E2 /* Utils.swift */; };
+		442A9D021A10E62EEED6369AC82025BF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 312B988EF117AE4DE76A268D970131FE /* UIKit.framework */; };
+		464450D037D17ED5EE2322E180A6A9F5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 436BAA54A31999B53B3CC7115C55FE50 /* Foundation.framework */; };
+		4775D9BAFAD504682C026199644FBD52 /* DynamicColor+Mixing.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC48C74D6CBFF4F027D0DC65F67C839 /* DynamicColor+Mixing.swift */; };
+		4D10AFED48037C770E76528B0CA3BA0B /* HSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B24D3E3FC6F6828E783E0E405CEBF8C /* HSL.swift */; };
+		4E4107ED5FDCB7FB6E88B4BEAE7ABF06 /* DynamicColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48B1064E7115DC836095377095E31DC6 /* DynamicColor.swift */; };
+		72EF27FFAD4B5AC86FB984E35D18CC25 /* DynamicColor+HSL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C17016BEEDF5C898BC52CE064A344DC /* DynamicColor+HSL.swift */; };
+		7B4CE5C84161E2BFE477F42DFD634382 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94C1256C173B676742F8108EEA1BF259 /* SwiftyJSON.swift */; };
+		86D6061977FE6103C5DCF51801EC7E36 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F4E9B0E9E532EC343324BFC556CA1A /* Array.swift */; };
+		8FEC02F50658F5F53ECE7BA181E64421 /* ContrastDisplayContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FCC6EF4323B1646610E5459BA351305 /* ContrastDisplayContext.swift */; };
+		9A39D984D727498ACB6C91D10380B0CD /* DynamicColorSpace.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0847CCE2830898F4DA7361A2529BA0F /* DynamicColorSpace.swift */; };
+		A471E9CB93D0776293F4B7A8FA38D6DE /* DynamicGradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80DDA86963BCB4B2466C3A63B9CD486E /* DynamicGradient.swift */; };
+		B105425D9C0117BC49A1E13BFDB4D646 /* DynamicColor+Deriving.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686D57CFD981AA7A635F997F48D8A0F1 /* DynamicColor+Deriving.swift */; };
+		B168BEFEAD6EE4BD29D1B9F7F20DBC73 /* DynamicColor+Lab.swift in Sources */ = {isa = PBXBuildFile; fileRef = A57023276A225044D905BCEE1A9725F6 /* DynamicColor+Lab.swift */; };
+		D074EC5C6DB463C64845728D9741B7AB /* DynamicColor+HSB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 565E425A6BA98E1045C3D565148A1ADE /* DynamicColor+HSB.swift */; };
+		D8ACED4A746D37B0B03CFF12EADF7EF5 /* Pods-GoodWeather-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 151B555243DA83A4929597C529DD7784 /* Pods-GoodWeather-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E9EB51947C81D5B3CD462D832AB99AA0 /* DynamicColor-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 55FBE7F54B3B65D4DA3A8187B310DDA3 /* DynamicColor-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		F1A2176EC431E2946F72E6DF54C655C3 /* Pods-GoodWeather-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1693E23F2C4A8D9EE99DA577A3232190 /* Pods-GoodWeather-dummy.m */; };
+		F7D4BE077010A08CB79BB964264F0E31 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 436BAA54A31999B53B3CC7115C55FE50 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		4404438C81E5512D8D5E4816BF75EB12 /* PBXContainerItemProxy */ = {
+		3BBF3CDA51C700ACAC1C5A0A2EEA995D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 02365F2640C87181DBDCB1D175FA6C00;
+			remoteInfo = DynamicColor;
+		};
+		888527F61294300804E022F9A4301778 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
@@ -27,35 +53,68 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1049DE4997195E831217AEC2E4F368F6 /* DynamicColor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = DynamicColor.debug.xcconfig; sourceTree = "<group>"; };
 		151B555243DA83A4929597C529DD7784 /* Pods-GoodWeather-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-GoodWeather-umbrella.h"; sourceTree = "<group>"; };
 		1693E23F2C4A8D9EE99DA577A3232190 /* Pods-GoodWeather-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-GoodWeather-dummy.m"; sourceTree = "<group>"; };
-		3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		53C1A7E15161AE3A0E3A5090E19F84AE /* SwiftyJSON.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyJSON.release.xcconfig; sourceTree = "<group>"; };
+		1E30CA1D47F157E49C19C2A2AF589777 /* SwiftyJSON-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SwiftyJSON-Info.plist"; sourceTree = "<group>"; };
+		217654CD6CD982FD37594AFC55BFC7EB /* DynamicColor+XYZ.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DynamicColor+XYZ.swift"; path = "Sources/DynamicColor+XYZ.swift"; sourceTree = "<group>"; };
+		312B988EF117AE4DE76A268D970131FE /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
+		348228F2DDD1F6A4E7894A83BEB42CF3 /* DynamicColor-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "DynamicColor-dummy.m"; sourceTree = "<group>"; };
+		436BAA54A31999B53B3CC7115C55FE50 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS12.2.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
+		4603757534A157D07CF86D75DA0641F9 /* DynamicColor.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = DynamicColor.framework; path = DynamicColor.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		48B1064E7115DC836095377095E31DC6 /* DynamicColor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DynamicColor.swift; path = Sources/DynamicColor.swift; sourceTree = "<group>"; };
+		4F1917F6025AE73887DA24F88BF5DF28 /* SwiftUIColor.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftUIColor.swift; path = Sources/SwiftUIColor.swift; sourceTree = "<group>"; };
+		4FB03A6CB4D77C081FF8B7ED48E8B183 /* SwiftyJSON.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyJSON.release.xcconfig; sourceTree = "<group>"; };
+		51D61A4FF681C48F9AEEB91763B27E79 /* SwiftyJSON-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-prefix.pch"; sourceTree = "<group>"; };
+		52E4B76A4ABF6C37FB8B8ECFB1D6A148 /* DynamicColor.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = DynamicColor.modulemap; sourceTree = "<group>"; };
 		54716F5F70CE4636DDE2103AD1B429AD /* Pods-GoodWeather-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-GoodWeather-frameworks.sh"; sourceTree = "<group>"; };
-		593C23BE6F81900B7E5D14655827CBEC /* SwiftyJSON-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftyJSON-dummy.m"; sourceTree = "<group>"; };
-		60A5446E3184AC9044FD67AD5C6955CF /* SwiftyJSON-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SwiftyJSON-Info.plist"; sourceTree = "<group>"; };
-		6A354C76B80E89FBF808D97B0B17C43C /* SwiftyJSON-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-prefix.pch"; sourceTree = "<group>"; };
+		55FBE7F54B3B65D4DA3A8187B310DDA3 /* DynamicColor-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DynamicColor-umbrella.h"; sourceTree = "<group>"; };
+		565E425A6BA98E1045C3D565148A1ADE /* DynamicColor+HSB.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DynamicColor+HSB.swift"; path = "Sources/DynamicColor+HSB.swift"; sourceTree = "<group>"; };
+		5B24D3E3FC6F6828E783E0E405CEBF8C /* HSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = HSL.swift; path = Sources/HSL.swift; sourceTree = "<group>"; };
+		686D57CFD981AA7A635F997F48D8A0F1 /* DynamicColor+Deriving.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DynamicColor+Deriving.swift"; path = "Sources/DynamicColor+Deriving.swift"; sourceTree = "<group>"; };
 		7317177260795E0295FFCC409C730983 /* Pods_GoodWeather.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_GoodWeather.framework; path = "Pods-GoodWeather.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		874D7ABD2F10BB23F044CCCAEFA96E16 /* SwiftyJSON.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = Source/SwiftyJSON/SwiftyJSON.swift; sourceTree = "<group>"; };
+		75FD0E025D540092E26C9250876A5C85 /* DynamicColor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = DynamicColor.release.xcconfig; sourceTree = "<group>"; };
+		797AA8BC8A7DE5B5FFDFD6C3213148AB /* DynamicColor+RGBA.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DynamicColor+RGBA.swift"; path = "Sources/DynamicColor+RGBA.swift"; sourceTree = "<group>"; };
+		7B4A064D6AD1ABDD9A1A34E6FD13D090 /* DynamicColor-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "DynamicColor-Info.plist"; sourceTree = "<group>"; };
+		80DDA86963BCB4B2466C3A63B9CD486E /* DynamicGradient.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DynamicGradient.swift; path = Sources/DynamicGradient.swift; sourceTree = "<group>"; };
+		8C17016BEEDF5C898BC52CE064A344DC /* DynamicColor+HSL.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DynamicColor+HSL.swift"; path = "Sources/DynamicColor+HSL.swift"; sourceTree = "<group>"; };
+		8FCC6EF4323B1646610E5459BA351305 /* ContrastDisplayContext.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ContrastDisplayContext.swift; path = Sources/ContrastDisplayContext.swift; sourceTree = "<group>"; };
 		900FBEA55E30D7A3B15ECFBFF7AF0432 /* Pods-GoodWeather.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-GoodWeather.release.xcconfig"; sourceTree = "<group>"; };
+		94C1256C173B676742F8108EEA1BF259 /* SwiftyJSON.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = Source/SwiftyJSON/SwiftyJSON.swift; sourceTree = "<group>"; };
 		97A7B43A2470DAD1CCAE3DBDDE9DBB78 /* Pods-GoodWeather-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-GoodWeather-acknowledgements.markdown"; sourceTree = "<group>"; };
 		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		9DD1F92CDA11E375661E8839E0C4E3BA /* Pods-GoodWeather.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-GoodWeather.modulemap"; sourceTree = "<group>"; };
-		A02287654566C4E833D550868E61137D /* SwiftyJSON-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-umbrella.h"; sourceTree = "<group>"; };
+		A57023276A225044D905BCEE1A9725F6 /* DynamicColor+Lab.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DynamicColor+Lab.swift"; path = "Sources/DynamicColor+Lab.swift"; sourceTree = "<group>"; };
+		B6AE280DA5AB0B33A9EBC06DA314A60B /* SwiftyJSON-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftyJSON-umbrella.h"; sourceTree = "<group>"; };
+		BEC48C74D6CBFF4F027D0DC65F67C839 /* DynamicColor+Mixing.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = "DynamicColor+Mixing.swift"; path = "Sources/DynamicColor+Mixing.swift"; sourceTree = "<group>"; };
 		BEF852C68A09CB781C9B87AE787B93F7 /* Pods-GoodWeather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-GoodWeather.debug.xcconfig"; sourceTree = "<group>"; };
+		C5AFB612F1DD86B651339B2E2F729C6D /* SwiftyJSON.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyJSON.debug.xcconfig; sourceTree = "<group>"; };
+		E0847CCE2830898F4DA7361A2529BA0F /* DynamicColorSpace.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = DynamicColorSpace.swift; path = Sources/DynamicColorSpace.swift; sourceTree = "<group>"; };
 		E23C076BA70925415F490FEDB215DA92 /* SwiftyJSON.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftyJSON.framework; path = SwiftyJSON.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E4A0FD389D173F56FBDB8A357093095A /* SwiftyJSON.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SwiftyJSON.modulemap; sourceTree = "<group>"; };
+		E3E513EFAEE66124A8956A824CF293E2 /* Utils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Utils.swift; path = Sources/Utils.swift; sourceTree = "<group>"; };
+		E4F4E9B0E9E532EC343324BFC556CA1A /* Array.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Array.swift; path = Sources/Array.swift; sourceTree = "<group>"; };
+		E8C031376B2A192C082C91AAA1BE5DCB /* SwiftyJSON-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftyJSON-dummy.m"; sourceTree = "<group>"; };
+		EB7F46BBAB7B84B676678B5FE58D027B /* SwiftyJSON.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SwiftyJSON.modulemap; sourceTree = "<group>"; };
+		F369414BEC9C3D5B55DEA9521C2F5880 /* DynamicColor-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "DynamicColor-prefix.pch"; sourceTree = "<group>"; };
 		F53A1F135F3C6F5C40FDAFAD1AF7DE4A /* Pods-GoodWeather-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-GoodWeather-acknowledgements.plist"; sourceTree = "<group>"; };
 		F5F087625601EDFD6FE6A1B81BBF39DA /* Pods-GoodWeather-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-GoodWeather-Info.plist"; sourceTree = "<group>"; };
-		F8D55E3BEC2588689D54AFF1AE0AC1DF /* SwiftyJSON.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftyJSON.debug.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		25D5B59827DAE06E7C46EBA34841D3F2 /* Frameworks */ = {
+		9FD9AABB14E90FC282CB5D179B35280B /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				81401108ED91B39994C62DB80B64A4D2 /* Foundation.framework in Frameworks */,
+				0A980368E818D6E32777E14273403F91 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A35035BB91BD19E64C27EEF32490317E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F7D4BE077010A08CB79BB964264F0E31 /* Foundation.framework in Frameworks */,
+				442A9D021A10E62EEED6369AC82025BF /* UIKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -70,31 +129,12 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		2C6A71D462ED46C2A7F74D962134DC74 /* Pods */ = {
+		1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				519BE3CB838B11312A08D7AC7819F70F /* SwiftyJSON */,
+				E2983683FD097A93297E2F5D4E382B36 /* iOS */,
 			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
-		4A3799E1795A3C78C59694561C2526CB /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				7317177260795E0295FFCC409C730983 /* Pods_GoodWeather.framework */,
-				E23C076BA70925415F490FEDB215DA92 /* SwiftyJSON.framework */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		519BE3CB838B11312A08D7AC7819F70F /* SwiftyJSON */ = {
-			isa = PBXGroup;
-			children = (
-				874D7ABD2F10BB23F044CCCAEFA96E16 /* SwiftyJSON.swift */,
-				E7117206C2C7669CF7C06E59DE55529D /* Support Files */,
-			);
-			name = SwiftyJSON;
-			path = SwiftyJSON;
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		7CE75577D0A09250989F3E125163EB70 /* Targets Support Files */ = {
@@ -105,12 +145,53 @@
 			name = "Targets Support Files";
 			sourceTree = "<group>";
 		};
-		C0834CEBB1379A84116EF29F93051C60 /* iOS */ = {
+		ACD96B03EDD924DDF58B715281666EA6 /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				3212113385A8FBBDB272BD23C409FF61 /* Foundation.framework */,
+				52E4B76A4ABF6C37FB8B8ECFB1D6A148 /* DynamicColor.modulemap */,
+				348228F2DDD1F6A4E7894A83BEB42CF3 /* DynamicColor-dummy.m */,
+				7B4A064D6AD1ABDD9A1A34E6FD13D090 /* DynamicColor-Info.plist */,
+				F369414BEC9C3D5B55DEA9521C2F5880 /* DynamicColor-prefix.pch */,
+				55FBE7F54B3B65D4DA3A8187B310DDA3 /* DynamicColor-umbrella.h */,
+				1049DE4997195E831217AEC2E4F368F6 /* DynamicColor.debug.xcconfig */,
+				75FD0E025D540092E26C9250876A5C85 /* DynamicColor.release.xcconfig */,
 			);
-			name = iOS;
+			name = "Support Files";
+			path = "../Target Support Files/DynamicColor";
+			sourceTree = "<group>";
+		};
+		B647CDD38BFDE29CC3B8128FBE8BAA92 /* SwiftyJSON */ = {
+			isa = PBXGroup;
+			children = (
+				94C1256C173B676742F8108EEA1BF259 /* SwiftyJSON.swift */,
+				F5F3FDB963681A91C71D677989C00FB1 /* Support Files */,
+			);
+			name = SwiftyJSON;
+			path = SwiftyJSON;
+			sourceTree = "<group>";
+		};
+		B9B31EBE59CA66D31D4EDCBB4FA5E303 /* DynamicColor */ = {
+			isa = PBXGroup;
+			children = (
+				E4F4E9B0E9E532EC343324BFC556CA1A /* Array.swift */,
+				8FCC6EF4323B1646610E5459BA351305 /* ContrastDisplayContext.swift */,
+				48B1064E7115DC836095377095E31DC6 /* DynamicColor.swift */,
+				686D57CFD981AA7A635F997F48D8A0F1 /* DynamicColor+Deriving.swift */,
+				565E425A6BA98E1045C3D565148A1ADE /* DynamicColor+HSB.swift */,
+				8C17016BEEDF5C898BC52CE064A344DC /* DynamicColor+HSL.swift */,
+				A57023276A225044D905BCEE1A9725F6 /* DynamicColor+Lab.swift */,
+				BEC48C74D6CBFF4F027D0DC65F67C839 /* DynamicColor+Mixing.swift */,
+				797AA8BC8A7DE5B5FFDFD6C3213148AB /* DynamicColor+RGBA.swift */,
+				217654CD6CD982FD37594AFC55BFC7EB /* DynamicColor+XYZ.swift */,
+				E0847CCE2830898F4DA7361A2529BA0F /* DynamicColorSpace.swift */,
+				80DDA86963BCB4B2466C3A63B9CD486E /* DynamicGradient.swift */,
+				5B24D3E3FC6F6828E783E0E405CEBF8C /* HSL.swift */,
+				4F1917F6025AE73887DA24F88BF5DF28 /* SwiftUIColor.swift */,
+				E3E513EFAEE66124A8956A824CF293E2 /* Utils.swift */,
+				ACD96B03EDD924DDF58B715281666EA6 /* Support Files */,
+			);
+			name = DynamicColor;
+			path = DynamicColor;
 			sourceTree = "<group>";
 		};
 		C8B4386C14D19EC9B5C9BD66A2C42EA6 /* Pods-GoodWeather */ = {
@@ -134,31 +215,51 @@
 			isa = PBXGroup;
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
-				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
-				2C6A71D462ED46C2A7F74D962134DC74 /* Pods */,
-				4A3799E1795A3C78C59694561C2526CB /* Products */,
+				1628BF05B4CAFDCC3549A101F5A10A17 /* Frameworks */,
+				D26A6757A3BFA6C88A654122A5D39A82 /* Pods */,
+				EC62960DC002B1207BB318C8F26E81E5 /* Products */,
 				7CE75577D0A09250989F3E125163EB70 /* Targets Support Files */,
 			);
 			sourceTree = "<group>";
 		};
-		D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */ = {
+		D26A6757A3BFA6C88A654122A5D39A82 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				C0834CEBB1379A84116EF29F93051C60 /* iOS */,
+				B9B31EBE59CA66D31D4EDCBB4FA5E303 /* DynamicColor */,
+				B647CDD38BFDE29CC3B8128FBE8BAA92 /* SwiftyJSON */,
 			);
-			name = Frameworks;
+			name = Pods;
 			sourceTree = "<group>";
 		};
-		E7117206C2C7669CF7C06E59DE55529D /* Support Files */ = {
+		E2983683FD097A93297E2F5D4E382B36 /* iOS */ = {
 			isa = PBXGroup;
 			children = (
-				E4A0FD389D173F56FBDB8A357093095A /* SwiftyJSON.modulemap */,
-				593C23BE6F81900B7E5D14655827CBEC /* SwiftyJSON-dummy.m */,
-				60A5446E3184AC9044FD67AD5C6955CF /* SwiftyJSON-Info.plist */,
-				6A354C76B80E89FBF808D97B0B17C43C /* SwiftyJSON-prefix.pch */,
-				A02287654566C4E833D550868E61137D /* SwiftyJSON-umbrella.h */,
-				F8D55E3BEC2588689D54AFF1AE0AC1DF /* SwiftyJSON.debug.xcconfig */,
-				53C1A7E15161AE3A0E3A5090E19F84AE /* SwiftyJSON.release.xcconfig */,
+				436BAA54A31999B53B3CC7115C55FE50 /* Foundation.framework */,
+				312B988EF117AE4DE76A268D970131FE /* UIKit.framework */,
+			);
+			name = iOS;
+			sourceTree = "<group>";
+		};
+		EC62960DC002B1207BB318C8F26E81E5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4603757534A157D07CF86D75DA0641F9 /* DynamicColor.framework */,
+				7317177260795E0295FFCC409C730983 /* Pods_GoodWeather.framework */,
+				E23C076BA70925415F490FEDB215DA92 /* SwiftyJSON.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F5F3FDB963681A91C71D677989C00FB1 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				EB7F46BBAB7B84B676678B5FE58D027B /* SwiftyJSON.modulemap */,
+				E8C031376B2A192C082C91AAA1BE5DCB /* SwiftyJSON-dummy.m */,
+				1E30CA1D47F157E49C19C2A2AF589777 /* SwiftyJSON-Info.plist */,
+				51D61A4FF681C48F9AEEB91763B27E79 /* SwiftyJSON-prefix.pch */,
+				B6AE280DA5AB0B33A9EBC06DA314A60B /* SwiftyJSON-umbrella.h */,
+				C5AFB612F1DD86B651339B2E2F729C6D /* SwiftyJSON.debug.xcconfig */,
+				4FB03A6CB4D77C081FF8B7ED48E8B183 /* SwiftyJSON.release.xcconfig */,
 			);
 			name = "Support Files";
 			path = "../Target Support Files/SwiftyJSON";
@@ -167,14 +268,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		1D7F840C999A6613D3A1047D92A11C4C /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				F04FA79A7477F7F1A69C0062A3D86D2F /* Pods-GoodWeather-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		3D7DD627DB5C5AD636646E57B685AFB2 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -183,22 +276,57 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		4FBE4891DC146F078EF911CAD721134B /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D8ACED4A746D37B0B03CFF12EADF7EF5 /* Pods-GoodWeather-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FA8E67E89BC40F1D5075C13592F84BED /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E9EB51947C81D5B3CD462D832AB99AA0 /* DynamicColor-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		0AC485A3AD0E22584727B1E5DDBD2B48 /* Pods-GoodWeather */ = {
+		02365F2640C87181DBDCB1D175FA6C00 /* DynamicColor */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = E2BFB53F48C090BFA910B20B313C4FDA /* Build configuration list for PBXNativeTarget "Pods-GoodWeather" */;
+			buildConfigurationList = 1DBC4ED68D1526F94768C010C84EA138 /* Build configuration list for PBXNativeTarget "DynamicColor" */;
 			buildPhases = (
-				1D7F840C999A6613D3A1047D92A11C4C /* Headers */,
-				A52EC8206CF49526A37431DE0A115F56 /* Sources */,
-				25D5B59827DAE06E7C46EBA34841D3F2 /* Frameworks */,
-				03C84530FE272DAFCC8229AC8AA75423 /* Resources */,
+				FA8E67E89BC40F1D5075C13592F84BED /* Headers */,
+				A833A4331D6F6B6EFA22DB9C3B7FACF3 /* Sources */,
+				A35035BB91BD19E64C27EEF32490317E /* Frameworks */,
+				5C79936C8BAEE62C7BA6DE6369A47AC1 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				847F0E95333F562D44D2BB3A8CFBB848 /* PBXTargetDependency */,
+			);
+			name = DynamicColor;
+			productName = DynamicColor;
+			productReference = 4603757534A157D07CF86D75DA0641F9 /* DynamicColor.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+		0AC485A3AD0E22584727B1E5DDBD2B48 /* Pods-GoodWeather */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8BBEC8EECE417E18CDA1A6AAAFA69680 /* Build configuration list for PBXNativeTarget "Pods-GoodWeather" */;
+			buildPhases = (
+				4FBE4891DC146F078EF911CAD721134B /* Headers */,
+				E0C99D5A3E7D6DD8B052AE21CA0A95EB /* Sources */,
+				9FD9AABB14E90FC282CB5D179B35280B /* Frameworks */,
+				DEA9BE529FC2DAF558F5ED91EF1D8D22 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FF05D5D2FEE9297F096E26AF9CA13D52 /* PBXTargetDependency */,
+				7EA8061FAC9591C2A7726817D81267B8 /* PBXTargetDependency */,
 			);
 			name = "Pods-GoodWeather";
 			productName = "Pods-GoodWeather";
@@ -241,10 +369,11 @@
 				Base,
 			);
 			mainGroup = CF1408CF629C7361332E53B88F7BD30C;
-			productRefGroup = 4A3799E1795A3C78C59694561C2526CB /* Products */;
+			productRefGroup = EC62960DC002B1207BB318C8F26E81E5 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
+				02365F2640C87181DBDCB1D175FA6C00 /* DynamicColor */,
 				0AC485A3AD0E22584727B1E5DDBD2B48 /* Pods-GoodWeather */,
 				D118A6A04828FD3CDA8640CD2B6796D2 /* SwiftyJSON */,
 			);
@@ -252,7 +381,7 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		03C84530FE272DAFCC8229AC8AA75423 /* Resources */ = {
+		5C79936C8BAEE62C7BA6DE6369A47AC1 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -260,6 +389,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		D098F7F0080A87A1F472C81FC2F85528 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DEA9BE529FC2DAF558F5ED91EF1D8D22 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -278,29 +414,58 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		A52EC8206CF49526A37431DE0A115F56 /* Sources */ = {
+		A833A4331D6F6B6EFA22DB9C3B7FACF3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B38E8BB7CD1BB1DAB5B3093CEF4C0AD0 /* Pods-GoodWeather-dummy.m in Sources */,
+				86D6061977FE6103C5DCF51801EC7E36 /* Array.swift in Sources */,
+				8FEC02F50658F5F53ECE7BA181E64421 /* ContrastDisplayContext.swift in Sources */,
+				B105425D9C0117BC49A1E13BFDB4D646 /* DynamicColor+Deriving.swift in Sources */,
+				D074EC5C6DB463C64845728D9741B7AB /* DynamicColor+HSB.swift in Sources */,
+				72EF27FFAD4B5AC86FB984E35D18CC25 /* DynamicColor+HSL.swift in Sources */,
+				B168BEFEAD6EE4BD29D1B9F7F20DBC73 /* DynamicColor+Lab.swift in Sources */,
+				4775D9BAFAD504682C026199644FBD52 /* DynamicColor+Mixing.swift in Sources */,
+				0B689F3E2CA134B672A54B0C50E3B191 /* DynamicColor+RGBA.swift in Sources */,
+				0B6506C9E760CFA4CED6F639B5EF3E86 /* DynamicColor+XYZ.swift in Sources */,
+				1FC900F53EBF351A12FB498BE8F8270E /* DynamicColor-dummy.m in Sources */,
+				4E4107ED5FDCB7FB6E88B4BEAE7ABF06 /* DynamicColor.swift in Sources */,
+				9A39D984D727498ACB6C91D10380B0CD /* DynamicColorSpace.swift in Sources */,
+				A471E9CB93D0776293F4B7A8FA38D6DE /* DynamicGradient.swift in Sources */,
+				4D10AFED48037C770E76528B0CA3BA0B /* HSL.swift in Sources */,
+				02877D4336BA428EAC01994213216DBB /* SwiftUIColor.swift in Sources */,
+				348B30D9CDB8973542B4B29D9BC988D5 /* Utils.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E0C99D5A3E7D6DD8B052AE21CA0A95EB /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F1A2176EC431E2946F72E6DF54C655C3 /* Pods-GoodWeather-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		847F0E95333F562D44D2BB3A8CFBB848 /* PBXTargetDependency */ = {
+		7EA8061FAC9591C2A7726817D81267B8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SwiftyJSON;
 			target = D118A6A04828FD3CDA8640CD2B6796D2 /* SwiftyJSON */;
-			targetProxy = 4404438C81E5512D8D5E4816BF75EB12 /* PBXContainerItemProxy */;
+			targetProxy = 888527F61294300804E022F9A4301778 /* PBXContainerItemProxy */;
+		};
+		FF05D5D2FEE9297F096E26AF9CA13D52 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = DynamicColor;
+			target = 02365F2640C87181DBDCB1D175FA6C00 /* DynamicColor */;
+			targetProxy = 3BBF3CDA51C700ACAC1C5A0A2EEA995D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		009DB1577F07B2FF797B78F2D1142134 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F8D55E3BEC2588689D54AFF1AE0AC1DF /* SwiftyJSON.debug.xcconfig */;
+			baseConfigurationReference = C5AFB612F1DD86B651339B2E2F729C6D /* SwiftyJSON.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -335,7 +500,7 @@
 		};
 		0C9896C7563CB84B32833F4506F3096C /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 53C1A7E15161AE3A0E3A5090E19F84AE /* SwiftyJSON.release.xcconfig */;
+			baseConfigurationReference = 4FB03A6CB4D77C081FF8B7ED48E8B183 /* SwiftyJSON.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -429,7 +594,82 @@
 			};
 			name = Release;
 		};
-		7414B5F30D0C35187C3EAE267D151725 /* Release */ = {
+		4A6203AD6A23460F72089DE6E33AC564 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = BEF852C68A09CB781C9B87AE787B93F7 /* Pods-GoodWeather.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-GoodWeather/Pods-GoodWeather-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-GoodWeather/Pods-GoodWeather.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		69CF6E63F26F83D541E6E012A1D6826B /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 75FD0E025D540092E26C9250876A5C85 /* DynamicColor.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GCC_PREFIX_HEADER = "Target Support Files/DynamicColor/DynamicColor-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/DynamicColor/DynamicColor-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MODULEMAP_FILE = "Target Support Files/DynamicColor/DynamicColor.modulemap";
+				PRODUCT_MODULE_NAME = DynamicColor;
+				PRODUCT_NAME = DynamicColor;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.1;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		D3717E0F1461BEB37C3C0D40CEFAC12A /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 900FBEA55E30D7A3B15ECFBFF7AF0432 /* Pods-GoodWeather.release.xcconfig */;
 			buildSettings = {
@@ -468,11 +708,10 @@
 			};
 			name = Release;
 		};
-		E72EAE7733A61749B34A1C5C8ADF1A39 /* Debug */ = {
+		E69E965C711894B9C5869A7AFC41F540 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = BEF852C68A09CB781C9B87AE787B93F7 /* Pods-GoodWeather.debug.xcconfig */;
+			baseConfigurationReference = 1049DE4997195E831217AEC2E4F368F6 /* DynamicColor.debug.xcconfig */;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
@@ -483,23 +722,22 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-GoodWeather/Pods-GoodWeather-Info.plist";
+				GCC_PREFIX_HEADER = "Target Support Files/DynamicColor/DynamicColor-prefix.pch";
+				INFOPLIST_FILE = "Target Support Files/DynamicColor/DynamicColor-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-GoodWeather/Pods-GoodWeather.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				MODULEMAP_FILE = "Target Support Files/DynamicColor/DynamicColor.modulemap";
+				PRODUCT_MODULE_NAME = DynamicColor;
+				PRODUCT_NAME = DynamicColor;
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
+				SWIFT_VERSION = 5.1;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -573,6 +811,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		1DBC4ED68D1526F94768C010C84EA138 /* Build configuration list for PBXNativeTarget "DynamicColor" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E69E965C711894B9C5869A7AFC41F540 /* Debug */,
+				69CF6E63F26F83D541E6E012A1D6826B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -591,11 +838,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		E2BFB53F48C090BFA910B20B313C4FDA /* Build configuration list for PBXNativeTarget "Pods-GoodWeather" */ = {
+		8BBEC8EECE417E18CDA1A6AAAFA69680 /* Build configuration list for PBXNativeTarget "Pods-GoodWeather" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				E72EAE7733A61749B34A1C5C8ADF1A39 /* Debug */,
-				7414B5F30D0C35187C3EAE267D151725 /* Release */,
+				4A6203AD6A23460F72089DE6E33AC564 /* Debug */,
+				D3717E0F1461BEB37C3C0D40CEFAC12A /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

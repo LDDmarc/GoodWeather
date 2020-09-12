@@ -39,7 +39,7 @@
                         </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="42"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <nil key="highlightedColor"/>
+                        <color key="highlightedColor" red="0.53723531960000004" green="0.40787673000000002" blue="0.67834830280000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </label>
                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AWs-TU-FuD">
                         <rect key="frame" x="0.0" y="115.5" width="142" height="63.5"/>

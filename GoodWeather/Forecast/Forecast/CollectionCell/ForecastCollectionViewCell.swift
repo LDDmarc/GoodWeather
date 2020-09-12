@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DynamicColor
 
 class ForecastCollectionViewCell: UICollectionViewCell {
     
@@ -20,6 +21,7 @@ class ForecastCollectionViewCell: UICollectionViewCell {
         didSet {
             guard let temperature = temperature else { return }
             temperatureLabel.text = "\(Int(round(temperature)))°"
+            self.backgroundColor = getColor(for: temperature)
         }
     }
     var precipitation: Double? {
@@ -63,4 +65,19 @@ class ForecastCollectionViewCell: UICollectionViewCell {
 protocol ForecastPresenterProtocol: class {
     init(view: ForecastCollectionViewCell, weather: Weather)
     func setUI()
+}
+
+extension ForecastCollectionViewCell {
+    func getColor(for temperature: Double) -> UIColor {
+        
+        let blue   = UIColor(hexString: "#3498db")
+        let red    = UIColor(hexString: "#e74c3c")
+        let yellow = UIColor(hexString: "#f1c40f")
+
+        let gradient = DynamicGradient(colors: [blue, red, yellow])
+        let rgbPalette = gradient.colorPalette(amount: 8)
+        
+        
+        return rgbPalette[3]
+    }
 }

@@ -1,16 +1,20 @@
 PODS:
+  - DynamicColor (5.0.1)
   - SwiftyJSON (5.0.0)
 
 DEPENDENCIES:
+  - DynamicColor
   - SwiftyJSON
 
 SPEC REPOS:
   trunk:
+    - DynamicColor
     - SwiftyJSON
 
 SPEC CHECKSUMS:
+  DynamicColor: d049834ef86d8ecf150b0ca1ebe54ee733a0ec22
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: bfab3220b81d92ab64eb97309aea5de3c6562bf4
+PODFILE CHECKSUM: 3d6213395bb79070a10dc4ada80979f57c8d21a6
 
 COCOAPODS: 1.9.3

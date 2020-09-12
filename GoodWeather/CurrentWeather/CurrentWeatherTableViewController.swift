@@ -61,29 +61,12 @@ class CurrentWeatherTableViewController: UITableViewController {
     
     @objc func updateWeather() {
         dataManager.getCurrentWeather { [weak self] (dataManagerError) in
-            self?.tableView.refreshControl?.endRefreshing()
-            self?.showErrorAlert(withError: dataManagerError)
-        }
-    }
-
-    @objc func addCity() {
-        let alertController = UIAlertController(title: "Новый город", message: "Введите имя города", preferredStyle: .alert)
-        alertController.addTextField { (textField) in
-            textField.placeholder = "Москва"
-        }
-        let confirmAction = UIAlertAction(title: "Добавить", style: .default) { [weak alertController] _ in
-            guard let alertController = alertController, let textField = alertController.textFields?.first else { return }
-            self.dataManager.addNewCity(withName: textField.text) { [weak self] (dataManagerError) in
+            DispatchQueue.main.async {
                 self?.tableView.refreshControl?.endRefreshing()
                 self?.showErrorAlert(withError: dataManagerError)
             }
         }
-        let cancelAction = UIAlertAction(title: "Отмена", style: .cancel)
-        alertController.addAction(confirmAction)
-        alertController.addAction(cancelAction)
-        present(alertController, animated: true)
     }
-    
     @objc func searchForNewCity() {
         let vc = SearchViewController(nibName: "SearchViewController", bundle: nil)
         vc.delegate = self

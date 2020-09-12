@@ -3,4 +3,5 @@
 target 'GoodWeather' do
   use_frameworks!
   pod 'SwiftyJSON'
+  pod 'DynamicColor'
 end
