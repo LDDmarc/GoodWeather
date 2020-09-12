@@ -9,58 +9,54 @@
 import UIKit
 import CoreData
 
+protocol SearchViewControllerDelegate: class {
+    func searchViewController(close searchViewController: SearchViewController)
+    func searchViewController(searchViewController: SearchViewController, didSelectItemWith name: String)
+}
+
 class SearchViewController: UIViewController {
     
     let dataManager = DataManager(persistentContainer: CoreDataManager.shared.persistentContainer, dataBase: CoreDataBase())
     
-    @IBOutlet private weak var textField: SearchTextField!
-   
-    let tableView = UITableView(frame: CGRect(x: 20, y: 94, width: UIScreen.main.bounds.width - 40, height: 0))
+    @IBOutlet private weak var searchBar: UISearchBar!
+    @IBOutlet private weak var tableView: UITableView!
+    @IBOutlet private weak var tableHeightConstraint: NSLayoutConstraint!
     
     var results = [SearchItem]()
     var cities = [CityName]()
     
     var currentText: String = ""
     var currentResults = [SearchItem]()
-    var timer: Timer?
+    
+    weak var delegate: SearchViewControllerDelegate?
+ 
+    @IBAction func closeButtonTap(_ sender: UIButton) {
+        delegate?.searchViewController(close: self)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        textField.delegate = self
-        textField.clearButtonMode = .whileEditing
-        textField.addTarget(self, action: #selector(changedTextFieldValue), for: .editingChanged)
+        searchBar.delegate = self
         
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "CustomSearchTextFieldCell")
+        tableView.separatorInset = UIEdgeInsets(top: 0, left: 20, bottom: 0, right: 0)
+        
         view.addSubview(tableView)
     }
-    
-    @objc func changedTextFieldValue() {
-        timer?.invalidate()
-        timer = Timer.scheduledTimer(timeInterval: 0.2, target: self, selector: #selector(updateResults), userInfo: nil, repeats: false)
-    }
-    
-    @objc func updateResults() {
-//        tableView.reloadData()
-//        updateSearchTableView()
-    }
-    
-
 }
 
-//MARK: - SearchTextFieldDelegate
-extension SearchViewController: UITextFieldDelegate {
+//MARK: - UISearchBarDelegate
+extension SearchViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        filter(with: searchText)
+    }
     
-    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
-        var newText = ""
-        if let oldText = textField.text,
-            let textRange = Range(range, in: oldText) {
-            newText = oldText.replacingCharacters(in: textRange, with: string)
-        }
-        filter(with: newText)
-        return true
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        guard let text = searchBar.text else { return }
+        delegate?.searchViewController(searchViewController: self, didSelectItemWith: text)
     }
 }
 
@@ -70,17 +66,12 @@ private extension SearchViewController {
     func updateSearchTableView() {
         var tableHeight: CGFloat = 0
         tableHeight = tableView.contentSize.height
-     
-        UIView.animate(withDuration: 0.2, animations: { [weak self] in
-            self?.tableView.frame = CGRect(x: 20, y: 94, width: UIScreen.main.bounds.width - 40, height: tableHeight)
-        })
         
-        tableView.layer.masksToBounds = true
-        tableView.separatorInset = UIEdgeInsets.zero
-        tableView.layer.cornerRadius = 5.0
-        tableView.separatorColor = UIColor.lightGray
-        tableView.backgroundColor = UIColor.white.withAlphaComponent(0.4)
-        tableView.reloadData()
+        UIView.animate(withDuration: 0.2, animations: { [weak self] in
+            self?.tableHeightConstraint.constant = tableHeight
+            self?.view.layoutIfNeeded()
+        })
+     
     }
     
     func filter(with newText: String) {
@@ -143,5 +134,9 @@ extension SearchViewController: UITableViewDelegate, UITableViewDataSource {
         cell.backgroundColor = UIColor.clear
         cell.textLabel?.attributedText = results[indexPath.row].getFormatedText()
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        delegate?.searchViewController(searchViewController: self, didSelectItemWith: results[indexPath.row].name)
     }
 }

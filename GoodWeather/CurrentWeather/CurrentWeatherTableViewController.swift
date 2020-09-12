@@ -44,7 +44,7 @@ class CurrentWeatherTableViewController: UITableViewController {
         
         navigationController?.navigationBar.prefersLargeTitles = true
         title = "Погода"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showView))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(searchForNewCity))
         
         timer = Timer.scheduledTimer(timeInterval: 1800,
                                      target: self,
@@ -55,14 +55,14 @@ class CurrentWeatherTableViewController: UITableViewController {
     }
     
     // MARK: - DataManager
-    
     @objc func updateWeatherByTimer() {
         dataManager.getCurrentWeather { (_) in }
     }
     
     @objc func updateWeather() {
-        dataManager.getCurrentWeather { (dataManagerError) in
-            self.showErrorAlert(withError: dataManagerError)
+        dataManager.getCurrentWeather { [weak self] (dataManagerError) in
+            self?.tableView.refreshControl?.endRefreshing()
+            self?.showErrorAlert(withError: dataManagerError)
         }
     }
 
@@ -73,8 +73,9 @@ class CurrentWeatherTableViewController: UITableViewController {
         }
         let confirmAction = UIAlertAction(title: "Добавить", style: .default) { [weak alertController] _ in
             guard let alertController = alertController, let textField = alertController.textFields?.first else { return }
-            self.dataManager.addNewCity(withName: textField.text) { (dataManagerError) in
-                self.showErrorAlert(withError: dataManagerError)
+            self.dataManager.addNewCity(withName: textField.text) { [weak self] (dataManagerError) in
+                self?.tableView.refreshControl?.endRefreshing()
+                self?.showErrorAlert(withError: dataManagerError)
             }
         }
         let cancelAction = UIAlertAction(title: "Отмена", style: .cancel)
@@ -83,52 +84,13 @@ class CurrentWeatherTableViewController: UITableViewController {
         present(alertController, animated: true)
     }
     
-    @objc func showView() {
+    @objc func searchForNewCity() {
         let vc = SearchViewController(nibName: "SearchViewController", bundle: nil)
+        vc.delegate = self
         present(vc, animated: true, completion: nil)
-        
     }
     
-    @objc func fillCities() {
-        guard let url = Bundle.main.url(forResource: "cities", withExtension: "json") else {
-            print("no file")
-            return
-        }
-        do {
-            let data = try Data(contentsOf: url)
-            let jsonObject = try JSON(data: data)
-            for object in jsonObject["city"].arrayValue {
-                guard let city = NSEntityDescription.insertNewObject(forEntityName: "CityName", into: dataManager.context) as? CityName else { return }
-                city.update(with: object)
-                do {
-                    try dataManager.context.save()
-                } catch  {
-                    print("coredata.error")
-                }
-            }
-            
-        } catch {
-            print("data.error")
-        }
-        
-        
-        
-    }
-    
-    func showErrorAlert(withError dataManagerError: DataManagerError?) {
-        DispatchQueue.main.async {
-            self.tableView.refreshControl?.endRefreshing()
-            guard let error = dataManagerError,
-                let title = error.errorTitleMessage().0,
-                let messge = error.errorTitleMessage().1 else { return }
-            let alertController = UIAlertController(title: title, message: messge, preferredStyle: .alert)
-            alertController.addAction(UIAlertAction(title: "Ok", style: .cancel))
-            self.present(alertController, animated: true)
-        }
-    }
-
-    // MARK: - Table view data source
-
+// MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return fetchedResultsController.sections?[section].numberOfObjects ?? 0
     }
@@ -149,10 +111,19 @@ class CurrentWeatherTableViewController: UITableViewController {
         let vc = ForecastTableViewController(dataManager: dataManager, city: city)
         navigationController?.pushViewController(vc, animated: true)
     }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            let city = fetchedResultsController.object(at: indexPath)
+            dataManager.context.delete(city)
+            try? dataManager.context.save()
+        }
+    }
 }
 
 //MARK: - NSFetchedResultsControllerDelegate
 extension CurrentWeatherTableViewController: NSFetchedResultsControllerDelegate {
+    
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.beginUpdates()
     }
@@ -197,3 +168,47 @@ extension CurrentWeatherTableViewController: NSFetchedResultsControllerDelegate 
         tableView.endUpdates()
     }
 }
+
+//MARK: - SearchViewControllerDelegate
+extension CurrentWeatherTableViewController: SearchViewControllerDelegate {
+    
+    func searchViewController(close searchViewController: SearchViewController) {
+        searchViewController.dismiss(animated: true, completion: nil)
+    }
+    
+    func searchViewController(searchViewController: SearchViewController, didSelectItemWith name: String) {
+        dataManager.addNewCity(withName: name) { (error) in
+            if error == nil {
+                DispatchQueue.main.async {
+                    searchViewController.dismiss(animated: true, completion: nil)
+                }
+            } else {
+                searchViewController.showErrorAlert(withError: error)
+            }
+        }
+    }
+}
+
+
+//@objc func fillCities() {
+//    guard let url = Bundle.main.url(forResource: "cities", withExtension: "json") else {
+//        print("no file")
+//        return
+//    }
+//    do {
+//        let data = try Data(contentsOf: url)
+//        let jsonObject = try JSON(data: data)
+//        for object in jsonObject["city"].arrayValue {
+//            guard let city = NSEntityDescription.insertNewObject(forEntityName: "CityName", into: dataManager.context) as? CityName else { return }
+//            city.update(with: object)
+//            do {
+//                try dataManager.context.save()
+//            } catch  {
+//                print("coredata.error")
+//            }
+//        }
+//
+//    } catch {
+//        print("data.error")
+//    }
+//}

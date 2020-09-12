@@ -39,3 +39,16 @@ class ViewController: UIViewController {
     }
 }
 
+extension UIViewController {
+    
+    func showErrorAlert(withError dataManagerError: DataManagerError?) {
+        DispatchQueue.main.async {
+            guard let error = dataManagerError,
+                let title = error.errorTitleMessage().0,
+                let messge = error.errorTitleMessage().1 else { return }
+            let alertController = UIAlertController(title: title, message: messge, preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "Ok", style: .cancel))
+            self.present(alertController, animated: true)
+        }
+    }
+}
