@@ -85,15 +85,7 @@ public class Weather: NSManagedObject {
         if let date = date {
             var calendar = Calendar.current
             calendar.timeZone = TimeZone(secondsFromGMT: 0)!
-//            if let timeZone = cityForecast?.timeZone,
-//                let calendarTimeZone = TimeZone(secondsFromGMT: Int(timeZone)) {
-//                calendar.timeZone = calendarTimeZone
-//            }
-//
             hour = Int64(calendar.component(.hour, from: date))
-            
-            print(hour)
-            
             if hour == 12 || hour == 13 || hour == 14 {
                 if let index = getIndex(forWeatherWith: date),
                     index >= 0 {

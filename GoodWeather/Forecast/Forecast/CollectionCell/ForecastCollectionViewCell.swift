@@ -68,8 +68,8 @@ protocol ForecastPresenterProtocol: class {
 }
 
 extension ForecastCollectionViewCell {
-    func getColor(for temperature: Double) -> UIColor {
-        
+    
+    func getColor2(for temperature: Double) -> UIColor {
         var firstColor: UIColor
         var secondColor: UIColor
         var index: Int
@@ -100,7 +100,22 @@ extension ForecastCollectionViewCell {
         let gradient = DynamicGradient(colors: [firstColor, secondColor])
         let rgbPalette = gradient.colorPalette(amount: 8)
         
+        return rgbPalette[index]
+    }
+    
+    func getColor(for temperature: Double) -> UIColor {
         
+        var index: Int = Int(temperature + 40)
+        if index >= 80 {
+            index = 79
+        }
+        print(index)
+        let gradient = DynamicGradient(colors: [UIColor(hexString: "#7953EB"),
+                                                UIColor(hexString: "#5379eb"),
+                                                UIColor(hexString: "#b817e7"),
+                                                UIColor(hexString: "#eb7953")])
+        let rgbPalette = gradient.colorPalette(amount: 80)
+
         return rgbPalette[index]
     }
 }

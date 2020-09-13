@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19G73" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19G2021" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="APOD" representedClassName="APOD" syncable="YES">
+        <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="imageData" optional="YES" attributeType="Binary" storedInTruthFile="YES"/>
+        <attribute name="imageURL" optional="YES" attributeType="String"/>
+        <attribute name="title" optional="YES" attributeType="String"/>
+    </entity>
     <entity name="City" representedClassName="City" syncable="YES">
         <attribute name="id" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="lat" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
@@ -46,8 +52,9 @@
     </entity>
     <elements>
         <element name="City" positionX="-408.72265625" positionY="-21.62109375" width="128" height="163"/>
+        <element name="CityName" positionX="-180" positionY="-18" width="128" height="58"/>
         <element name="DayAndNightWeather" positionX="41.1640625" positionY="239.19140625" width="128" height="103"/>
         <element name="Weather" positionX="-121.41015625" positionY="-351.65234375" width="128" height="388"/>
-        <element name="CityName" positionX="-180" positionY="-18" width="128" height="58"/>
+        <element name="APOD" positionX="-207" positionY="-207" width="128" height="103"/>
     </elements>
 </model>
