@@ -18,6 +18,7 @@ public class APOD: NSManagedObject {
         case date
         case title
         case imageURL = "url"
+        case explanation
     }
     
     func update(with json: JSON) {
@@ -28,6 +29,7 @@ public class APOD: NSManagedObject {
         
         title = json[CodingKeys.title.rawValue].stringValue
         imageURL = json[CodingKeys.imageURL.rawValue].stringValue
+        descriptionText = json[CodingKeys.explanation.rawValue].stringValue
        
     }
     

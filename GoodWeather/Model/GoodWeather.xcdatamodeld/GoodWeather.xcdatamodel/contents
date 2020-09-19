@@ -2,6 +2,7 @@
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19G2021" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="APOD" representedClassName="APOD" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="descriptionText" optional="YES" attributeType="String"/>
         <attribute name="imageURL" optional="YES" attributeType="String"/>
         <attribute name="title" optional="YES" attributeType="String"/>
     </entity>
@@ -50,7 +51,7 @@
         <relationship name="cityForecast" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="City" inverseName="forecast" inverseEntity="City"/>
     </entity>
     <elements>
-        <element name="APOD" positionX="-207" positionY="-207" width="128" height="88"/>
+        <element name="APOD" positionX="-207" positionY="-207" width="128" height="103"/>
         <element name="City" positionX="-408.72265625" positionY="-21.62109375" width="128" height="163"/>
         <element name="CityName" positionX="-180" positionY="-18" width="128" height="58"/>
         <element name="DayAndNightWeather" positionX="41.1640625" positionY="239.19140625" width="128" height="103"/>
