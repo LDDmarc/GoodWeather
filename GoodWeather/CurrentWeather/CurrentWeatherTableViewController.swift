@@ -53,6 +53,12 @@ class CurrentWeatherTableViewController: UITableViewController {
                                      userInfo: nil,
                                      repeats: true)
         updateWeatherByTimer()
+        dataManager.getAPOD { [weak self] (dataManagerError) in
+            DispatchQueue.main.async {
+                self?.tableView.refreshControl?.endRefreshing()
+                self?.showErrorAlert(withError: dataManagerError)
+            }
+        }
     }
     
     // MARK: - DataManager

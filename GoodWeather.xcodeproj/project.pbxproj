@@ -12,6 +12,8 @@
 		BC3DDEE3250E0D09006C22C1 /* APOD+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3DDEE1250E0D09006C22C1 /* APOD+CoreDataProperties.swift */; };
 		BC3DDEE5250E13FA006C22C1 /* APODDataBaseProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC3DDEE4250E13FA006C22C1 /* APODDataBaseProtocol.swift */; };
 		BC496D8624C42F09000F9AAE /* CurrentWeatherTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC496D8524C42F09000F9AAE /* CurrentWeatherTableViewController.swift */; };
+		BC50ED0625160C9300FB3FFB /* APODTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC50ED0425160C9300FB3FFB /* APODTableViewCell.swift */; };
+		BC50ED0725160C9300FB3FFB /* APODTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC50ED0525160C9300FB3FFB /* APODTableViewCell.xib */; };
 		BC64CCD424C5BF0900EEE8E2 /* DetailWeatherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC64CCD224C5BF0900EEE8E2 /* DetailWeatherTableViewCell.swift */; };
 		BC64CCD524C5BF0900EEE8E2 /* DetailWeatherTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = BC64CCD324C5BF0900EEE8E2 /* DetailWeatherTableViewCell.xib */; };
 		BC69EFC924C43F2200330108 /* CurrentWeatherTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC69EFC824C43F2200330108 /* CurrentWeatherTableViewCell.swift */; };
@@ -63,6 +65,8 @@
 		BC3DDEE1250E0D09006C22C1 /* APOD+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "APOD+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		BC3DDEE4250E13FA006C22C1 /* APODDataBaseProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APODDataBaseProtocol.swift; sourceTree = "<group>"; };
 		BC496D8524C42F09000F9AAE /* CurrentWeatherTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherTableViewController.swift; sourceTree = "<group>"; };
+		BC50ED0425160C9300FB3FFB /* APODTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APODTableViewCell.swift; sourceTree = "<group>"; };
+		BC50ED0525160C9300FB3FFB /* APODTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = APODTableViewCell.xib; sourceTree = "<group>"; };
 		BC64CCD224C5BF0900EEE8E2 /* DetailWeatherTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailWeatherTableViewCell.swift; sourceTree = "<group>"; };
 		BC64CCD324C5BF0900EEE8E2 /* DetailWeatherTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailWeatherTableViewCell.xib; sourceTree = "<group>"; };
 		BC69EFC824C43F2200330108 /* CurrentWeatherTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeatherTableViewCell.swift; sourceTree = "<group>"; };
@@ -128,6 +132,15 @@
 				945E6528CE8DA721BF77729F /* Pods-GoodWeather.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		BC50ED0825160CB800FB3FFB /* APOD */ = {
+			isa = PBXGroup;
+			children = (
+				BC50ED0425160C9300FB3FFB /* APODTableViewCell.swift */,
+				BC50ED0525160C9300FB3FFB /* APODTableViewCell.xib */,
+			);
+			path = APOD;
 			sourceTree = "<group>";
 		};
 		BC64CCD024C5BC0D00EEE8E2 /* CollectionCell */ = {
@@ -200,13 +213,13 @@
 			path = DataBase;
 			sourceTree = "<group>";
 		};
-		BC991CE324C5C8790087E303 /* CollectionCell */ = {
+		BC991CE324C5C8790087E303 /* Forecast CollectionCell */ = {
 			isa = PBXGroup;
 			children = (
 				BC991CDF24C5C8690087E303 /* ForecastCollectionViewCell.swift */,
 				BC991CE024C5C8690087E303 /* ForecastCollectionViewCell.xib */,
 			);
-			path = CollectionCell;
+			path = "Forecast CollectionCell";
 			sourceTree = "<group>";
 		};
 		BC991CE424C5C8890087E303 /* Forecast */ = {
@@ -215,6 +228,7 @@
 				BC69EFD324C490E300330108 /* ForecastTableViewController.swift */,
 				BCD6B4DF24C4920F007BA852 /* DetailWeather */,
 				BC991CE624C5C8C10087E303 /* Forecast */,
+				BC50ED0825160CB800FB3FFB /* APOD */,
 			);
 			path = Forecast;
 			sourceTree = "<group>";
@@ -232,19 +246,19 @@
 			isa = PBXGroup;
 			children = (
 				BC90FE6324C5EF1800AADACB /* ForecastPresenter.swift */,
-				BC991CEB24C5CD610087E303 /* TableCell */,
-				BC991CE324C5C8790087E303 /* CollectionCell */,
+				BC991CEB24C5CD610087E303 /* TableCell with collection */,
 			);
 			path = Forecast;
 			sourceTree = "<group>";
 		};
-		BC991CEB24C5CD610087E303 /* TableCell */ = {
+		BC991CEB24C5CD610087E303 /* TableCell with collection */ = {
 			isa = PBXGroup;
 			children = (
+				BC991CE324C5C8790087E303 /* Forecast CollectionCell */,
 				BC991CE724C5CD5C0087E303 /* ForecastTableViewCell.swift */,
 				BC991CE824C5CD5C0087E303 /* ForecastTableViewCell.xib */,
 			);
-			path = TableCell;
+			path = "TableCell with collection";
 			sourceTree = "<group>";
 		};
 		BCB256C724C059C4005925E4 = {
@@ -380,6 +394,7 @@
 				BCB256DB24C059C4005925E4 /* Main.storyboard in Resources */,
 				BCEB202D24F155C500962DDD /* cities.json in Resources */,
 				BC69EFD224C47C5A00330108 /* DetaiCurrentWeatherCollectionViewCell.xib in Resources */,
+				BC50ED0725160C9300FB3FFB /* APODTableViewCell.xib in Resources */,
 				BCE21B3924E5BEAA0049462F /* SearchViewController.xib in Resources */,
 				BC64CCD524C5BF0900EEE8E2 /* DetailWeatherTableViewCell.xib in Resources */,
 			);
@@ -464,6 +479,7 @@
 				BC91767F24D1596400CAAA20 /* DayAndNightWeather+CoreDataProperties.swift in Sources */,
 				BC64CCD424C5BF0900EEE8E2 /* DetailWeatherTableViewCell.swift in Sources */,
 				BCE21B3824E5BEAA0049462F /* SearchViewController.swift in Sources */,
+				BC50ED0625160C9300FB3FFB /* APODTableViewCell.swift in Sources */,
 				BCB256D624C059C4005925E4 /* SceneDelegate.swift in Sources */,
 				BCEB202724F13D0A00962DDD /* SearchTextField.swift in Sources */,
 				BC69EFD424C490E300330108 /* ForecastTableViewController.swift in Sources */,
