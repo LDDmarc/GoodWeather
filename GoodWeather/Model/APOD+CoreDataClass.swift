@@ -28,7 +28,7 @@ public class APOD: NSManagedObject {
         
         title = json[CodingKeys.title.rawValue].stringValue
         imageURL = json[CodingKeys.imageURL.rawValue].stringValue
-        
+       
     }
     
 }

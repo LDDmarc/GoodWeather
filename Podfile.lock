@@ -1,20 +1,26 @@
 PODS:
   - DynamicColor (5.0.1)
+  - SDWebImage (5.8.0):
+    - SDWebImage/Core (= 5.8.0)
+  - SDWebImage/Core (5.8.0)
   - SwiftyJSON (5.0.0)
 
 DEPENDENCIES:
   - DynamicColor
+  - SDWebImage
   - SwiftyJSON
 
 SPEC REPOS:
   trunk:
     - DynamicColor
+    - SDWebImage
     - SwiftyJSON
 
 SPEC CHECKSUMS:
   DynamicColor: d049834ef86d8ecf150b0ca1ebe54ee733a0ec22
+  SDWebImage: 84000f962cbfa70c07f19d2234cbfcf5d779b5dc
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: 3d6213395bb79070a10dc4ada80979f57c8d21a6
+PODFILE CHECKSUM: 681d42b548d24fad23ef4e052fae5812d2496f12
 
 COCOAPODS: 1.9.3

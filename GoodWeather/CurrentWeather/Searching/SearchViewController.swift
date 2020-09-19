@@ -16,7 +16,9 @@ protocol SearchViewControllerDelegate: class {
 
 class SearchViewController: UIViewController {
     
-    let dataManager = DataManager(persistentContainer: CoreDataManager.shared.persistentContainer, dataBase: CoreDataBase())
+//    let dataManager = DataManager(persistentContainer: CoreDataManager.shared.persistentContainer, dataBase: CoreDataBase())
+    
+    let dataManager = DataManager(dataBase: CoreDataBase())
     
     @IBOutlet private weak var searchBar: UISearchBar!
     @IBOutlet private weak var tableView: UITableView!

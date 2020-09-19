@@ -10,9 +10,21 @@ import Foundation
 import CoreData
 import SwiftyJSON
 
+//MARK: -WeatherDataBaseProtocol
 class CoreDataBase: DataBaseProtocol {
 
     private let persistentContainer: NSPersistentContainer = CoreDataManager.shared.persistentContainer
+    var context = CoreDataManager.shared.persistentContainer.viewContext
+    
+    func getCurrentCities() -> [City] {
+        let request = NSFetchRequest<City>(entityName: "City")
+        do {
+            let cities = try persistentContainer.viewContext.fetch(request)
+            return cities
+        } catch {
+            return []
+        }
+    }
     
     func updateWeatherFor(cityName: String?, with json: JSON) -> Bool {
         var isSuccess = false
@@ -115,4 +127,33 @@ class CoreDataBase: DataBaseProtocol {
         return isSuccess
     }
   
+//MARK: -APODDataBaseProtocol
+    func updateAPOD(with json: JSON) -> Bool {
+        var isSuccess = false
+        let backgroundContext = self.persistentContainer.newBackgroundContext()
+        backgroundContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
+        backgroundContext.undoManager = nil
+        
+        backgroundContext.performAndWait {
+            let req = NSFetchRequest<NSFetchRequestResult>(entityName: "APOD")
+            do {
+                let fetchedAPOD = try backgroundContext.fetch(req) as? [APOD]
+                if let apod = fetchedAPOD?.first {
+                    apod.update(with: json)
+                } else {
+                    guard let apod = NSEntityDescription.insertNewObject(forEntityName: "APOD", into: backgroundContext) as? APOD else { return }
+                    apod.update(with: json)
+                }
+                if backgroundContext.hasChanges {
+                    try backgroundContext.save()
+                    backgroundContext.reset()
+                }
+                isSuccess = true
+            } catch {
+                isSuccess = false
+            }
+        }
+        return isSuccess
+    }
+    
 }

@@ -12,7 +12,7 @@ import SwiftyJSON
 
 class CurrentWeatherTableViewController: UITableViewController {
 
-    let dataManager = DataManager(persistentContainer: CoreDataManager.shared.persistentContainer, dataBase: CoreDataBase())
+    let dataManager = DataManager(dataBase: CoreDataBase())
     var timer: Timer?
 
     lazy var fetchedResultsController: NSFetchedResultsController<City> = {
@@ -39,12 +39,13 @@ class CurrentWeatherTableViewController: UITableViewController {
         tableView.tableFooterView = UIView()
         tableView.refreshControl = UIRefreshControl()
         tableView.refreshControl?.addTarget(self, action: #selector(updateWeather), for: .valueChanged)
-  
         tableView.rowHeight = 60.0
         
         navigationController?.navigationBar.prefersLargeTitles = true
         title = "Погода"
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(searchForNewCity))
+        
+        detectFirstLaunch()
         
         timer = Timer.scheduledTimer(timeInterval: 1800,
                                      target: self,
@@ -73,7 +74,7 @@ class CurrentWeatherTableViewController: UITableViewController {
         present(vc, animated: true, completion: nil)
     }
     
-// MARK: - Table view data source
+// MARK: - Table view data source, Table view delegate
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return fetchedResultsController.sections?[section].numberOfObjects ?? 0
     }
@@ -172,26 +173,39 @@ extension CurrentWeatherTableViewController: SearchViewControllerDelegate {
     }
 }
 
+private extension CurrentWeatherTableViewController {
+    
+     func detectFirstLaunch() {
+        let defaults = UserDefaults.standard
+        if !defaults.bool(forKey: "First launch") {
+            fillCities()
+            print("FILL")
+            defaults.set(true, forKey: "First launch")
+        }
+    }
+    
+     func fillCities() {
+        guard let url = Bundle.main.url(forResource: "cities", withExtension: "json") else {
+            print("no file")
+            return
+        }
+        do {
+            let data = try Data(contentsOf: url)
+            let jsonObject = try JSON(data: data)
+            for object in jsonObject["city"].arrayValue {
+                guard let city = NSEntityDescription.insertNewObject(forEntityName: "CityName", into: dataManager.context) as? CityName else { return }
+                city.update(with: object)
+                do {
+                    try dataManager.context.save()
+                } catch  {
+                    print("coredata.error")
+                }
+            }
+    
+        } catch {
+            print("data.error")
+        }
+    }
 
-//@objc func fillCities() {
-//    guard let url = Bundle.main.url(forResource: "cities", withExtension: "json") else {
-//        print("no file")
-//        return
-//    }
-//    do {
-//        let data = try Data(contentsOf: url)
-//        let jsonObject = try JSON(data: data)
-//        for object in jsonObject["city"].arrayValue {
-//            guard let city = NSEntityDescription.insertNewObject(forEntityName: "CityName", into: dataManager.context) as? CityName else { return }
-//            city.update(with: object)
-//            do {
-//                try dataManager.context.save()
-//            } catch  {
-//                print("coredata.error")
-//            }
-//        }
-//
-//    } catch {
-//        print("data.error")
-//    }
-//}
+}
+

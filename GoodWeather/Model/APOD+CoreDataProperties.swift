@@ -17,9 +17,8 @@ extension APOD {
         return NSFetchRequest<APOD>(entityName: "APOD")
     }
 
-    @NSManaged public var title: String?
     @NSManaged public var date: Date?
-    @NSManaged public var imageData: Data?
     @NSManaged public var imageURL: String?
+    @NSManaged public var title: String?
 
 }

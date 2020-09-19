@@ -1,5 +1,5 @@
 //
-//  DataBaseProtocol.swift
+//  WeatherDataBaseProtocol.swift
 //  GoodWeather
 //
 //  Created by Дарья Леонова on 18.07.2020.
@@ -9,7 +9,8 @@
 import Foundation
 import SwiftyJSON
 
-protocol DataBaseProtocol {
+protocol WeatherDataBaseProtocol {
+    func getCurrentCities() -> [City]
     func updateWeatherFor(cityName: String?, with json: JSON) -> Bool
     func updateForecastFor(cityName: String?, with json: JSON) -> Bool
     func createNewCity(with json: JSON) -> Bool

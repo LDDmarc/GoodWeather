@@ -40,31 +40,22 @@ typealias DataManagerCompletionHandler = (DataManagerError?) -> Void
 class DataManager {
     
     let dataBase: DataBaseProtocol
-    
     let forecastHour: Int = 15
-   
-    private let persistentContainer: NSPersistentContainer
+    
     var context: NSManagedObjectContext {
-        return persistentContainer.viewContext
+        return dataBase.context
     }
-    // TODO: context -> dataBase
-    init(persistentContainer: NSPersistentContainer, dataBase: DataBaseProtocol) {
-        self.persistentContainer = persistentContainer
+    
+    init(dataBase: DataBaseProtocol) {
         self.dataBase = dataBase
     }
     
     func getCurrentWeather(completion: @escaping DataManagerCompletionHandler) {
-        let request = NSFetchRequest<City>(entityName: "City")
-        do {
-            let cities = try context.fetch(request)
-            for city in cities {
-                getCurrentWeather(forCity: city) { (error) in
-                    completion(error)
-                }
+        let cities = dataBase.getCurrentCities()
+        for city in cities {
+            getCurrentWeather(forCity: city) { (error) in
+                completion(error)
             }
-        } catch {
-            completion(.dataBaseError)
-            return
         }
     }
     
@@ -169,8 +160,33 @@ class DataManager {
             }
         }
     }
+    
+//MARK: - APOD
+    func getAPOD(completion: @escaping DataManagerCompletionHandler) {
+        NetworkManagerNASA.getData { (data, error) in
+            if error != nil {
+                completion(error)
+            }
+            guard let data = data else {
+                completion(.noData)
+                return
+            }
+            do {
+                let json = try JSON(data: data)
+                if self.dataBase.updateAPOD(with: json) {
+                    completion(nil)
+                } else {
+                    completion(.dataBaseError)
+                }
+            } catch {
+                completion(.jsonError)
+            }
+        }
+    }
+    
 }
 
+//MARK: - DateFormatter
 extension DateFormatter {
     
     static func timeDateFormatter() -> DateFormatter {
