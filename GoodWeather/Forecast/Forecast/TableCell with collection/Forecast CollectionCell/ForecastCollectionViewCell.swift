@@ -109,7 +109,7 @@ extension ForecastCollectionViewCell {
         if index >= 80 {
             index = 79
         }
-        print(index)
+//        print(index)
         let gradient = DynamicGradient(colors: [UIColor(hexString: "#7953EB"),
                                                 UIColor(hexString: "#5379eb"),
                                                 UIColor(hexString: "#b817e7"),

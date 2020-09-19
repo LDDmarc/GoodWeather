@@ -55,6 +55,8 @@ class ForecastTableViewController: UITableViewController {
         return frc
     }()
     
+    private var APODTableViewCellHeight: CGFloat = 0.0
+    
     required init?(coder: NSCoder) {
         fatalError()
     }
@@ -68,11 +70,11 @@ class ForecastTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        tableView.rowHeight = 230.0
         tableView.register(UINib(nibName: String(describing: DetailWeatherTableViewCell.self), bundle: nil), forCellReuseIdentifier: String(describing: DetailWeatherTableViewCell.self))
         tableView.register(UINib(nibName: String(describing: ForecastTableViewCell.self), bundle: nil), forCellReuseIdentifier: String(describing: ForecastTableViewCell.self))
         tableView.register(UINib(nibName: String(describing: APODTableViewCell.self), bundle: nil), forCellReuseIdentifier: String(describing: APODTableViewCell.self))
         tableView.tableFooterView = UIView()
+        tableView.allowsSelection = false
         title = city.name
         dataManager.getForecast(forCity: city) { (_) in }
     }
@@ -116,8 +118,13 @@ class ForecastTableViewController: UITableViewController {
             }
             let apod = apodFetchedResultsController.object(at: IndexPath(row: indexPath.row, section: 0))
             cell.configure(with: apod)
+            cell.delegate = self
             return cell
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return indexPath.section == 2 ? APODTableViewCellHeight : 230.0
     }
     
 }
@@ -125,5 +132,14 @@ class ForecastTableViewController: UITableViewController {
 extension ForecastTableViewController: NSFetchedResultsControllerDelegate {
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.reloadData()
+    }
+}
+
+extension ForecastTableViewController: APODTableViewCellDelegate {
+    
+    func apodTableViewCell(_ apodTableViewCell: APODTableViewCell, setHeight height: CGFloat) {
+        APODTableViewCellHeight = height
+        tableView.beginUpdates()
+        tableView.endUpdates()
     }
 }
