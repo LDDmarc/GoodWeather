@@ -75,9 +75,14 @@ class CurrentWeatherTableViewController: UITableViewController {
         }
     }
     @objc func searchForNewCity() {
-        let vc = SearchViewController(nibName: "SearchViewController", bundle: nil)
+        
+        let vc = SearchingViewController(nibName: "SearchingViewController", bundle: nil)
         vc.delegate = self
         present(vc, animated: true, completion: nil)
+        
+//        let vc = SearchViewController(nibName: "SearchViewController", bundle: nil)
+//        vc.delegate = self
+//        present(vc, animated: true, completion: nil)
     }
     
 // MARK: - Table view data source, Table view delegate
@@ -179,6 +184,29 @@ extension CurrentWeatherTableViewController: SearchViewControllerDelegate {
     }
 }
 
+//MARK: - SearchingViewControllerDelegate
+extension CurrentWeatherTableViewController: SearchingViewControllerDelegate {
+    func searchingViewController(close searchingViewController: SearchingViewController) {
+        searchingViewController.dismiss(animated: true, completion: nil)
+    }
+    
+    func searchingViewController(searchingViewController: SearchingViewController, didSelectItemWith coordinates: CLLocationCoordinate2D) {
+        dataManager.addNewCity(withCoordinates: coordinates) { (error) in
+            if error == nil {
+                DispatchQueue.main.async {
+                    searchingViewController.dismiss(animated: true, completion: nil)
+                }
+            } else {
+                searchingViewController.showErrorAlert(withError: error)
+            }
+        }
+    }
+    
+    
+  
+}
+
+//MARK: - Private -
 private extension CurrentWeatherTableViewController {
     
      func detectFirstLaunch() {

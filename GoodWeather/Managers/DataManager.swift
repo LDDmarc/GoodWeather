@@ -152,6 +152,20 @@ class DataManager {
         }
     }
     
+    func addNewCity(withCoordinates coordinates: CLLocationCoordinate2D?, completion: @escaping DataManagerCompletionHandler) {
+        guard let coordinates = coordinates else { return }
+        let request = Request(cityName: nil, lat: String(coordinates.latitude), lon: String(coordinates.longitude), requestType: .weather)
+        NetworkManager.getData(forRequest: request) { (data, dataManagerError) in
+            if dataManagerError != nil {
+                completion(dataManagerError)
+                return
+            }
+            self.createCity(with: data, error: dataManagerError) { (error) in
+                completion(error)
+            }
+        }
+    }
+    
     func getCurrentWeather(forLat lat: String, forLon lon: String, completion: @escaping DataManagerCompletionHandler) {
         let request = Request(cityName: nil, lat: lat, lon: lon, requestType: .weather)
         NetworkManager.getData(forRequest: request) { (data, dataManagerError) in

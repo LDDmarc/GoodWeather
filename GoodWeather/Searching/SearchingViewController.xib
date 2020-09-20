@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchingViewController" customModule="GoodWeather" customModuleProvider="target">
+            <connections>
+                <outlet property="searchBar" destination="ZJG-PR-Zg8" id="02c-ca-pix"/>
+                <outlet property="tableView" destination="Ig8-Uy-OBQ" id="fuO-Nj-ZCB"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ig8-Uy-OBQ">
+                    <rect key="frame" x="0.0" y="100" width="414" height="762"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
+                <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="ZJG-PR-Zg8">
+                    <rect key="frame" x="20" y="44" width="394" height="56"/>
+                    <textInputTraits key="textInputTraits"/>
+                </searchBar>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstAttribute="bottomMargin" secondItem="Ig8-Uy-OBQ" secondAttribute="bottom" id="KOL-Gm-hYB"/>
+                <constraint firstItem="ZJG-PR-Zg8" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leadingMargin" id="V4Z-EX-stF"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="ZJG-PR-Zg8" secondAttribute="trailing" id="c0c-sb-NWs"/>
+                <constraint firstItem="Ig8-Uy-OBQ" firstAttribute="firstBaseline" secondItem="ZJG-PR-Zg8" secondAttribute="baseline" symbolType="layoutAnchor" id="cz5-Fn-AP5"/>
+                <constraint firstItem="ZJG-PR-Zg8" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="n5O-NP-9vF"/>
+                <constraint firstItem="Ig8-Uy-OBQ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="np2-5x-71a"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Ig8-Uy-OBQ" secondAttribute="trailing" id="taY-eK-gmw"/>
+            </constraints>
+            <point key="canvasLocation" x="140.57971014492756" y="136.60714285714286"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
