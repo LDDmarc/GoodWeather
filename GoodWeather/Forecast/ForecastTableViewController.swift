@@ -117,8 +117,8 @@ class ForecastTableViewController: UITableViewController {
                 return UITableViewCell()
             }
             let apod = apodFetchedResultsController.object(at: IndexPath(row: indexPath.row, section: 0))
-            cell.configure(with: apod)
             cell.delegate = self
+            cell.configure(with: apod)
             return cell
         }
     }

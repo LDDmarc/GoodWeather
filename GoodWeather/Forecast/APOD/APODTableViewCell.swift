@@ -60,9 +60,6 @@ private extension APODTableViewCell {
     func setImageViewSize(with image: UIImage) {
         let imageHeight = image.size.height
         let imageWidth = image.size.width
-        print("contentView.bounds.width = \(contentView.bounds.width)")
-        print("contentView.layoutMargins.left = \(contentView.layoutMargins.left)")
-        print("contentView.layoutMargins.right = \(contentView.layoutMargins.right)")
         let newImageWidth = contentView.bounds.width - contentView.layoutMargins.left - contentView.layoutMargins.right
         let coeff = imageWidth / newImageWidth
         let newImageHeight = imageHeight / coeff
