@@ -79,10 +79,6 @@ class CurrentWeatherTableViewController: UITableViewController {
         let vc = SearchingViewController(nibName: "SearchingViewController", bundle: nil)
         vc.delegate = self
         present(vc, animated: true, completion: nil)
-        
-//        let vc = SearchViewController(nibName: "SearchViewController", bundle: nil)
-//        vc.delegate = self
-//        present(vc, animated: true, completion: nil)
     }
     
 // MARK: - Table view data source, Table view delegate
@@ -164,28 +160,9 @@ extension CurrentWeatherTableViewController: NSFetchedResultsControllerDelegate 
     }
 }
 
-//MARK: - SearchViewControllerDelegate
-extension CurrentWeatherTableViewController: SearchViewControllerDelegate {
-    
-    func searchViewController(close searchViewController: SearchViewController) {
-        searchViewController.dismiss(animated: true, completion: nil)
-    }
-    
-    func searchViewController(searchViewController: SearchViewController, didSelectItemWith name: String) {
-        dataManager.addNewCity(withName: name) { (error) in
-            if error == nil {
-                DispatchQueue.main.async {
-                    searchViewController.dismiss(animated: true, completion: nil)
-                }
-            } else {
-                searchViewController.showErrorAlert(withError: error)
-            }
-        }
-    }
-}
-
 //MARK: - SearchingViewControllerDelegate
 extension CurrentWeatherTableViewController: SearchingViewControllerDelegate {
+    
     func searchingViewController(close searchingViewController: SearchingViewController) {
         searchingViewController.dismiss(animated: true, completion: nil)
     }

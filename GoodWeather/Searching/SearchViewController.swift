@@ -16,8 +16,6 @@ protocol SearchViewControllerDelegate: class {
 
 class SearchViewController: UIViewController {
     
-//    let dataManager = DataManager(persistentContainer: CoreDataManager.shared.persistentContainer, dataBase: CoreDataBase())
-    
     let dataManager = DataManager(dataBase: CoreDataBase())
     
     @IBOutlet private weak var searchBar: UISearchBar!
@@ -52,6 +50,7 @@ class SearchViewController: UIViewController {
 
 //MARK: - UISearchBarDelegate
 extension SearchViewController: UISearchBarDelegate {
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filter(with: searchText)
     }
