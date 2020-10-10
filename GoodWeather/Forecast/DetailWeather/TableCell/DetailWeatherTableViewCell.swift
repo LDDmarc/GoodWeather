@@ -20,14 +20,8 @@ class DetailWeatherTableViewCell: UITableViewCell, UICollectionViewDelegate, UIC
         selectionStyle = .none
         detailWeatherCollectionView.delegate = self
         detailWeatherCollectionView.dataSource = self
-        detailWeatherCollectionView.register(UINib(nibName: String(describing: DetaiCurrentWeatherCollectionViewCell.self), bundle: nil), forCellWithReuseIdentifier: String(describing: DetaiCurrentWeatherCollectionViewCell.self))
-        
-        let layout = UICollectionViewFlowLayout()
-        layout.minimumLineSpacing = 16
-        layout.minimumInteritemSpacing = 6
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        layout.scrollDirection = .horizontal
-        detailWeatherCollectionView.collectionViewLayout = layout
+        detailWeatherCollectionView.register(UINib(nibName: String(describing: DetaiCurrentWeatherCollectionViewCell.self), bundle: nil),
+                                             forCellWithReuseIdentifier: String(describing: DetaiCurrentWeatherCollectionViewCell.self))
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -44,7 +38,7 @@ class DetailWeatherTableViewCell: UITableViewCell, UICollectionViewDelegate, UIC
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = floor(contentView.bounds.width - contentView.layoutMargins.left - contentView.layoutMargins.right)
-        let height = 194.0
+        let height = 165.0
         return CGSize(width: CGFloat(width), height: CGFloat(height))
     }
 }
