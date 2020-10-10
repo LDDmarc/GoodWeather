@@ -124,7 +124,7 @@ class ForecastTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return indexPath.section == 2 ? APODTableViewCellHeight : 230.0
+        return indexPath.section == 2 ? UITableView.automaticDimension : 230.0
     }
     
 }
