@@ -1,26 +1,34 @@
 PODS:
   - DynamicColor (5.0.1)
-  - SDWebImage (5.8.0):
-    - SDWebImage/Core (= 5.8.0)
-  - SDWebImage/Core (5.8.0)
+  - GoogleMaps/Base (3.10.0)
+  - GooglePlaces (3.10.0):
+    - GoogleMaps/Base (= 3.10.0)
+  - SDWebImage (5.9.2):
+    - SDWebImage/Core (= 5.9.2)
+  - SDWebImage/Core (5.9.2)
   - SwiftyJSON (5.0.0)
 
 DEPENDENCIES:
   - DynamicColor
+  - GooglePlaces (~> 3.0)
   - SDWebImage
   - SwiftyJSON
 
 SPEC REPOS:
   trunk:
     - DynamicColor
+    - GoogleMaps
+    - GooglePlaces
     - SDWebImage
     - SwiftyJSON
 
 SPEC CHECKSUMS:
   DynamicColor: d049834ef86d8ecf150b0ca1ebe54ee733a0ec22
-  SDWebImage: 84000f962cbfa70c07f19d2234cbfcf5d779b5dc
+  GoogleMaps: 8c080862ff2748ece9929471b30feb56a6c5079d
+  GooglePlaces: 9a6f5f3a0c88da2aa1bf7426a65d3e004f5e69a1
+  SDWebImage: 0b42b8719ab0c5257177d5894306e8a336b21cbb
   SwiftyJSON: 36413e04c44ee145039d332b4f4e2d3e8d6c4db7
 
-PODFILE CHECKSUM: 681d42b548d24fad23ef4e052fae5812d2496f12
+PODFILE CHECKSUM: ebecf1406dbdb85a2f54404ce8ef6e9750024256
 
 COCOAPODS: 1.9.3

@@ -9,6 +9,7 @@
 import UIKit
 import CoreData
 import SwiftyJSON
+import GooglePlaces
 
 class CurrentWeatherTableViewController: UITableViewController {
 
@@ -75,10 +76,12 @@ class CurrentWeatherTableViewController: UITableViewController {
         }
     }
     @objc func searchForNewCity() {
-        
-        let vc = SearchingViewController(nibName: "SearchingViewController", bundle: nil)
-        vc.delegate = self
-        present(vc, animated: true, completion: nil)
+        let autocompleteViewController = GMSAutocompleteViewController()
+        autocompleteViewController.delegate = self
+        let filter = GMSAutocompleteFilter()
+        filter.type = .region
+        autocompleteViewController.autocompleteFilter = filter
+        present(autocompleteViewController, animated: true, completion: nil)
     }
     
 // MARK: - Table view data source, Table view delegate
@@ -178,9 +181,6 @@ extension CurrentWeatherTableViewController: SearchingViewControllerDelegate {
             }
         }
     }
-    
-    
-  
 }
 
 //MARK: - Private -

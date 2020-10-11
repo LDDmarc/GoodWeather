@@ -5,4 +5,5 @@ target 'GoodWeather' do
   pod 'SwiftyJSON'
   pod 'DynamicColor'
   pod 'SDWebImage'
+  pod 'GooglePlaces', '~> 3.0'
 end

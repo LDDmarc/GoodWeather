@@ -42,6 +42,9 @@
 		BCB256DB24C059C4005925E4 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCB256D924C059C4005925E4 /* Main.storyboard */; };
 		BCB256DD24C059C7005925E4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BCB256DC24C059C7005925E4 /* Assets.xcassets */; };
 		BCB256E024C059C7005925E4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BCB256DE24C059C7005925E4 /* LaunchScreen.storyboard */; };
+		BCD2141C2531CA7100A5A6E2 /* GoogleAPISearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD2141A2531CA7100A5A6E2 /* GoogleAPISearchViewController.swift */; };
+		BCD2141D2531CA7100A5A6E2 /* GoogleAPISearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCD2141B2531CA7100A5A6E2 /* GoogleAPISearchViewController.xib */; };
+		BCD214212531CDC500A5A6E2 /* CurrentWeatherTableViewController+GooglePlaces.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD214202531CDC500A5A6E2 /* CurrentWeatherTableViewController+GooglePlaces.swift */; };
 		BCD78A1425174E6800A16F54 /* SearchingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = BCD78A1225174E6800A16F54 /* SearchingViewController.swift */; };
 		BCD78A1525174E6800A16F54 /* SearchingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCD78A1325174E6800A16F54 /* SearchingViewController.xib */; };
 		BCD82E5324C43748008984BB /* GoodWeather.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = BCD82E5024C43748008984BB /* GoodWeather.xcdatamodeld */; };
@@ -98,6 +101,9 @@
 		BCB256DC24C059C7005925E4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BCB256DF24C059C7005925E4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BCB256E124C059C7005925E4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BCD2141A2531CA7100A5A6E2 /* GoogleAPISearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoogleAPISearchViewController.swift; sourceTree = "<group>"; };
+		BCD2141B2531CA7100A5A6E2 /* GoogleAPISearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GoogleAPISearchViewController.xib; sourceTree = "<group>"; };
+		BCD214202531CDC500A5A6E2 /* CurrentWeatherTableViewController+GooglePlaces.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CurrentWeatherTableViewController+GooglePlaces.swift"; sourceTree = "<group>"; };
 		BCD78A1225174E6800A16F54 /* SearchingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchingViewController.swift; sourceTree = "<group>"; };
 		BCD78A1325174E6800A16F54 /* SearchingViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchingViewController.xib; sourceTree = "<group>"; };
 		BCD82E5124C43748008984BB /* GoodWeather.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = GoodWeather.xcdatamodel; sourceTree = "<group>"; };
@@ -167,6 +173,7 @@
 			isa = PBXGroup;
 			children = (
 				BC496D8524C42F09000F9AAE /* CurrentWeatherTableViewController.swift */,
+				BCD214202531CDC500A5A6E2 /* CurrentWeatherTableViewController+GooglePlaces.swift */,
 				BC69EFC824C43F2200330108 /* CurrentWeatherTableViewCell.swift */,
 				BC991CE524C5C89B0087E303 /* CurentWeatherViewModel */,
 			);
@@ -314,6 +321,8 @@
 		BCE21B3524E5BA450049462F /* Searching */ = {
 			isa = PBXGroup;
 			children = (
+				BCD2141A2531CA7100A5A6E2 /* GoogleAPISearchViewController.swift */,
+				BCD2141B2531CA7100A5A6E2 /* GoogleAPISearchViewController.xib */,
 				BCD78A1225174E6800A16F54 /* SearchingViewController.swift */,
 				BCD78A1325174E6800A16F54 /* SearchingViewController.xib */,
 				BCE21B3624E5BEAA0049462F /* SearchViewController.swift */,
@@ -342,6 +351,7 @@
 				BCB256CD24C059C4005925E4 /* Frameworks */,
 				BCB256CE24C059C4005925E4 /* Resources */,
 				C115D55580EC055DEE84E51C /* [CP] Embed Pods Frameworks */,
+				C0ABE783E47D50332748155A /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -400,6 +410,7 @@
 				BC69EFD224C47C5A00330108 /* DetaiCurrentWeatherCollectionViewCell.xib in Resources */,
 				BC50ED0725160C9300FB3FFB /* APODTableViewCell.xib in Resources */,
 				BCE21B3924E5BEAA0049462F /* SearchViewController.xib in Resources */,
+				BCD2141D2531CA7100A5A6E2 /* GoogleAPISearchViewController.xib in Resources */,
 				BC64CCD524C5BF0900EEE8E2 /* DetailWeatherTableViewCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -407,6 +418,23 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		C0ABE783E47D50332748155A /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GoodWeather/Pods-GoodWeather-resources-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Copy Pods Resources";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-GoodWeather/Pods-GoodWeather-resources-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-GoodWeather/Pods-GoodWeather-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		C115D55580EC055DEE84E51C /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -463,6 +491,7 @@
 				BC86900E24C2EB1A00CF5F8A /* NetworkManager.swift in Sources */,
 				BC86901424C2F94B00CF5F8A /* CoreDataBase.swift in Sources */,
 				BCD82E5324C43748008984BB /* GoodWeather.xcdatamodeld in Sources */,
+				BCD2141C2531CA7100A5A6E2 /* GoogleAPISearchViewController.swift in Sources */,
 				BCD82E5924C4390A008984BB /* City+CoreDataProperties.swift in Sources */,
 				BCB256D824C059C4005925E4 /* ViewController.swift in Sources */,
 				BC69EFC924C43F2200330108 /* CurrentWeatherTableViewCell.swift in Sources */,
@@ -483,6 +512,7 @@
 				BC90FE6424C5EF1800AADACB /* ForecastPresenter.swift in Sources */,
 				BC91767F24D1596400CAAA20 /* DayAndNightWeather+CoreDataProperties.swift in Sources */,
 				BC64CCD424C5BF0900EEE8E2 /* DetailWeatherTableViewCell.swift in Sources */,
+				BCD214212531CDC500A5A6E2 /* CurrentWeatherTableViewController+GooglePlaces.swift in Sources */,
 				BCE21B3824E5BEAA0049462F /* SearchViewController.swift in Sources */,
 				BC50ED0625160C9300FB3FFB /* APODTableViewCell.swift in Sources */,
 				BCB256D624C059C4005925E4 /* SceneDelegate.swift in Sources */,
