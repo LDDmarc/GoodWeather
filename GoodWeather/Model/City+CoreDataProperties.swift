@@ -2,7 +2,7 @@
 //  City+CoreDataProperties.swift
 //  GoodWeather
 //
-//  Created by Дарья Леонова on 30.07.2020.
+//  Created by Дарья Леонова on 28.10.2020.
 //  Copyright © 2020 Дарья Леонова. All rights reserved.
 //
 //
@@ -25,6 +25,7 @@ extension City {
     @NSManaged public var currentWeather: Weather?
     @NSManaged public var dayAndNightWeather: NSOrderedSet?
     @NSManaged public var forecast: NSOrderedSet?
+    @NSManaged public var hourly: NSOrderedSet?
 
 }
 
@@ -95,5 +96,44 @@ extension City {
 
     @objc(removeForecast:)
     @NSManaged public func removeFromForecast(_ values: NSOrderedSet)
+
+}
+
+// MARK: Generated accessors for hourly
+extension City {
+
+    @objc(insertObject:inHourlyAtIndex:)
+    @NSManaged public func insertIntoHourly(_ value: Weather, at idx: Int)
+
+    @objc(removeObjectFromHourlyAtIndex:)
+    @NSManaged public func removeFromHourly(at idx: Int)
+
+    @objc(insertHourly:atIndexes:)
+    @NSManaged public func insertIntoHourly(_ values: [Weather], at indexes: NSIndexSet)
+
+    @objc(removeHourlyAtIndexes:)
+    @NSManaged public func removeFromHourly(at indexes: NSIndexSet)
+
+    @objc(replaceObjectInHourlyAtIndex:withObject:)
+    @NSManaged public func replaceHourly(at idx: Int, with value: Weather)
+
+    @objc(replaceHourlyAtIndexes:withHourly:)
+    @NSManaged public func replaceHourly(at indexes: NSIndexSet, with values: [Weather])
+
+    @objc(addHourlyObject:)
+    @NSManaged public func addToHourly(_ value: Weather)
+
+    @objc(removeHourlyObject:)
+    @NSManaged public func removeFromHourly(_ value: Weather)
+
+    @objc(addHourly:)
+    @NSManaged public func addToHourly(_ values: NSOrderedSet)
+
+    @objc(removeHourly:)
+    @NSManaged public func removeFromHourly(_ values: NSOrderedSet)
+
+}
+
+extension City : Identifiable {
 
 }

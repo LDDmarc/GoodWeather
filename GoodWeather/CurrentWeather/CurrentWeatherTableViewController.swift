@@ -163,25 +163,6 @@ extension CurrentWeatherTableViewController: NSFetchedResultsControllerDelegate 
     }
 }
 
-//MARK: - SearchingViewControllerDelegate
-extension CurrentWeatherTableViewController: SearchingViewControllerDelegate {
-    
-    func searchingViewController(close searchingViewController: SearchingViewController) {
-        searchingViewController.dismiss(animated: true, completion: nil)
-    }
-    
-    func searchingViewController(searchingViewController: SearchingViewController, didSelectItemWith coordinates: CLLocationCoordinate2D) {
-        dataManager.addNewCity(withCoordinates: coordinates) { (error) in
-            if error == nil {
-                DispatchQueue.main.async {
-                    searchingViewController.dismiss(animated: true, completion: nil)
-                }
-            } else {
-                searchingViewController.showErrorAlert(withError: error)
-            }
-        }
-    }
-}
 
 //MARK: - Private -
 private extension CurrentWeatherTableViewController {
@@ -189,8 +170,6 @@ private extension CurrentWeatherTableViewController {
      func detectFirstLaunch() {
         let defaults = UserDefaults.standard
         if !defaults.bool(forKey: "First launch") {
-            fillCities()
-            print("FILL")
             defaults.set(true, forKey: "First launch")
         }
     }
@@ -212,7 +191,6 @@ private extension CurrentWeatherTableViewController {
                     print("coredata.error")
                 }
             }
-    
         } catch {
             print("data.error")
         }

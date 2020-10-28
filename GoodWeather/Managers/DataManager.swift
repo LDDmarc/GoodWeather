@@ -64,6 +64,7 @@ class DataManager {
             completion(.wrongName)
             return
         }
+     
         let request = Request(cityName: name, lat: nil, lon: nil, requestType: .weather)
         NetworkManager.getData(forRequest: request) { (data, dataManagerError) in
             if dataManagerError != nil {

@@ -2,7 +2,7 @@
 //  Weather+CoreDataProperties.swift
 //  GoodWeather
 //
-//  Created by Дарья Леонова on 20.07.2020.
+//  Created by Дарья Леонова on 28.10.2020.
 //  Copyright © 2020 Дарья Леонова. All rights reserved.
 //
 //
@@ -29,6 +29,8 @@ extension Weather {
     @NSManaged public var pressure: Double
     @NSManaged public var rain: Double
     @NSManaged public var snow: Double
+    @NSManaged public var sunrise: Date?
+    @NSManaged public var sunset: Date?
     @NSManaged public var temperature: Double
     @NSManaged public var temperatureMax: Double
     @NSManaged public var temperatureMin: Double
@@ -36,9 +38,12 @@ extension Weather {
     @NSManaged public var windDirection: String?
     @NSManaged public var windSpeed: Double
     @NSManaged public var winSpeed: Double
-    @NSManaged public var sunrise: Date?
-    @NSManaged public var sunset: Date?
     @NSManaged public var city: City?
     @NSManaged public var cityForecast: City?
+    @NSManaged public var cityHourly: City?
+
+}
+
+extension Weather : Identifiable {
 
 }

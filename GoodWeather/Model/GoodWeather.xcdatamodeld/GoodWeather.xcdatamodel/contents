@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19G2021" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17192" systemVersion="19H2" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="APOD" representedClassName="APOD" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="descriptionText" optional="YES" attributeType="String"/>
@@ -15,6 +15,7 @@
         <relationship name="currentWeather" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Weather" inverseName="city" inverseEntity="Weather"/>
         <relationship name="dayAndNightWeather" optional="YES" toMany="YES" minCount="5" maxCount="5" deletionRule="Nullify" ordered="YES" destinationEntity="DayAndNightWeather" inverseName="city" inverseEntity="DayAndNightWeather"/>
         <relationship name="forecast" optional="YES" toMany="YES" minCount="1" maxCount="40" deletionRule="Cascade" ordered="YES" destinationEntity="Weather" inverseName="cityForecast" inverseEntity="Weather"/>
+        <relationship name="hourly" optional="YES" toMany="YES" maxCount="24" deletionRule="Nullify" ordered="YES" destinationEntity="Weather" inverseName="cityHourly" inverseEntity="Weather"/>
     </entity>
     <entity name="CityName" representedClassName="CityName" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String"/>
@@ -49,12 +50,13 @@
         <attribute name="winSpeed" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <relationship name="city" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="City" inverseName="currentWeather" inverseEntity="City"/>
         <relationship name="cityForecast" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="City" inverseName="forecast" inverseEntity="City"/>
+        <relationship name="cityHourly" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="City" inverseName="hourly" inverseEntity="City"/>
     </entity>
     <elements>
-        <element name="APOD" positionX="-207" positionY="-207" width="128" height="103"/>
-        <element name="City" positionX="-408.72265625" positionY="-21.62109375" width="128" height="163"/>
-        <element name="CityName" positionX="-180" positionY="-18" width="128" height="58"/>
-        <element name="DayAndNightWeather" positionX="41.1640625" positionY="239.19140625" width="128" height="103"/>
-        <element name="Weather" positionX="-121.41015625" positionY="-351.65234375" width="128" height="388"/>
+        <element name="APOD" positionX="-580.73046875" positionY="-186.2421875" width="128" height="103"/>
+        <element name="City" positionX="-239.63671875" positionY="-20.26953125" width="128" height="178"/>
+        <element name="CityName" positionX="-410.1875" positionY="-180.70703125" width="128" height="58"/>
+        <element name="DayAndNightWeather" positionX="37.109375" positionY="247.234375" width="128" height="103"/>
+        <element name="Weather" positionX="44.296875" positionY="-217.10546875" width="128" height="403"/>
     </elements>
 </model>

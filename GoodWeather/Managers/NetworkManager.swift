@@ -13,6 +13,7 @@ typealias NetworkCompletionHandler = (Data?, DataManagerError?) -> Void
 enum RequestType {
     case weather
     case forecast
+    case onecall
     
     func path() -> String {
         switch self {
@@ -20,6 +21,8 @@ enum RequestType {
             return "/data/2.5/forecast"
         case .weather:
             return "/data/2.5/weather"
+        case .onecall:
+            return "/data/2.5/onecall"
         }
     }
 }
@@ -39,7 +42,7 @@ class NetworkManager {
         static let scheme = "https"
         static let host = "api.openweathermap.org"
     
-        static let excludeItem = URLQueryItem(name: "exclude", value: "daily,hourly,minutely")
+        static let excludeItem = URLQueryItem(name: "exclude", value: "minutely")
         static let unitsItem = URLQueryItem(name: "units", value: "metric")
         static let languageItem = URLQueryItem(name: "lang", value: "ru")
         static let appiKeyItem = URLQueryItem(name: "appid", value: "3a7138e1e6cde45e6370f55d233c10ec")
@@ -47,6 +50,7 @@ class NetworkManager {
     
     static func getData(forRequest request: Request, completion: @escaping NetworkCompletionHandler) {
         guard let url = getURL(forRequest: request) else {
+            print("ERROR")
             completion(nil, .wrongURL)
             return
         }
@@ -84,20 +88,23 @@ class NetworkManager {
         components.host = Components.host
         components.path = request.requestType.path()
         
+        var queryItems = [Components.unitsItem,
+                          Components.languageItem,
+                          Components.appiKeyItem]
+        
+        if request.requestType == .onecall {
+            queryItems.append(Components.excludeItem)
+        }
+     
         if let name = request.cityName {
-            components.queryItems = [URLQueryItem(name: "q", value: name),
-                                     Components.unitsItem,
-                                     Components.languageItem,
-                                     Components.appiKeyItem]
-            
+            queryItems.insert(URLQueryItem(name: "q", value: name), at: 0)
         } else if let lat = request.lat,
             let lon = request.lon {
-            components.queryItems = [URLQueryItem(name: "lat", value: lat),
-                                     URLQueryItem(name: "lon", value: lon),
-                                     Components.unitsItem,
-                                     Components.languageItem,
-                                     Components.appiKeyItem]
+            queryItems.insert(URLQueryItem(name: "lon", value: lon), at: 0)
+            queryItems.insert(URLQueryItem(name: "lat", value: lat), at: 0)
         }
+        components.queryItems = queryItems
+        
         return components.url
     }
 }
