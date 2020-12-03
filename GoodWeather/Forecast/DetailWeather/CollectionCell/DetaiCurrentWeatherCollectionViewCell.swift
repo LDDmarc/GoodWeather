@@ -12,7 +12,7 @@ class DetaiCurrentWeatherCollectionViewCell: UICollectionViewCell {
     
     @IBOutlet weak private var descriptionLabel: UILabel!
     @IBOutlet weak private var temperatureLabel: UILabel!
-    @IBOutlet weak private var precipitationLabel: UILabel!
+    @IBOutlet weak private var cloudsLabel: UILabel!
     @IBOutlet weak private var windLabel: UILabel!
     @IBOutlet weak private var sunriseLabel: UILabel!
     @IBOutlet weak private var sunsetLabel: UILabel!
@@ -29,10 +29,10 @@ class DetaiCurrentWeatherCollectionViewCell: UICollectionViewCell {
             setBackground()
         }
     }
-    var precipitation: Double? {
+    var clouds: Double? {
         didSet {
-            guard let precipitation = precipitation else { return }
-            precipitationLabel.text = "\(Int(round(precipitation))) %"
+            guard let clouds = clouds else { return }
+            cloudsLabel.text = "\(Int(round(clouds))) %"
         }
     }
     var windInfo: Wind? {
@@ -92,5 +92,5 @@ class DetaiCurrentWeatherCollectionViewCell: UICollectionViewCell {
 
 protocol DetailCurrentWeatherPresenterProtocol: class {
     init(view: DetaiCurrentWeatherCollectionViewCell, weather: Weather)
-    func setUI()
+    func setupUI()
 }

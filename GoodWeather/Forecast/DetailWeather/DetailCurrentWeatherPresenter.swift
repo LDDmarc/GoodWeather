@@ -18,10 +18,10 @@ class DetailCurrentWeatherPresenter: DetailCurrentWeatherPresenterProtocol {
         self.weather = weather
     }
     
-    func setUI() {
+    func setupUI() {
         view.descrip = weather.descrip
         view.temperature = weather.temperature
-//        view.precipitation = weather.humidity
+        view.clouds = weather.clouds
         if let windDirection = weather.windDirection {
             view.windInfo = Wind(windSpeed: weather.windSpeed, windDirection: windDirection)
         }

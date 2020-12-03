@@ -56,5 +56,7 @@ public class City: NSManagedObject {
             }
         }
         
+        currentWeather?.probabilityOfPrecipitation = json[CodingKeys.hourly.rawValue][0]["pop"].doubleValue
+        
     }
 }

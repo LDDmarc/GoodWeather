@@ -34,6 +34,7 @@ extension Weather {
     @NSManaged public var windSpeed: Double
     @NSManaged public var dayTemperature: Double
     @NSManaged public var nightTemperature: Double
+    @NSManaged public var clouds: Double
     @NSManaged public var city: City?
     @NSManaged public var cityDailyForecast: City?
     @NSManaged public var cityHourlyForecast: City?

@@ -87,109 +87,6 @@ class DataManager {
         }
     }
     
-//    func getCurrentWeather(completion: @escaping DataManagerCompletionHandler) {
-//        let cities = dataBase.getCurrentCities()
-//        for city in cities {
-//            getCurrentWeather(forCity: city) { (error) in
-//                completion(error)
-//            }
-//        }
-//    }
-//
-//    private func getCurrentWeather(forCity city: City, completion: @escaping DataManagerCompletionHandler) {
-//        guard let name = city.name else {
-//            completion(.wrongName)
-//            return
-//        }
-//
-//        let request = Request(cityName: name, lat: nil, lon: nil, requestType: .weather)
-//        NetworkManager.getData(forRequest: request) { (data, dataManagerError) in
-//            if dataManagerError != nil {
-//                completion(dataManagerError)
-//                return
-//            }
-//            guard let data = data else {
-//                completion(.noData)
-//                return
-//            }
-//            do {
-//                let json = try JSON(data: data)
-//                if self.dataBase.updateWeatherFor(cityName: name, with: json) {
-//                    completion(nil)
-//                } else {
-//                    completion(.dataBaseError)
-//                }
-//            } catch {
-//                completion(.jsonError)
-//                return
-//            }
-//        }
-//    }
-//
-//    func getForecast(forCity city: City, completion: @escaping DataManagerCompletionHandler) {
-//        guard let name = city.name else {
-//            completion(.wrongName)
-//            return
-//        }
-//        let request = Request(cityName: name, lat: nil, lon: nil, requestType: .forecast)
-//        NetworkManager.getData(forRequest: request) { (data, dataManagerError) in
-//            if dataManagerError != nil {
-//                completion(dataManagerError)
-//                return
-//            }
-//            guard let data = data else {
-//                completion(.noData)
-//                return
-//            }
-//            do {
-//                let json = try JSON(data: data)
-//                if self.dataBase.updateForecastFor(cityName: name, with: json) {
-//                    completion(nil)
-//                } else {
-//                    completion(.dataBaseError)
-//                }
-//            } catch {
-//                completion(.jsonError)
-//                return
-//            }
-//        }
-//    }
-//
-//    private func createCity(with data: Data?, error dataManagerError: DataManagerError?, completion: @escaping DataManagerCompletionHandler) {
-//        if dataManagerError != nil {
-//            completion(dataManagerError)
-//            return
-//        }
-//        guard let data = data else {
-//            completion(.noData)
-//            return
-//        }
-//        do {
-//            let json = try JSON(data: data)
-//            if self.dataBase.createNewCity(with: json) {
-//                completion(nil)
-//            } else {
-//                completion(.dataBaseError)
-//            }
-//        } catch {
-//            completion(.jsonError)
-//        }
-//    }
-    
-//    func addNewCity(withName name: String?, completion: @escaping DataManagerCompletionHandler) {
-//        guard let name = name else { return }
-//        let request = Request(cityName: name, lat: nil, lon: nil, requestType: .weather)
-//        NetworkManager.getData(forRequest: request) { (data, dataManagerError) in
-//            if dataManagerError != nil {
-//                completion(dataManagerError)
-//                return
-//            }
-//            self.createCity(with: data, error: dataManagerError) { (error) in
-//                completion(error)
-//            }
-//        }
-//    }
-    
     func addNewCity(with cityInfo: CityInfo, completion: @escaping DataManagerCompletionHandler) {
       
         dataBase.createNewCity(by: cityInfo, completion: { (success) in
@@ -221,15 +118,6 @@ class DataManager {
         })
        
     }
-    
-//    func getCurrentWeather(forLat lat: String, forLon lon: String, completion: @escaping DataManagerCompletionHandler) {
-//        let request = Request(cityName: nil, lat: lat, lon: lon, requestType: .weather)
-//        NetworkManager.getData(forRequest: request) { (data, dataManagerError) in
-//            self.createCity(with: data, error: dataManagerError) { (error) in
-//                completion(error)
-//            }
-//        }
-//    }
     
     //MARK: - APOD
     func getAPOD(completion: @escaping DataManagerCompletionHandler) {

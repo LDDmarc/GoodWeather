@@ -32,7 +32,7 @@ class DetailWeatherTableViewCell: UITableViewCell, UICollectionViewDelegate, UIC
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: DetaiCurrentWeatherCollectionViewCell.self), for: indexPath)
             as? DetaiCurrentWeatherCollectionViewCell else { return UICollectionViewCell() }
         let presenter = DetailCurrentWeatherPresenter(view: cell, weather: weather)
-        presenter.setUI()
+        presenter.setupUI()
         return cell
     }
     

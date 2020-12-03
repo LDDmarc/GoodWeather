@@ -64,7 +64,7 @@ class ForecastCollectionViewCell: UICollectionViewCell {
 
 protocol ForecastPresenterProtocol: class {
     init(view: ForecastCollectionViewCell, weather: Weather)
-    func setUI()
+    func setupUI(forDay: Bool)
 }
 
 extension ForecastCollectionViewCell {

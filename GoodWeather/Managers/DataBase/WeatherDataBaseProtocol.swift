@@ -23,10 +23,6 @@ typealias WeatherDataBaseCompletionHandler = (Bool) -> Void
 
 protocol WeatherDataBaseProtocol {
     func getCurrentCities() -> [City]
-//    func updateWeatherFor(cityName: String?, with json: JSON) -> Bool
-//    func updateForecastFor(cityName: String?, with json: JSON) -> Bool
-//    func createNewCity(with json: JSON) -> Bool
-    
     func createNewCity(by info: CityInfo, completion: @escaping WeatherDataBaseCompletionHandler)
     func updateWeatherForCityWith(cordinates: Coordinates, with json: JSON) -> Bool
 }

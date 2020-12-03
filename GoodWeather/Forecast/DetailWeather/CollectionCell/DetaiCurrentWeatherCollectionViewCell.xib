@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -138,8 +138,8 @@
             </constraints>
             <size key="customSize" width="363" height="194"/>
             <connections>
+                <outlet property="cloudsLabel" destination="P3I-XO-xzy" id="0tz-BQ-7LH"/>
                 <outlet property="descriptionLabel" destination="xnf-cJ-qgS" id="jTo-3f-xym"/>
-                <outlet property="precipitationLabel" destination="P3I-XO-xzy" id="0tz-BQ-7LH"/>
                 <outlet property="sunriseLabel" destination="dmv-a5-zUz" id="523-nK-J9c"/>
                 <outlet property="sunsetLabel" destination="8f7-2U-gyo" id="eG9-Ei-CmA"/>
                 <outlet property="temperatureLabel" destination="Rva-5g-ftE" id="XXq-M2-y8S"/>
