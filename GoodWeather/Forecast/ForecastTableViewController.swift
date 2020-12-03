@@ -76,7 +76,6 @@ class ForecastTableViewController: UITableViewController {
         tableView.tableFooterView = UIView()
         tableView.allowsSelection = false
         title = city.name
-//        dataManager.getForecast(forCity: city) { (_) in }
     }
 
     // MARK: - Table view data source

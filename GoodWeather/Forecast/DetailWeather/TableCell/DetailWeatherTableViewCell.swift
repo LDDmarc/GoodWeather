@@ -20,8 +20,8 @@ class DetailWeatherTableViewCell: UITableViewCell, UICollectionViewDelegate, UIC
         selectionStyle = .none
         detailWeatherCollectionView.delegate = self
         detailWeatherCollectionView.dataSource = self
-        detailWeatherCollectionView.register(UINib(nibName: String(describing: DetaiCurrentWeatherCollectionViewCell.self), bundle: nil),
-                                             forCellWithReuseIdentifier: String(describing: DetaiCurrentWeatherCollectionViewCell.self))
+        detailWeatherCollectionView.register(UINib(nibName: String(describing: DetailCurrentWeatherCollectionViewCell.self), bundle: nil),
+                                             forCellWithReuseIdentifier: String(describing: DetailCurrentWeatherCollectionViewCell.self))
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -29,8 +29,8 @@ class DetailWeatherTableViewCell: UITableViewCell, UICollectionViewDelegate, UIC
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: DetaiCurrentWeatherCollectionViewCell.self), for: indexPath)
-            as? DetaiCurrentWeatherCollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: String(describing: DetailCurrentWeatherCollectionViewCell.self), for: indexPath)
+            as? DetailCurrentWeatherCollectionViewCell else { return UICollectionViewCell() }
         let presenter = DetailCurrentWeatherPresenter(view: cell, weather: weather)
         presenter.setupUI()
         return cell

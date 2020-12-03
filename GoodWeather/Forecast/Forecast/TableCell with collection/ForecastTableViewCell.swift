@@ -69,35 +69,29 @@ class ForecastTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollec
         }
         let weather = fetchedResultsController.object(at: indexPath)
         let presenter = ForecastPresenter(view: cell, weather: weather)
-        presenter.setupUI(forDay: true)
+        presenter.setupUI(forDay: !nightWeatherSet.contains(indexPath))
         return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        let width = 142.0
-        let height = 197.0
-        return CGSize(width: CGFloat(width), height: CGFloat(height))
+        return ForecastCollectionViewCell.cellSize
     }
-//
-//    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        let dayAndNightWeather = fetchedResultsController.object(at: indexPath)
-//        guard let cell = collectionView.cellForItem(at: indexPath) as? ForecastCollectionViewCell else { return }
-//        let weather: Weather?
-//        if nightWeatherSet.contains(indexPath) {
-//            nightWeatherSet.remove(indexPath)
-//            weather = dayAndNightWeather.dayWeather
-//        } else {
-//            nightWeatherSet.insert(indexPath)
-//            weather = dayAndNightWeather.nightWeather
-//        }
-//        guard let cellWeather = weather else { return }
-//        let presenter = ForecastPresenter(view: cell, weather: cellWeather)
-//
-//        UIView.transition(with: cell, duration: 0.6, options: .transitionFlipFromRight, animations: {
-//
-//            presenter.setUI()
-//        })
-//    }
+
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.deselectItem(at: indexPath, animated: false)
+        
+        guard let cell = collectionView.cellForItem(at: indexPath) as? ForecastCollectionViewCell else { return }
+        let weather = fetchedResultsController.object(at: indexPath)
+        if nightWeatherSet.contains(indexPath) {
+            nightWeatherSet.remove(indexPath)
+        } else {
+            nightWeatherSet.insert(indexPath)
+        }
+        let presenter = ForecastPresenter(view: cell, weather: weather)
+        UIView.transition(with: cell, duration: 0.6, options: .transitionFlipFromRight, animations: { [unowned self] in
+            presenter.setupUI(forDay: !self.nightWeatherSet.contains(indexPath))
+        })
+    }
     
 }
 

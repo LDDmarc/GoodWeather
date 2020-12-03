@@ -10,10 +10,10 @@ import Foundation
 
 class DetailCurrentWeatherPresenter: DetailCurrentWeatherPresenterProtocol {
     
-    let view: DetaiCurrentWeatherCollectionViewCell
+    let view: DetailCurrentWeatherCollectionViewCell
     let weather: Weather
     
-    required init(view: DetaiCurrentWeatherCollectionViewCell, weather: Weather) {
+    required init(view: DetailCurrentWeatherCollectionViewCell, weather: Weather) {
         self.view = view
         self.weather = weather
     }

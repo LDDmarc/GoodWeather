@@ -11,6 +11,8 @@ import DynamicColor
 
 class ForecastCollectionViewCell: UICollectionViewCell {
     
+    static let cellSize = CGSize(width: 143.0, height: 198.0)
+    
     @IBOutlet weak private var dateLabel: UILabel!
     @IBOutlet weak private var temperatureLabel: UILabel!
     @IBOutlet weak private var precipitationLabel: UILabel!
@@ -27,7 +29,7 @@ class ForecastCollectionViewCell: UICollectionViewCell {
     var precipitation: Double? {
         didSet {
             guard let precipitation = precipitation else { return }
-            precipitationLabel.text = "\(Int(round(precipitation)))%"
+            precipitationLabel.text = "\(Int(round(precipitation * 100)))%"
         }
     }
     var windInfo: Wind? {
