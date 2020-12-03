@@ -64,11 +64,11 @@ class CurrentWeatherTableViewController: UITableViewController {
     
     // MARK: - DataManager
     @objc func updateWeatherByTimer() {
-        dataManager.getCurrentWeather { (_) in }
+        dataManager.updateAllWeather { (_) in  }
     }
     
     @objc func updateWeather() {
-        dataManager.getCurrentWeather { [weak self] (dataManagerError) in
+        dataManager.updateAllWeather { [weak self] (dataManagerError) in
             DispatchQueue.main.async {
                 self?.tableView.refreshControl?.endRefreshing()
                 self?.showErrorAlert(withError: dataManagerError)

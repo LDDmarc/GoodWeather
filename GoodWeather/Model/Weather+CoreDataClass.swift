@@ -20,174 +20,224 @@ struct Wind {
 public class Weather: NSManagedObject {
     
     enum CodingKeys: String {
+        
         case weather
         case main
         case description
         case icon
-        case sys
         
         case sunrise
         case sunset
-    
+        
         case temperature = "temp"
         case feelsLike = "feels_like"
         case pressure
-        case humidity
         case temperatureMin = "temp_min"
         case temperatureMax = "temp_max"
         
-        case wind
-        case speed
-        case degree
+        case probabilityOfPrecipitation = "pop"
         
-        case rain
-        case snow
+        case wind_speed
+        case wind_degree = "wind_deg"
         
-        case clouds
-        case all
+        case day
+        case night
         
         case dateUTC = "dt"
     }
     
-    func updateOneCall(with json: JSON) {
-        
-    }
-    
-    func updateForecast(with json: JSON) {
-        main = json[CodingKeys.weather.rawValue][0][CodingKeys.main.rawValue].stringValue
-        descrip = json[CodingKeys.weather.rawValue][0][CodingKeys.description.rawValue].stringValue
-        icon = json[CodingKeys.weather.rawValue][0][CodingKeys.icon.rawValue].stringValue
-        
-        temperature = json[CodingKeys.main.rawValue][CodingKeys.temperature.rawValue].doubleValue
-        temperatureMin = json[CodingKeys.main.rawValue][CodingKeys.temperatureMin.rawValue].doubleValue
-        temperatureMax = json[CodingKeys.main.rawValue][CodingKeys.temperatureMax.rawValue].doubleValue
-        feelsLike = json[CodingKeys.main.rawValue][CodingKeys.feelsLike.rawValue].doubleValue
-        pressure = json[CodingKeys.main.rawValue][CodingKeys.pressure.rawValue].doubleValue
-        humidity = json[CodingKeys.main.rawValue][CodingKeys.humidity.rawValue].doubleValue
-        
-        windSpeed = json[CodingKeys.wind.rawValue][CodingKeys.speed.rawValue].doubleValue
-        windDegree = json[CodingKeys.wind.rawValue][CodingKeys.degree.rawValue].doubleValue
-        windDirection = getWindDirection(by: windDegree)
-        
-        rain = json[CodingKeys.rain.rawValue]["1h"].doubleValue
-        snow = json[CodingKeys.snow.rawValue]["1h"].doubleValue
-        
-        clouds = json[CodingKeys.clouds.rawValue][CodingKeys.all.rawValue].doubleValue
-        
-        dateUTC = json[CodingKeys.dateUTC.rawValue].int64Value
-        
-        if let timeZone = cityForecast?.timeZone {
-            date = Date(timeIntervalSince1970: TimeInterval(dateUTC + timeZone))
-            if let date = date {
-                var calendar = Calendar.current
-                calendar.timeZone = TimeZone(secondsFromGMT: 0)!
-                hour = Int64(calendar.component(.hour, from: date))
-                if hour == 12 || hour == 13 || hour == 14 {
-                    if let index = getIndex(forWeatherWith: date),
-                        index >= 0 {
-                        (self.cityForecast?.dayAndNightWeather?.object(at: index) as? DayAndNightWeather)?.dayWeather = self
-                    }
-                }
-                if hour == 0 || hour == 1 || hour == 2 {
-                    if let index = getIndex(forWeatherWith: date),
-                        index >= 0 {
-                        (self.cityForecast?.dayAndNightWeather?.object(at: index) as? DayAndNightWeather)?.nightWeather = self
-                    }
-                }
-            }
-        }
-        
-    }
-    
-    func update(with json: JSON) {
-        main = json[CodingKeys.weather.rawValue][0][CodingKeys.main.rawValue].stringValue
-        descrip = json[CodingKeys.weather.rawValue][0][CodingKeys.description.rawValue].stringValue
-        icon = json[CodingKeys.weather.rawValue][0][CodingKeys.icon.rawValue].stringValue
-        
-        temperature = json[CodingKeys.main.rawValue][CodingKeys.temperature.rawValue].doubleValue
-        temperatureMin = json[CodingKeys.main.rawValue][CodingKeys.temperatureMin.rawValue].doubleValue
-        temperatureMax = json[CodingKeys.main.rawValue][CodingKeys.temperatureMax.rawValue].doubleValue
-        feelsLike = json[CodingKeys.main.rawValue][CodingKeys.feelsLike.rawValue].doubleValue
-        pressure = json[CodingKeys.main.rawValue][CodingKeys.pressure.rawValue].doubleValue
-        humidity = json[CodingKeys.main.rawValue][CodingKeys.humidity.rawValue].doubleValue
-        
-        windSpeed = json[CodingKeys.wind.rawValue][CodingKeys.speed.rawValue].doubleValue
-        windDegree = json[CodingKeys.wind.rawValue][CodingKeys.degree.rawValue].doubleValue
-        windDirection = getWindDirection(by: windDegree)
-        
-        rain = json[CodingKeys.rain.rawValue]["1h"].doubleValue
-        snow = json[CodingKeys.snow.rawValue]["1h"].doubleValue
-        
-        clouds = json[CodingKeys.clouds.rawValue][CodingKeys.all.rawValue].doubleValue
-        
+    func updateAsCurrentWeather(with json: JSON) {
         dateUTC = json[CodingKeys.dateUTC.rawValue].int64Value
         
         if let timeZone = city?.timeZone {
             date = Date(timeIntervalSince1970: TimeInterval(dateUTC + timeZone))
-            sunrise = Date(timeIntervalSince1970: json[CodingKeys.sys.rawValue][CodingKeys.sunrise.rawValue].doubleValue + Double(timeZone))
-            sunset = Date(timeIntervalSince1970: json[CodingKeys.sys.rawValue][CodingKeys.sunset.rawValue].doubleValue + Double(timeZone))
+            sunrise = Date(timeIntervalSince1970: json[CodingKeys.sunrise.rawValue].doubleValue + Double(timeZone))
+            sunset = Date(timeIntervalSince1970: json[CodingKeys.sunset.rawValue].doubleValue + Double(timeZone))
         }
         
-        if let timeZone = cityHourly?.timeZone {
+        temperature = json[CodingKeys.temperature.rawValue].doubleValue
+        feelsLike = json[CodingKeys.feelsLike.rawValue].doubleValue
+        
+        windSpeed = json[CodingKeys.wind_speed.rawValue].doubleValue
+        windDegree = json[CodingKeys.wind_degree.rawValue].doubleValue
+        windDirection = getWindDirection(by: windDegree)
+        
+        descrip = json[CodingKeys.weather.rawValue][0][CodingKeys.description.rawValue].stringValue
+        icon = json[CodingKeys.weather.rawValue][0][CodingKeys.icon.rawValue].stringValue
+    }
+    
+    func updateAsDailyForecast(with json: JSON) {
+        dateUTC = json[CodingKeys.dateUTC.rawValue].int64Value
+        if let timeZone = city?.timeZone {
             date = Date(timeIntervalSince1970: TimeInterval(dateUTC + timeZone))
-            if let date = date {
-                var calendar = Calendar.current
-                calendar.timeZone = TimeZone(secondsFromGMT: 0)!
-                hour = Int64(calendar.component(.hour, from: date))
+        }
+        dayTemperature = json[CodingKeys.temperature.rawValue][CodingKeys.day.rawValue].doubleValue
+        nightTemperature = json[CodingKeys.temperature.rawValue][CodingKeys.night.rawValue].doubleValue
+        
+        probabilityOfPrecipitation = json[CodingKeys.probabilityOfPrecipitation.rawValue].doubleValue
+        
+        windSpeed = json[CodingKeys.wind_speed.rawValue].doubleValue
+        windDegree = json[CodingKeys.wind_degree.rawValue].doubleValue
+        windDirection = getWindDirection(by: windDegree)
+        
+        icon = json[CodingKeys.weather.rawValue][0][CodingKeys.icon.rawValue].stringValue
+    }
+    
+    func updateAsHourlyForecast(with json: JSON) {
+        
+        dateUTC = json[CodingKeys.dateUTC.rawValue].int64Value
+        if let timeZone = city?.timeZone {
+            date = Date(timeIntervalSince1970: TimeInterval(dateUTC + timeZone))
+        }
+        temperature = json[CodingKeys.temperature.rawValue].doubleValue
+       
+        probabilityOfPrecipitation = json[CodingKeys.probabilityOfPrecipitation.rawValue].doubleValue
+        
+        if let currentWeather = city?.currentWeather {
+            if abs(currentWeather.dateUTC - dateUTC) < 3600 {
+                currentWeather.probabilityOfPrecipitation = probabilityOfPrecipitation
             }
-            guard let mutableHourlyWeatherSet = cityHourly?.hourly?.mutableCopy() as? NSMutableOrderedSet else { return }
-            mutableHourlyWeatherSet.add(self)
-            cityHourly?.hourly = mutableHourlyWeatherSet.copy() as? NSOrderedSet
         }
        
-        if let timeZone = cityForecast?.timeZone { // just for forecast
-            date = Date(timeIntervalSince1970: TimeInterval(dateUTC + timeZone))
-            if let date = date {
-                var calendar = Calendar.current
-                calendar.timeZone = TimeZone(secondsFromGMT: 0)!
-                hour = Int64(calendar.component(.hour, from: date))
-                if hour == 12 || hour == 13 || hour == 14 {
-                    if let index = getIndex(forWeatherWith: date),
-                        index >= 0 {
-                        (self.cityForecast?.dayAndNightWeather?.object(at: index) as? DayAndNightWeather)?.dayWeather = self
-                    }
-                }
-                if hour == 0 || hour == 1 || hour == 2 {
-                    if let index = getIndex(forWeatherWith: date),
-                        index >= 0 {
-                        (self.cityForecast?.dayAndNightWeather?.object(at: index) as? DayAndNightWeather)?.nightWeather = self
-                    }
-                }
-            }
-        }
+        icon = json[CodingKeys.weather.rawValue][0][CodingKeys.icon.rawValue].stringValue
         
     }
     
-    private func getIndex(forWeatherWith date: Date) -> Int? {
-        if let city = cityForecast,
-            let currentWeatherDate = city.currentWeather?.date {
-            let dateDifference = date.timeIntervalSince(currentWeatherDate)
-            var index: Int
-            switch dateDifference {
-            case 0...twentyFourHoursInSeconds - 1:
-                index = 0
-            case twentyFourHoursInSeconds...2 * twentyFourHoursInSeconds - 1:
-                index = 1
-            case 2 * twentyFourHoursInSeconds...3 * twentyFourHoursInSeconds - 1:
-                index = 2
-            case 3 * twentyFourHoursInSeconds...4 * twentyFourHoursInSeconds - 1:
-                index = 3
-            case 4 * twentyFourHoursInSeconds...5 * twentyFourHoursInSeconds - 1:
-                index = 4
-            case 5 * twentyFourHoursInSeconds...6 * twentyFourHoursInSeconds - 1:
-                index = 5
-            default:
-                index = -2
-            }
-            return index
-        }
-        return nil
-    }
+    //    func updateForecast(with json: JSON) {
+    //        //        main = json[CodingKeys.weather.rawValue][0][CodingKeys.main.rawValue].stringValue
+    //        descrip = json[CodingKeys.weather.rawValue][0][CodingKeys.description.rawValue].stringValue
+    //        icon = json[CodingKeys.weather.rawValue][0][CodingKeys.icon.rawValue].stringValue
+    //
+    //        temperature = json[CodingKeys.main.rawValue][CodingKeys.temperature.rawValue].doubleValue
+    //        temperatureMin = json[CodingKeys.main.rawValue][CodingKeys.temperatureMin.rawValue].doubleValue
+    //        temperatureMax = json[CodingKeys.main.rawValue][CodingKeys.temperatureMax.rawValue].doubleValue
+    //        feelsLike = json[CodingKeys.main.rawValue][CodingKeys.feelsLike.rawValue].doubleValue
+    //        //        pressure = json[CodingKeys.main.rawValue][CodingKeys.pressure.rawValue].doubleValue
+    //        //        humidity = json[CodingKeys.main.rawValue][CodingKeys.humidity.rawValue].doubleValue
+    //        //
+    //        windSpeed = json[CodingKeys.wind.rawValue][CodingKeys.speed.rawValue].doubleValue
+    //        windDegree = json[CodingKeys.wind.rawValue][CodingKeys.degree.rawValue].doubleValue
+    //        windDirection = getWindDirection(by: windDegree)
+    //
+    //        //        rain = json[CodingKeys.rain.rawValue]["1h"].doubleValue
+    //        //        snow = json[CodingKeys.snow.rawValue]["1h"].doubleValue
+    //        //
+    //        //        clouds = json[CodingKeys.clouds.rawValue][CodingKeys.all.rawValue].doubleValue
+    //
+    //        dateUTC = json[CodingKeys.dateUTC.rawValue].int64Value
+    //        //
+    //        //        if let timeZone = cityForecast?.timeZone {
+    //        //            date = Date(timeIntervalSince1970: TimeInterval(dateUTC + timeZone))
+    //        //            if let date = date {
+    //        //                var calendar = Calendar.current
+    //        //                calendar.timeZone = TimeZone(secondsFromGMT: 0)!
+    //        //                hour = Int64(calendar.component(.hour, from: date))
+    //        //                if hour == 12 || hour == 13 || hour == 14 {
+    //        //                    if let index = getIndex(forWeatherWith: date),
+    //        //                        index >= 0 {
+    //        //                        (self.cityForecast?.dayAndNightWeather?.object(at: index) as? DayAndNightWeather)?.dayWeather = self
+    //        //                    }
+    //        //                }
+    //        //                if hour == 0 || hour == 1 || hour == 2 {
+    //        //                    if let index = getIndex(forWeatherWith: date),
+    //        //                        index >= 0 {
+    //        //                        (self.cityForecast?.dayAndNightWeather?.object(at: index) as? DayAndNightWeather)?.nightWeather = self
+    //        //                    }
+    //        //                }
+    //        //            }
+    //        //        }
+    //
+    //    }
+    //
+    //    func update(with json: JSON) {
+    //        //        main = json[CodingKeys.weather.rawValue][0][CodingKeys.main.rawValue].stringValue
+    //        descrip = json[CodingKeys.weather.rawValue][0][CodingKeys.description.rawValue].stringValue
+    //        icon = json[CodingKeys.weather.rawValue][0][CodingKeys.icon.rawValue].stringValue
+    //
+    //        temperature = json[CodingKeys.main.rawValue][CodingKeys.temperature.rawValue].doubleValue
+    //        temperatureMin = json[CodingKeys.main.rawValue][CodingKeys.temperatureMin.rawValue].doubleValue
+    //        temperatureMax = json[CodingKeys.main.rawValue][CodingKeys.temperatureMax.rawValue].doubleValue
+    //        feelsLike = json[CodingKeys.main.rawValue][CodingKeys.feelsLike.rawValue].doubleValue
+    //        //        pressure = json[CodingKeys.main.rawValue][CodingKeys.pressure.rawValue].doubleValue
+    //        //        humidity = json[CodingKeys.main.rawValue][CodingKeys.humidity.rawValue].doubleValue
+    //        //
+    //        windSpeed = json[CodingKeys.wind.rawValue][CodingKeys.speed.rawValue].doubleValue
+    //        windDegree = json[CodingKeys.wind.rawValue][CodingKeys.degree.rawValue].doubleValue
+    //        windDirection = getWindDirection(by: windDegree)
+    //
+    //        //        rain = json[CodingKeys.rain.rawValue]["1h"].doubleValue
+    //        //        snow = json[CodingKeys.snow.rawValue]["1h"].doubleValue
+    //        //
+    //        //        clouds = json[CodingKeys.clouds.rawValue][CodingKeys.all.rawValue].doubleValue
+    //
+    //        dateUTC = json[CodingKeys.dateUTC.rawValue].int64Value
+    //        //
+    //        //        if let timeZone = city?.timeZone {
+    //        //            date = Date(timeIntervalSince1970: TimeInterval(dateUTC + timeZone))
+    //        //            sunrise = Date(timeIntervalSince1970: json[CodingKeys.sys.rawValue][CodingKeys.sunrise.rawValue].doubleValue + Double(timeZone))
+    //        //            sunset = Date(timeIntervalSince1970: json[CodingKeys.sys.rawValue][CodingKeys.sunset.rawValue].doubleValue + Double(timeZone))
+    //        //        }
+    //        //
+    //        //        if let timeZone = cityHourly?.timeZone {
+    //        //            date = Date(timeIntervalSince1970: TimeInterval(dateUTC + timeZone))
+    //        //            if let date = date {
+    //        //                var calendar = Calendar.current
+    //        //                calendar.timeZone = TimeZone(secondsFromGMT: 0)!
+    //        //                hour = Int64(calendar.component(.hour, from: date))
+    //        //            }
+    //        //            guard let mutableHourlyWeatherSet = cityHourly?.hourly?.mutableCopy() as? NSMutableOrderedSet else { return }
+    //        //            mutableHourlyWeatherSet.add(self)
+    //        //            cityHourly?.hourly = mutableHourlyWeatherSet.copy() as? NSOrderedSet
+    //        //        }
+    //        //
+    //        //        if let timeZone = cityForecast?.timeZone { // just for forecast
+    //        //            date = Date(timeIntervalSince1970: TimeInterval(dateUTC + timeZone))
+    //        //            if let date = date {
+    //        //                var calendar = Calendar.current
+    //        //                calendar.timeZone = TimeZone(secondsFromGMT: 0)!
+    //        //                hour = Int64(calendar.component(.hour, from: date))
+    //        //                if hour == 12 || hour == 13 || hour == 14 {
+    //        //                    if let index = getIndex(forWeatherWith: date),
+    //        //                        index >= 0 {
+    //        //                        (self.cityForecast?.dayAndNightWeather?.object(at: index) as? DayAndNightWeather)?.dayWeather = self
+    //        //                    }
+    //        //                }
+    //        //                if hour == 0 || hour == 1 || hour == 2 {
+    //        //                    if let index = getIndex(forWeatherWith: date),
+    //        //                        index >= 0 {
+    //        //                        (self.cityForecast?.dayAndNightWeather?.object(at: index) as? DayAndNightWeather)?.nightWeather = self
+    //        //                    }
+    //        //                }
+    //        //            }
+    //        //        }
+    //        //
+    //            }
+    //
+    //    private func getIndex(forWeatherWith date: Date) -> Int? {
+    //        if let city = cityForecast,
+    //            let currentWeatherDate = city.currentWeather?.date {
+    //            let dateDifference = date.timeIntervalSince(currentWeatherDate)
+    //            var index: Int
+    //            switch dateDifference {
+    //            case 0...twentyFourHoursInSeconds - 1:
+    //                index = 0
+    //            case twentyFourHoursInSeconds...2 * twentyFourHoursInSeconds - 1:
+    //                index = 1
+    //            case 2 * twentyFourHoursInSeconds...3 * twentyFourHoursInSeconds - 1:
+    //                index = 2
+    //            case 3 * twentyFourHoursInSeconds...4 * twentyFourHoursInSeconds - 1:
+    //                index = 3
+    //            case 4 * twentyFourHoursInSeconds...5 * twentyFourHoursInSeconds - 1:
+    //                index = 4
+    //            case 5 * twentyFourHoursInSeconds...6 * twentyFourHoursInSeconds - 1:
+    //                index = 5
+    //            default:
+    //                index = -2
+    //            }
+    //            return index
+    //        }
+    //        return nil
+    //    }
     
     private let twentyFourHoursInSeconds: Double = 86400
     

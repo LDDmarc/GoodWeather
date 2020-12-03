@@ -2,7 +2,7 @@
 //  APOD+CoreDataProperties.swift
 //  GoodWeather
 //
-//  Created by Дарья Леонова on 19.09.2020.
+//  Created by Дарья Леонова on 01.12.2020.
 //  Copyright © 2020 Дарья Леонова. All rights reserved.
 //
 //
@@ -18,8 +18,12 @@ extension APOD {
     }
 
     @NSManaged public var date: Date?
+    @NSManaged public var descriptionText: String?
     @NSManaged public var imageURL: String?
     @NSManaged public var title: String?
-    @NSManaged public var descriptionText: String?
+
+}
+
+extension APOD : Identifiable {
 
 }

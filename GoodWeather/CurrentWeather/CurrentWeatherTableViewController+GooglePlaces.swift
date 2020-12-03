@@ -12,7 +12,17 @@ import GooglePlaces
 extension CurrentWeatherTableViewController: GMSAutocompleteViewControllerDelegate {
     
     func viewController(_ viewController: GMSAutocompleteViewController, didAutocompleteWith place: GMSPlace) {
-        dataManager.addNewCity(withName: place.name) { (error) in
+        
+        guard let placeName = place.name else { return }
+        let placeCoordinates = place.coordinate
+//        let placeLat = String(format: "%f", placeCoordinates.latitude)
+//        let placeLon = String(format: "%f", placeCoordinates.longitude)
+        let placeLat = "\(placeCoordinates.latitude)"
+        let placeLon = "\(placeCoordinates.longitude)"
+        let coordinates = Coordinates(lat: placeLat, lon: placeLon)
+        let cityInfo = CityInfo(name: placeName, coordinates: coordinates)
+        
+        dataManager.addNewCity(with: cityInfo) { (error) in
             if error == nil {
                 DispatchQueue.main.async { [weak self] in
                     self?.dismiss(animated: true, completion: nil)

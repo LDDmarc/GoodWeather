@@ -20,13 +20,41 @@ public class City: NSManagedObject {
         case lon
         case name
         case timeZone = "timezone"
+        case timeZoneOffset = "timezone_offset"
+        
+        case current
+        case hourly
+        case daily
+    }
+   
+    func update(with cityInfo: CityInfo) {
+        name = cityInfo.name
+        lat = cityInfo.coordinates.lat
+        lon = cityInfo.coordinates.lon
     }
     
-    func update(with json: JSON) {
-        lat = json[CodingKeys.coord.rawValue][CodingKeys.lat.rawValue].doubleValue
-        lon = json[CodingKeys.coord.rawValue][CodingKeys.lon.rawValue].doubleValue
-        name = json[CodingKeys.name.rawValue].stringValue
-        timeZone = json[CodingKeys.timeZone.rawValue].int64Value
-        currentWeather?.update(with: json)
+    func updateWeather(with json: JSON) {
+        timeZone = json[CodingKeys.timeZoneOffset.rawValue].int64Value
+        
+        currentWeather?.updateAsCurrentWeather(with: json[CodingKeys.current.rawValue])
+        
+        let dailyJson = json[CodingKeys.daily.rawValue]
+        if let dailyForecast = dailyForecast {
+            for num in 0..<7 {
+                if let dayWearher = dailyForecast[num] as? Weather {
+                    dayWearher.updateAsDailyForecast(with: dailyJson[num])
+                }
+            }
+        }
+        
+        let hourlyJson = json[CodingKeys.hourly.rawValue]
+        if let hourlyForecast = hourlyForecast {
+            for num in 0..<23 {
+                if let hourWearher = hourlyForecast[num] as? Weather {
+                    hourWearher.updateAsHourlyForecast(with: hourlyJson[num])
+                }
+            }
+        }
+        
     }
 }

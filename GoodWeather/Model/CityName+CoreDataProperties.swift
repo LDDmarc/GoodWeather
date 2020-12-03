@@ -2,7 +2,7 @@
 //  CityName+CoreDataProperties.swift
 //  GoodWeather
 //
-//  Created by Дарья Леонова on 22.08.2020.
+//  Created by Дарья Леонова on 03.12.2020.
 //  Copyright © 2020 Дарья Леонова. All rights reserved.
 //
 //
@@ -18,5 +18,9 @@ extension CityName {
     }
 
     @NSManaged public var name: String?
+
+}
+
+extension CityName : Identifiable {
 
 }

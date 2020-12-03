@@ -21,7 +21,7 @@ class ForecastPresenter: ForecastPresenterProtocol {
     func setUI() {
         view.date = weather.date
         view.iconName = weather.icon
-        view.precipitation = weather.humidity
+//        view.precipitation = weather.humidity
         view.temperature = weather.temperature
         if let windDirection = weather.windDirection {
             view.windInfo = Wind(windSpeed: weather.windSpeed, windDirection: windDirection)

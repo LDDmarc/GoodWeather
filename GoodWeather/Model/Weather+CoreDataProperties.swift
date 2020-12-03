@@ -2,7 +2,7 @@
 //  Weather+CoreDataProperties.swift
 //  GoodWeather
 //
-//  Created by Дарья Леонова on 28.10.2020.
+//  Created by Дарья Леонова on 03.12.2020.
 //  Copyright © 2020 Дарья Леонова. All rights reserved.
 //
 //
@@ -17,18 +17,13 @@ extension Weather {
         return NSFetchRequest<Weather>(entityName: "Weather")
     }
 
-    @NSManaged public var clouds: Double
     @NSManaged public var date: Date?
     @NSManaged public var dateUTC: Int64
     @NSManaged public var descrip: String?
     @NSManaged public var feelsLike: Double
     @NSManaged public var hour: Int64
-    @NSManaged public var humidity: Double
     @NSManaged public var icon: String?
-    @NSManaged public var main: String?
-    @NSManaged public var pressure: Double
-    @NSManaged public var rain: Double
-    @NSManaged public var snow: Double
+    @NSManaged public var probabilityOfPrecipitation: Double
     @NSManaged public var sunrise: Date?
     @NSManaged public var sunset: Date?
     @NSManaged public var temperature: Double
@@ -37,10 +32,11 @@ extension Weather {
     @NSManaged public var windDegree: Double
     @NSManaged public var windDirection: String?
     @NSManaged public var windSpeed: Double
-    @NSManaged public var winSpeed: Double
+    @NSManaged public var dayTemperature: Double
+    @NSManaged public var nightTemperature: Double
     @NSManaged public var city: City?
-    @NSManaged public var cityForecast: City?
-    @NSManaged public var cityHourly: City?
+    @NSManaged public var cityDailyForecast: City?
+    @NSManaged public var cityHourlyForecast: City?
 
 }
 
