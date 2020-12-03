@@ -22,11 +22,13 @@
         <attribute name="clouds" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="dateUTC" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="dayIcon" optional="YES" attributeType="String"/>
         <attribute name="dayTemperature" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="descrip" optional="YES" attributeType="String"/>
         <attribute name="feelsLike" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="hour" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="icon" optional="YES" attributeType="String"/>
+        <attribute name="nightIcon" optional="YES" attributeType="String"/>
         <attribute name="nightTemperature" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="probabilityOfPrecipitation" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <attribute name="sunrise" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
@@ -45,6 +47,6 @@
         <element name="APOD" positionX="-580.73046875" positionY="-186.2421875" width="128" height="103"/>
         <element name="City" positionX="-284.0859375" positionY="-56.54296875" width="128" height="148"/>
         <element name="CityName" positionX="-410.1875" positionY="-180.70703125" width="128" height="58"/>
-        <element name="Weather" positionX="-18.640625" positionY="-123.1328125" width="128" height="358"/>
+        <element name="Weather" positionX="-18.640625" positionY="-123.1328125" width="128" height="388"/>
     </elements>
 </model>

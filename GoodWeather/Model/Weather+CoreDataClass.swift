@@ -83,7 +83,9 @@ public class Weather: NSManagedObject {
         windDegree = json[CodingKeys.wind_degree.rawValue].doubleValue
         windDirection = getWindDirection(by: windDegree)
         
-        icon = json[CodingKeys.weather.rawValue][0][CodingKeys.icon.rawValue].stringValue
+        let iconName = json[CodingKeys.weather.rawValue][0][CodingKeys.icon.rawValue].stringValue
+        dayIcon = iconName
+        nightIcon = iconName.replacingOccurrences(of: "d", with: "n")
     }
     
     func updateAsHourlyForecast(with json: JSON) {
