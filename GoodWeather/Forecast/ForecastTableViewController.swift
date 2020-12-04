@@ -70,9 +70,14 @@ class ForecastTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
     
-        tableView.register(UINib(nibName: String(describing: DetailWeatherTableViewCell.self), bundle: nil), forCellReuseIdentifier: String(describing: DetailWeatherTableViewCell.self))
-        tableView.register(UINib(nibName: String(describing: ForecastTableViewCell.self), bundle: nil), forCellReuseIdentifier: String(describing: ForecastTableViewCell.self))
-        tableView.register(UINib(nibName: String(describing: APODTableViewCell.self), bundle: nil), forCellReuseIdentifier: String(describing: APODTableViewCell.self))
+        tableView.register(UINib(nibName: String(describing: DetailWeatherTableViewCell.self), bundle: nil),
+                           forCellReuseIdentifier: String(describing: DetailWeatherTableViewCell.self))
+        tableView.register(UINib(nibName: String(describing: HourlyForecastTableViewCell.self), bundle: nil),
+                           forCellReuseIdentifier: String(describing: HourlyForecastTableViewCell.self))
+        tableView.register(UINib(nibName: String(describing: ForecastTableViewCell.self), bundle: nil),
+                           forCellReuseIdentifier: String(describing: ForecastTableViewCell.self))
+        tableView.register(UINib(nibName: String(describing: APODTableViewCell.self), bundle: nil),
+                           forCellReuseIdentifier: String(describing: APODTableViewCell.self))
         tableView.tableFooterView = UIView()
         tableView.allowsSelection = false
         title = city.name
@@ -81,18 +86,30 @@ class ForecastTableViewController: UITableViewController {
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 3
+        return 4
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if section == 0 {
+        
+        switch section {
+        case 0:
             return weatherFetchedResultsController.sections?[0].numberOfObjects ?? 0
-        } else if section == 1 {
+        case 1, 2:
             return 1
-        } else if section == 2 {
+        case 3:
             return apodFetchedResultsController.sections?[0].numberOfObjects ?? 0
+        default:
+            return 0
         }
-        return 0
+//
+//        if section == 0 {
+//            return weatherFetchedResultsController.sections?[0].numberOfObjects ?? 0
+//        } else if section == 1 {
+//            return 1
+//        } else if section == 2 {
+//            return apodFetchedResultsController.sections?[0].numberOfObjects ?? 0
+//        }
+//        return 0
     }
 
 
@@ -105,6 +122,13 @@ class ForecastTableViewController: UITableViewController {
             cell.weather = weather
             return cell
         } else if indexPath.section == 1 {
+            guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: HourlyForecastTableViewCell.self), for: indexPath) as? HourlyForecastTableViewCell else {
+                return UITableViewCell()
+            }
+            cell.city = city
+            cell.dataManager = dataManager
+            return cell
+        } else if indexPath.section == 2 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: ForecastTableViewCell.self), for: indexPath) as? ForecastTableViewCell else {
                 return UITableViewCell()
             }
@@ -123,7 +147,19 @@ class ForecastTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return indexPath.section == 2 ? UITableView.automaticDimension : 230.0
+        switch indexPath.section {
+        case 0:
+            return 230.0
+        case 1:
+            return HourlyForecastTableViewCell.cellHeight
+        case 2:
+            return 230.0
+        case 3:
+            return UITableView.automaticDimension
+        default:
+            return 0
+        }
+
     }
     
 }

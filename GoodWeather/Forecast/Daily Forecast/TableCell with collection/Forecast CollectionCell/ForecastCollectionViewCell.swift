@@ -23,7 +23,7 @@ class ForecastCollectionViewCell: UICollectionViewCell {
         didSet {
             guard let temperature = temperature else { return }
             temperatureLabel.text = "\(Int(round(temperature)))°"
-            self.backgroundColor = getColor(for: temperature)
+            backgroundColor = getColor(for: temperature)
         }
     }
     var precipitation: Double? {
@@ -69,9 +69,9 @@ protocol ForecastPresenterProtocol: class {
     func setupUI(forDay: Bool)
 }
 
-extension ForecastCollectionViewCell {
+extension UICollectionViewCell {
     
-    func getColor2(for temperature: Double) -> UIColor {
+    func getColor(for temperature: Double) -> UIColor {
         var firstColor: UIColor
         var secondColor: UIColor
         var index: Int
@@ -104,20 +104,25 @@ extension ForecastCollectionViewCell {
         
         return rgbPalette[index]
     }
-    
-    func getColor(for temperature: Double) -> UIColor {
-        
-        var index: Int = Int(temperature + 40)
-        if index >= 80 {
-            index = 79
-        }
-//        print(index)
-        let gradient = DynamicGradient(colors: [UIColor(hexString: "#7953EB"),
-                                                UIColor(hexString: "#5379eb"),
-                                                UIColor(hexString: "#b817e7"),
-                                                UIColor(hexString: "#eb7953")])
-        let rgbPalette = gradient.colorPalette(amount: 80)
+}
 
-        return rgbPalette[index]
-    }
+extension ForecastCollectionViewCell {
+    
+    
+    
+//    func getColor(for temperature: Double) -> UIColor {
+//        
+//        var index: Int = Int(temperature + 40)
+//        if index >= 80 {
+//            index = 79
+//        }
+////        print(index)
+//        let gradient = DynamicGradient(colors: [UIColor(hexString: "#7953EB"),
+//                                                UIColor(hexString: "#5379eb"),
+//                                                UIColor(hexString: "#b817e7"),
+//                                                UIColor(hexString: "#eb7953")])
+//        let rgbPalette = gradient.colorPalette(amount: 80)
+//
+//        return rgbPalette[index]
+//    }
 }

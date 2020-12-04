@@ -10,6 +10,14 @@ import Foundation
 
 extension DateFormatter {
     
+    static func hourDateFormatter() -> DateFormatter {
+        let dateFormatter = DateFormatter()
+        dateFormatter.locale = Locale(identifier: "ru_RU")
+        dateFormatter.timeZone = TimeZone(identifier: "UTC")
+        dateFormatter.dateFormat = "h"
+        return dateFormatter
+    }
+    
     static func timeDateFormatter() -> DateFormatter {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "ru_RU")

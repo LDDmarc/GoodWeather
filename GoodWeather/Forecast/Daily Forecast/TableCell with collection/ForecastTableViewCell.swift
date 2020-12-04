@@ -11,7 +11,9 @@ import CoreData
 
 class ForecastTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
-    @IBOutlet weak var forecastCollectionView: UICollectionView!
+    static let cellHeight: CGFloat = ForecastCollectionViewCell.cellSize.height + 20 + 20
+    
+    @IBOutlet private weak var forecastCollectionView: UICollectionView!
     
     var dataManager: DataManager!
     var city: City!

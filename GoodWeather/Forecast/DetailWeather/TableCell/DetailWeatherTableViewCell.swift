@@ -10,6 +10,8 @@ import UIKit
 
 class DetailWeatherTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    
+    
     @IBOutlet weak var detailWeatherCollectionView: UICollectionView!
     
     var weather: Weather!
@@ -38,7 +40,7 @@ class DetailWeatherTableViewCell: UITableViewCell, UICollectionViewDelegate, UIC
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = floor(contentView.bounds.width - contentView.layoutMargins.left - contentView.layoutMargins.right)
-        let height = 165.0
+        let height = 173.0
         return CGSize(width: CGFloat(width), height: CGFloat(height))
     }
 }
