@@ -80,6 +80,10 @@ class ForecastTableViewController: UITableViewController {
                            forCellReuseIdentifier: String(describing: APODTableViewCell.self))
         tableView.tableFooterView = UIView()
         tableView.allowsSelection = false
+        
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 90.0
+        
         title = city.name
     }
     
@@ -147,15 +151,18 @@ class ForecastTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let offSet: CGFloat = (view.layoutMargins.top + view.layoutMargins.bottom) / 2
         switch indexPath.section {
+        case 0:
+            return UITableView.automaticDimension
         case 1:
             return HourlyForecastTableViewCell.cellHeight + offSet
         case 2:
             return ForecastTableViewCell.cellHeight + offSet
-        case 0, 3:
+        case 3:
             return UITableView.automaticDimension
         default:
             return 0
         }
+     
     }
     
 }
