@@ -66,6 +66,12 @@ class DetailCurrentWeatherCollectionViewCell: UICollectionViewCell {
         addShadow()
     }
     
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        setBackground()
+    }
+    
     func setBackground() {
         let gradientLayer = CAGradientLayer()
         gradientLayer.frame = self.contentView.bounds
@@ -76,7 +82,6 @@ class DetailCurrentWeatherCollectionViewCell: UICollectionViewCell {
         gradientLayers?.forEach { $0.removeFromSuperlayer() }
         contentView.layer.insertSublayer(gradientLayer, at: 0)
     }
-    
 }
 
 protocol DetailCurrentWeatherPresenterProtocol: class {

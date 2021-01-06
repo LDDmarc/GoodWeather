@@ -25,7 +25,7 @@ class HourlyForecastCollectionViewCell: UICollectionViewCell {
         didSet {
             guard let temperature = temperature else { return }
             temperatureLabel.text = "\(Int(round(temperature)))°"
-            backgroundColor = getColor(for: temperature)
+            setBackground()
         }
     }
     
@@ -69,6 +69,16 @@ class HourlyForecastCollectionViewCell: UICollectionViewCell {
         addShadow()
     }
 
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        setBackground()
+    }
+    
+    private func setBackground() {
+        backgroundColor = getColor(for: temperature ?? 0)
+    }
+    
 }
 
 protocol HourlyForecastPresenterProtocol: class {
