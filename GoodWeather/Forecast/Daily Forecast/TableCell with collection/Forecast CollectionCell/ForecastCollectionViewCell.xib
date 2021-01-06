@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17506" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17505"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -17,6 +17,9 @@
                 <rect key="frame" x="0.0" y="0.0" width="143" height="198"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
+                    <imageView hidden="YES" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="night_sky" translatesAutoresizingMaskIntoConstraints="NO" id="JQk-QZ-8Uo">
+                        <rect key="frame" x="0.0" y="0.0" width="143" height="198"/>
+                    </imageView>
                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="lFF-2D-S8P">
                         <rect key="frame" x="93" y="0.0" width="50" height="50"/>
                         <constraints>
@@ -77,11 +80,15 @@
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
+                <constraint firstItem="JQk-QZ-8Uo" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="01a-8K-b2W"/>
+                <constraint firstAttribute="bottom" secondItem="JQk-QZ-8Uo" secondAttribute="bottom" id="2e9-xu-bFV"/>
                 <constraint firstItem="Jqx-YV-IcJ" firstAttribute="top" secondItem="3yG-fx-92t" secondAttribute="bottom" constant="7" id="2x6-0b-no6"/>
                 <constraint firstItem="fLm-tz-r9U" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="16" id="62C-2j-C14"/>
+                <constraint firstItem="JQk-QZ-8Uo" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="7Tt-U6-iSO"/>
                 <constraint firstItem="3yG-fx-92t" firstAttribute="centerX" secondItem="Jqx-YV-IcJ" secondAttribute="centerX" id="9Pe-z6-LPe"/>
                 <constraint firstItem="Jqx-YV-IcJ" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="9ez-W3-43h"/>
                 <constraint firstAttribute="trailing" secondItem="HRi-dV-JeM" secondAttribute="trailing" constant="8" id="9uE-zN-Lht"/>
+                <constraint firstAttribute="trailing" secondItem="JQk-QZ-8Uo" secondAttribute="trailing" id="AeO-yI-YNp"/>
                 <constraint firstItem="0Sg-Zs-2p7" firstAttribute="centerX" secondItem="HRi-dV-JeM" secondAttribute="centerX" id="DVA-FA-Tm4"/>
                 <constraint firstAttribute="trailing" secondItem="lFF-2D-S8P" secondAttribute="trailing" id="Dy4-ze-3D7"/>
                 <constraint firstAttribute="bottom" secondItem="Jqx-YV-IcJ" secondAttribute="bottom" constant="19" id="Jbw-cS-bdw"/>
@@ -97,6 +104,7 @@
             <connections>
                 <outlet property="dateLabel" destination="fLm-tz-r9U" id="eW9-v7-Vfr"/>
                 <outlet property="iconImageView" destination="lFF-2D-S8P" id="eJO-tI-A0R"/>
+                <outlet property="nightBackgroundImageView" destination="JQk-QZ-8Uo" id="1H6-BX-EyC"/>
                 <outlet property="precipitationLabel" destination="Jqx-YV-IcJ" id="h2V-QZ-fYM"/>
                 <outlet property="temperatureLabel" destination="cF2-fK-3lD" id="sPp-Uj-ZN3"/>
                 <outlet property="windLabel" destination="HRi-dV-JeM" id="vA5-E9-gRB"/>
@@ -105,6 +113,7 @@
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="night_sky" width="143" height="198"/>
         <image name="umbrella" catalog="system" width="124" height="128"/>
         <image name="wind" catalog="system" width="128" height="101"/>
     </resources>

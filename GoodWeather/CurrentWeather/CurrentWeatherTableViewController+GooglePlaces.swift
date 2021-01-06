@@ -15,8 +15,6 @@ extension CurrentWeatherTableViewController: GMSAutocompleteViewControllerDelega
         
         guard let placeName = place.name else { return }
         let placeCoordinates = place.coordinate
-//        let placeLat = String(format: "%f", placeCoordinates.latitude)
-//        let placeLon = String(format: "%f", placeCoordinates.longitude)
         let placeLat = "\(placeCoordinates.latitude)"
         let placeLon = "\(placeCoordinates.longitude)"
         let coordinates = Coordinates(lat: placeLat, lon: placeLon)

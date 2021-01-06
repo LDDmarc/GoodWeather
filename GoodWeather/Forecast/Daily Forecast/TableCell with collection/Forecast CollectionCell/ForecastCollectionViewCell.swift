@@ -19,6 +19,8 @@ class ForecastCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak private var windLabel: UILabel!
     @IBOutlet weak private var iconImageView: UIImageView!
     
+    @IBOutlet weak private var nightBackgroundImageView: UIImageView!
+    
     var temperature: Double? {
         didSet {
             guard let temperature = temperature else { return }
@@ -53,12 +55,21 @@ class ForecastCollectionViewCell: UICollectionViewCell {
             dateLabel.text = "\(DateFormatter.dateDateFormatter().string(from: date))"
         }
     }
+    
+    var isNight: Bool = false {
+        didSet {
+            nightBackgroundImageView.isHidden = !isNight
+        }
+    }
 
     override func awakeFromNib() {
         super.awakeFromNib()
         
         self.layer.cornerRadius = 13.0
         self.layer.cornerCurve = .continuous
+        
+        nightBackgroundImageView.layer.cornerRadius = 13.0
+        nightBackgroundImageView.layer.cornerCurve = .continuous
         
         addShadow()
     }

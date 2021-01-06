@@ -21,6 +21,7 @@ class ForecastPresenter: ForecastPresenterProtocol {
     func setupUI(forDay: Bool) {
         view.date = weather.date
         view.iconName = forDay ? weather.dayIcon : weather.nightIcon
+        view.isNight = !forDay
         view.precipitation = weather.probabilityOfPrecipitation
         view.temperature = forDay ? weather.dayTemperature : weather.nightTemperature
         if let windDirection = weather.windDirection {
