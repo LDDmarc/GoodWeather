@@ -21,7 +21,9 @@ class Constants {
     }
     
     struct CollectionViewLayout {
-        static let minimumLineSoacing: CGFloat = 16.0
+        static let minimumLineSpacing: CGFloat = 16.0
+        static let verticalOffSet: CGFloat = UIScreen.main.bounds.width < 350.0 ? 10.0 : 16.0
+        static let horizontalOffSet: CGFloat = UIScreen.main.bounds.width < 350.0 ? 10.0 : 20.0
     }
     
     

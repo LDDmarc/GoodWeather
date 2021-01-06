@@ -11,7 +11,7 @@ import CoreData
 
 class ForecastTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
-    static let cellHeight: CGFloat = ForecastCollectionViewCell.cellSize.height
+    static let cellHeight: CGFloat = ForecastCollectionViewCell.cellSize.height + 2 * Constants.CollectionViewLayout.verticalOffSet
     
     @IBOutlet private weak var forecastCollectionView: UICollectionView!
     
@@ -48,6 +48,11 @@ class ForecastTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollec
         forecastCollectionView.dataSource = self
         forecastCollectionView.register(UINib(nibName: String(describing: ForecastCollectionViewCell.self), bundle: nil),
                                         forCellWithReuseIdentifier: String(describing: ForecastCollectionViewCell.self))
+        
+        forecastCollectionView.contentInset = UIEdgeInsets(top: Constants.CollectionViewLayout.verticalOffSet,
+                                                                left: Constants.CollectionViewLayout.horizontalOffSet,
+                                                                bottom: Constants.CollectionViewLayout.verticalOffSet,
+                                                                right: Constants.CollectionViewLayout.horizontalOffSet)
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -86,10 +91,22 @@ class ForecastTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollec
         })
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return Constants.CollectionViewLayout.verticalOffSet
+    }
+    
 }
 
 extension ForecastTableViewCell: NSFetchedResultsControllerDelegate {
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         forecastCollectionView.reloadData()
+    }
+}
+
+//MARK: - CellWithCollectionView -
+extension ForecastTableViewCell: CellWithCollectionView {
+    
+    func invalidateLayout() {
+        forecastCollectionView.collectionViewLayout.invalidateLayout()
     }
 }

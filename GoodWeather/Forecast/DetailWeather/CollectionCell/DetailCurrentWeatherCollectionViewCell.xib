@@ -32,7 +32,7 @@
                     <stackView opaque="NO" contentMode="scaleToFill" distribution="equalSpacing" spacing="22" translatesAutoresizingMaskIntoConstraints="NO" id="Asv-OZ-U2T">
                         <rect key="frame" x="25" y="99" width="313" height="61"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="zVL-9G-l48">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="equalSpacing" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="zVL-9G-l48">
                                 <rect key="frame" x="0.0" y="0.0" width="44" height="61"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="cloud" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="6NE-Z0-9nJ">
@@ -54,21 +54,21 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="dEP-wN-EBL">
-                                <rect key="frame" x="78" y="0.0" width="75" height="61"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="dEP-wN-EBL">
+                                <rect key="frame" x="81.5" y="0.0" width="65" height="61"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="wind" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="uRj-Lz-GDX">
-                                        <rect key="frame" x="0.0" y="2" width="75" height="32"/>
+                                        <rect key="frame" x="0.0" y="2" width="65" height="32"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="35" id="7YV-Mg-pdc"/>
-                                            <constraint firstAttribute="width" constant="75" id="zbq-EA-NnN"/>
+                                            <constraint firstAttribute="width" constant="65" id="zbq-EA-NnN"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ссз 12 м/с" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="eg6-Y1-VLH">
-                                        <rect key="frame" x="0.0" y="43" width="75" height="18"/>
+                                        <rect key="frame" x="0.0" y="43" width="65" height="18"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="75" id="PqN-lF-aPK"/>
+                                            <constraint firstAttribute="width" constant="65" id="PqN-lF-aPK"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -76,8 +76,8 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="lKQ-3b-LuQ">
-                                <rect key="frame" x="187" y="0.0" width="46" height="61"/>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="lKQ-3b-LuQ">
+                                <rect key="frame" x="183.5" y="0.0" width="46" height="61"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sunrise" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="RAG-7M-kSW">
                                         <rect key="frame" x="0.0" y="-1.5" width="46" height="34.5"/>
@@ -98,7 +98,7 @@
                                     </label>
                                 </subviews>
                             </stackView>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="sKh-7W-lec">
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" alignment="center" spacing="8" translatesAutoresizingMaskIntoConstraints="NO" id="sKh-7W-lec">
                                 <rect key="frame" x="267" y="0.0" width="46" height="61"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="sunset" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="rlw-1F-stg">

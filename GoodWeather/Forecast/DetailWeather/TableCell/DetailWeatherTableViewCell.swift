@@ -18,8 +18,7 @@ class DetailWeatherTableViewCell: UITableViewCell, UICollectionViewDelegate, UIC
     
     private lazy var cellSize: CellSize = {
         let landscapeCellHeight = (contentView.bounds.width/3 > 165.0) ? contentView.bounds.width/3 : 165.0
-        let offSet: CGFloat = UIScreen.main.bounds.width < 350.0 ? 8.0 : 20.0
-        let cell_size = CellSize(portraitCellHeight: 165.0, landscapeCellHeight: landscapeCellHeight, offSet: offSet)
+        let cell_size = CellSize(portraitCellHeight: 165.0, landscapeCellHeight: landscapeCellHeight, offSet: Constants.CollectionViewLayout.verticalOffSet)
         return cell_size
     }()
     
@@ -43,8 +42,7 @@ class DetailWeatherTableViewCell: UITableViewCell, UICollectionViewDelegate, UIC
                                                                 left: cellSize.offSet,
                                                                 bottom: cellSize.offSet,
                                                                 right: cellSize.offSet)
-//        detailWeatherCollectionView
-        
+
         heightConstraint?.constant = cellSize.portraitCellHeight + 2 * cellSize.offSet
     }
     

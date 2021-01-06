@@ -81,23 +81,24 @@ class ForecastTableViewController: UITableViewController {
         tableView.tableFooterView = UIView()
         tableView.allowsSelection = false
         
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.estimatedRowHeight = 90.0
-        
+        tableView.separatorInset = UIEdgeInsets(top: 0,
+                                                left: Constants.CollectionViewLayout.horizontalOffSet,
+                                                bottom: 0,
+                                                right: Constants.CollectionViewLayout.horizontalOffSet)
+   
         title = city.name
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         
-        let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? CellWithCollectionView
-        cell?.invalidateLayout()
+        tableView.visibleCells.forEach { ($0 as? CellWithCollectionView)?.invalidateLayout() }
     }
     
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 4
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -144,19 +145,19 @@ class ForecastTableViewController: UITableViewController {
             let apod = apodFetchedResultsController.object(at: IndexPath(row: indexPath.row, section: 0))
             cell.delegate = self
             cell.configure(with: apod)
+            cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: .greatestFiniteMagnitude)
             return cell
         }
     }
 
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        let offSet: CGFloat = (view.layoutMargins.top + view.layoutMargins.bottom) / 2
         switch indexPath.section {
         case 0:
             return UITableView.automaticDimension
         case 1:
-            return HourlyForecastTableViewCell.cellHeight + offSet
+            return HourlyForecastTableViewCell.cellHeight
         case 2:
-            return ForecastTableViewCell.cellHeight + offSet
+            return ForecastTableViewCell.cellHeight
         case 3:
             return UITableView.automaticDimension
         default:

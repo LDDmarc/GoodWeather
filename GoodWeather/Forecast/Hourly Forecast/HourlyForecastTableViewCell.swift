@@ -11,7 +11,7 @@ import CoreData
 
 class HourlyForecastTableViewCell: UITableViewCell {
     
-    static let cellHeight: CGFloat = HourlyForecastCollectionViewCell.cellSize.height
+    static let cellHeight: CGFloat = HourlyForecastCollectionViewCell.cellSize.height + 2 * Constants.CollectionViewLayout.verticalOffSet
     
     @IBOutlet private weak var hourlyForecastCollectionView: UICollectionView!
     
@@ -49,6 +49,11 @@ class HourlyForecastTableViewCell: UITableViewCell {
         hourlyForecastCollectionView.dataSource = self
         hourlyForecastCollectionView.register(UINib(nibName: String(describing: HourlyForecastCollectionViewCell.self), bundle: nil),
                                         forCellWithReuseIdentifier: String(describing: HourlyForecastCollectionViewCell.self))
+        
+        hourlyForecastCollectionView.contentInset = UIEdgeInsets(top: Constants.CollectionViewLayout.verticalOffSet,
+                                                                 left: Constants.CollectionViewLayout.horizontalOffSet,
+                                                                 bottom: Constants.CollectionViewLayout.verticalOffSet,
+                                                                 right: Constants.CollectionViewLayout.horizontalOffSet)
     }
 }
 
@@ -73,8 +78,19 @@ extension HourlyForecastTableViewCell: UICollectionViewDelegate, UICollectionVie
         return HourlyForecastCollectionViewCell.cellSize
     }
     
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        return Constants.CollectionViewLayout.verticalOffSet
+    }
 }
 
 extension HourlyForecastTableViewCell: NSFetchedResultsControllerDelegate {
     
+}
+
+//MARK: - CellWithCollectionView -
+extension HourlyForecastTableViewCell: CellWithCollectionView {
+    
+    func invalidateLayout() {
+        hourlyForecastCollectionView.collectionViewLayout.invalidateLayout()
+    }
 }

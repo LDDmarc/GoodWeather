@@ -44,6 +44,7 @@ class CurrentWeatherTableViewController: UITableViewController {
         
         navigationController?.navigationBar.prefersLargeTitles = true
         title = "Погода"
+        
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(searchForNewCity))
         
         detectFirstLaunch()
