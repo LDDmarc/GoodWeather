@@ -82,11 +82,18 @@ class ForecastTableViewController: UITableViewController {
         tableView.allowsSelection = false
         title = city.name
     }
-
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        let cell = tableView.cellForRow(at: IndexPath(row: 0, section: 0)) as? CellWithCollectionView
+        cell?.invalidateLayout()
+    }
+    
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return 4
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -101,15 +108,6 @@ class ForecastTableViewController: UITableViewController {
         default:
             return 0
         }
-//
-//        if section == 0 {
-//            return weatherFetchedResultsController.sections?[0].numberOfObjects ?? 0
-//        } else if section == 1 {
-//            return 1
-//        } else if section == 2 {
-//            return apodFetchedResultsController.sections?[0].numberOfObjects ?? 0
-//        }
-//        return 0
     }
 
 
@@ -145,36 +143,40 @@ class ForecastTableViewController: UITableViewController {
             return cell
         }
     }
-    
+
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let offSet: CGFloat = (view.layoutMargins.top + view.layoutMargins.bottom) / 2
         switch indexPath.section {
-        case 0:
-            return 230.0
         case 1:
-            return HourlyForecastTableViewCell.cellHeight
+            return HourlyForecastTableViewCell.cellHeight + offSet
         case 2:
-            return 230.0
-        case 3:
+            return ForecastTableViewCell.cellHeight + offSet
+        case 0, 3:
             return UITableView.automaticDimension
         default:
             return 0
         }
-
     }
     
 }
 
+//MARK: - NSFetchedResultsControllerDelegate -
 extension ForecastTableViewController: NSFetchedResultsControllerDelegate {
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.reloadData()
     }
 }
 
+//MARK: - APODTableViewCellDelegate -
 extension ForecastTableViewController: APODTableViewCellDelegate {
-    
     func apodTableViewCell(_ apodTableViewCell: APODTableViewCell, setHeight height: CGFloat) {
         APODTableViewCellHeight = height
         tableView.beginUpdates()
         tableView.endUpdates()
     }
+}
+
+
+protocol CellWithCollectionView: class {
+    func invalidateLayout()
 }

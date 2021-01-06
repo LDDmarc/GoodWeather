@@ -11,7 +11,7 @@ import CoreData
 
 class HourlyForecastTableViewCell: UITableViewCell {
     
-    static let cellHeight: CGFloat = HourlyForecastCollectionViewCell.cellSize.height + 20 + 20
+    static let cellHeight: CGFloat = HourlyForecastCollectionViewCell.cellSize.height
     
     @IBOutlet private weak var hourlyForecastCollectionView: UICollectionView!
     
@@ -49,14 +49,6 @@ class HourlyForecastTableViewCell: UITableViewCell {
         hourlyForecastCollectionView.dataSource = self
         hourlyForecastCollectionView.register(UINib(nibName: String(describing: HourlyForecastCollectionViewCell.self), bundle: nil),
                                         forCellWithReuseIdentifier: String(describing: HourlyForecastCollectionViewCell.self))
-        let layout = UICollectionViewFlowLayout()
-        layout.minimumLineSpacing = 16
-        layout.minimumInteritemSpacing = 6
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        layout.scrollDirection = .horizontal
-
-        hourlyForecastCollectionView.collectionViewLayout = layout
-        hourlyForecastCollectionView.showsHorizontalScrollIndicator = false
     }
 }
 

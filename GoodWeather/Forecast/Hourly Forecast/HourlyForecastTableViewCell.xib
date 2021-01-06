@@ -18,10 +18,10 @@
                 <rect key="frame" x="0.0" y="0.0" width="337" height="100"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="5ic-ii-OfA">
-                        <rect key="frame" x="20" y="11" width="297" height="78"/>
+                    <collectionView multipleTouchEnabled="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="5ic-ii-OfA">
+                        <rect key="frame" x="0.0" y="0.0" width="337" height="100"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="iVM-2G-Jfi">
+                        <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="16" minimumInteritemSpacing="6" sectionInsetReference="layoutMargins" id="iVM-2G-Jfi">
                             <size key="itemSize" width="128" height="128"/>
                             <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -30,10 +30,10 @@
                     </collectionView>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailingMargin" secondItem="5ic-ii-OfA" secondAttribute="trailing" id="LDh-d3-4Kc"/>
-                    <constraint firstAttribute="bottomMargin" secondItem="5ic-ii-OfA" secondAttribute="bottom" id="Lze-Eu-rup"/>
-                    <constraint firstItem="5ic-ii-OfA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="cin-9G-P2z"/>
-                    <constraint firstItem="5ic-ii-OfA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="rtc-N4-k1I"/>
+                    <constraint firstItem="5ic-ii-OfA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" id="6OW-N9-1QM"/>
+                    <constraint firstItem="5ic-ii-OfA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="JGo-Wa-qx0"/>
+                    <constraint firstAttribute="bottom" secondItem="5ic-ii-OfA" secondAttribute="bottom" id="qvl-Pa-zzV"/>
+                    <constraint firstAttribute="trailing" secondItem="5ic-ii-OfA" secondAttribute="trailing" id="yPw-aW-6MJ"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>

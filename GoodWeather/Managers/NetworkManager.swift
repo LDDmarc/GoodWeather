@@ -60,8 +60,6 @@ class NetworkManager {
         
         components.queryItems = queryItems
     
-        print(components.url?.absoluteString)
-        
         return components.url
     }
 }

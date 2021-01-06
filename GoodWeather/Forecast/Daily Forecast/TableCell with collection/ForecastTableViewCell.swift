@@ -11,7 +11,7 @@ import CoreData
 
 class ForecastTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
-    static let cellHeight: CGFloat = ForecastCollectionViewCell.cellSize.height + 20 + 20
+    static let cellHeight: CGFloat = ForecastCollectionViewCell.cellSize.height
     
     @IBOutlet private weak var forecastCollectionView: UICollectionView!
     
@@ -48,15 +48,6 @@ class ForecastTableViewCell: UITableViewCell, UICollectionViewDelegate, UICollec
         forecastCollectionView.dataSource = self
         forecastCollectionView.register(UINib(nibName: String(describing: ForecastCollectionViewCell.self), bundle: nil),
                                         forCellWithReuseIdentifier: String(describing: ForecastCollectionViewCell.self))
-
-        let layout = UICollectionViewFlowLayout()
-        layout.minimumLineSpacing = 16
-        layout.minimumInteritemSpacing = 6
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
-        layout.scrollDirection = .horizontal
-
-        forecastCollectionView.collectionViewLayout = layout
-        forecastCollectionView.showsHorizontalScrollIndicator = false
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

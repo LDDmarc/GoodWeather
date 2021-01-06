@@ -65,6 +65,8 @@ class HourlyForecastCollectionViewCell: UICollectionViewCell {
         
         self.layer.cornerRadius = 13.0
         self.layer.cornerCurve = .continuous
+        
+        addShadow()
     }
 
 }

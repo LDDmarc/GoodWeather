@@ -67,11 +67,8 @@
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" misplaced="YES" text="25" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cF2-fK-3lD">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="1000" verticalHuggingPriority="1000" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" ambiguous="YES" text="25" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cF2-fK-3lD">
                         <rect key="frame" x="36" y="59" width="70" height="50"/>
-                        <constraints>
-                            <constraint firstAttribute="width" constant="70" id="crq-bc-0hW"/>
-                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="42"/>
                         <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="highlightedColor" red="0.53723531960000004" green="0.40787673000000002" blue="0.67834830280000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
@@ -88,7 +85,7 @@
                 <constraint firstItem="0Sg-Zs-2p7" firstAttribute="centerX" secondItem="HRi-dV-JeM" secondAttribute="centerX" id="DVA-FA-Tm4"/>
                 <constraint firstAttribute="trailing" secondItem="lFF-2D-S8P" secondAttribute="trailing" id="Dy4-ze-3D7"/>
                 <constraint firstAttribute="bottom" secondItem="Jqx-YV-IcJ" secondAttribute="bottom" constant="19" id="Jbw-cS-bdw"/>
-                <constraint firstAttribute="trailing" secondItem="cF2-fK-3lD" secondAttribute="trailing" constant="30" id="NkL-T9-vd5"/>
+                <constraint firstAttribute="trailing" secondItem="cF2-fK-3lD" secondAttribute="trailing" priority="750" constant="30" id="NkL-T9-vd5"/>
                 <constraint firstItem="HRi-dV-JeM" firstAttribute="top" secondItem="0Sg-Zs-2p7" secondAttribute="bottom" constant="7" id="OlI-ZT-qEC"/>
                 <constraint firstItem="cF2-fK-3lD" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="59" id="ZkK-4A-Y8g"/>
                 <constraint firstItem="cF2-fK-3lD" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" priority="750" constant="40" id="hHB-Fu-s42"/>
