@@ -54,9 +54,7 @@ class ForecastTableViewController: UITableViewController {
         frc.delegate = self
         return frc
     }()
-    
-    private var APODTableViewCellHeight: CGFloat = 0.0
-    
+   
     required init?(coder: NSCoder) {
         fatalError()
     }
@@ -143,7 +141,6 @@ class ForecastTableViewController: UITableViewController {
                 return UITableViewCell()
             }
             let apod = apodFetchedResultsController.object(at: IndexPath(row: indexPath.row, section: 0))
-            cell.delegate = self
             cell.configure(with: apod)
             cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: .greatestFiniteMagnitude)
             return cell
@@ -174,16 +171,6 @@ extension ForecastTableViewController: NSFetchedResultsControllerDelegate {
         tableView.reloadData()
     }
 }
-
-//MARK: - APODTableViewCellDelegate -
-extension ForecastTableViewController: APODTableViewCellDelegate {
-    func apodTableViewCell(_ apodTableViewCell: APODTableViewCell, setHeight height: CGFloat) {
-        APODTableViewCellHeight = height
-        tableView.beginUpdates()
-        tableView.endUpdates()
-    }
-}
-
 
 protocol CellWithCollectionView: class {
     func invalidateLayout()

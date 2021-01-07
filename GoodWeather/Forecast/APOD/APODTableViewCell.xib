@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17156" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17125"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -54,20 +54,20 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="aZO-CO-ddX" firstAttribute="top" secondItem="GjG-ck-Rhd" secondAttribute="bottom" id="0Kc-AZ-I6d"/>
-                    <constraint firstItem="GjG-ck-Rhd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="4Ub-9z-LRx"/>
+                    <constraint firstItem="GjG-ck-Rhd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="4Ub-9z-LRx"/>
+                    <constraint firstItem="08y-GC-Tli" firstAttribute="trailing" secondItem="GjG-ck-Rhd" secondAttribute="trailing" id="78g-I8-1Eb"/>
                     <constraint firstItem="27D-Vm-yBr" firstAttribute="top" secondItem="ahh-Pu-Ned" secondAttribute="bottom" constant="11" id="H7N-Bz-Tt2"/>
-                    <constraint firstItem="27D-Vm-yBr" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="JA5-3A-Lcy"/>
-                    <constraint firstItem="08y-GC-Tli" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="M72-es-Uit"/>
-                    <constraint firstItem="aZO-CO-ddX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="MDM-PE-mz5"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="27D-Vm-yBr" secondAttribute="trailing" id="Nr6-DE-xNv"/>
                     <constraint firstItem="08y-GC-Tli" firstAttribute="top" secondItem="aZO-CO-ddX" secondAttribute="bottom" constant="3" id="S75-KU-3c9"/>
                     <constraint firstItem="ahh-Pu-Ned" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="T2s-kl-hZX"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="08y-GC-Tli" secondAttribute="trailing" id="VXX-YM-Ncg"/>
+                    <constraint firstItem="27D-Vm-yBr" firstAttribute="leading" secondItem="GjG-ck-Rhd" secondAttribute="leading" id="TQN-Mi-9s4"/>
+                    <constraint firstItem="27D-Vm-yBr" firstAttribute="trailing" secondItem="GjG-ck-Rhd" secondAttribute="trailing" id="YAv-OJ-8c7"/>
+                    <constraint firstItem="aZO-CO-ddX" firstAttribute="leading" secondItem="GjG-ck-Rhd" secondAttribute="leading" id="dng-Xe-WUQ"/>
                     <constraint firstAttribute="bottomMargin" secondItem="08y-GC-Tli" secondAttribute="bottom" priority="750" constant="20" id="gRm-RV-cBM"/>
                     <constraint firstItem="GjG-ck-Rhd" firstAttribute="top" secondItem="27D-Vm-yBr" secondAttribute="bottom" constant="20" id="imV-YG-EF5"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="GjG-ck-Rhd" secondAttribute="trailing" id="peG-P9-coj"/>
-                    <constraint firstItem="ahh-Pu-Ned" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="qLe-hn-ebH"/>
-                    <constraint firstAttribute="trailingMargin" secondItem="aZO-CO-ddX" secondAttribute="trailing" id="qn6-Or-4nf"/>
+                    <constraint firstItem="08y-GC-Tli" firstAttribute="leading" secondItem="GjG-ck-Rhd" secondAttribute="leading" id="jkI-Gl-TaQ"/>
+                    <constraint firstAttribute="trailing" secondItem="GjG-ck-Rhd" secondAttribute="trailing" constant="20" id="peG-P9-coj"/>
+                    <constraint firstItem="ahh-Pu-Ned" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="qLe-hn-ebH"/>
+                    <constraint firstItem="aZO-CO-ddX" firstAttribute="trailing" secondItem="GjG-ck-Rhd" secondAttribute="trailing" id="vmx-Ym-c1l"/>
                 </constraints>
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
@@ -77,8 +77,11 @@
                 <outlet property="descriptionLabelHeight" destination="0bG-PQ-SSM" id="DHG-Ih-6z9"/>
                 <outlet property="imageViewHeight" destination="2mY-Zl-sqB" id="KKa-0T-KjG"/>
                 <outlet property="titleLabel" destination="GjG-ck-Rhd" id="2f2-jL-ygS"/>
+                <outletCollection property="horizontalOffSetConstraints" destination="qLe-hn-ebH" collectionClass="NSMutableArray" id="Xz9-8I-f5G"/>
+                <outletCollection property="horizontalOffSetConstraints" destination="peG-P9-coj" collectionClass="NSMutableArray" id="HnP-mM-lo0"/>
+                <outletCollection property="horizontalOffSetConstraints" destination="4Ub-9z-LRx" collectionClass="NSMutableArray" id="l9s-iZ-Mkn"/>
             </connections>
-            <point key="canvasLocation" x="115.94202898550725" y="93.75"/>
+            <point key="canvasLocation" x="-149" y="98"/>
         </tableViewCell>
     </objects>
 </document>

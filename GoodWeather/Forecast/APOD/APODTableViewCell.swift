@@ -9,10 +9,6 @@
 import UIKit
 import SDWebImage
 
-protocol APODTableViewCellDelegate: class {
-    func apodTableViewCell(_ apodTableViewCell: APODTableViewCell, setHeight height: CGFloat)
-}
-
 class APODTableViewCell: UITableViewCell {
     
     @IBOutlet private weak var apodImageView: UIImageView!
@@ -23,7 +19,7 @@ class APODTableViewCell: UITableViewCell {
     
     @IBOutlet private weak var descriptionLabelHeight: NSLayoutConstraint!
     
-    weak var delegate: APODTableViewCellDelegate?
+    @IBOutlet private var horizontalOffSetConstraints: [NSLayoutConstraint]?
     
     private var apod: APOD? {
         didSet {
@@ -36,7 +32,6 @@ class APODTableViewCell: UITableViewCell {
                     guard error == nil,
                         let image = image else { return }
                     self?.setImageViewSize(with: image)
-                    self?.calculateFullHeight()
                 }
             }
         }
@@ -47,6 +42,9 @@ class APODTableViewCell: UITableViewCell {
         
         apodImageView.layer.cornerRadius = 20.0
         apodImageView.layer.cornerCurve = .continuous
+        
+        horizontalOffSetConstraints?.forEach { $0.constant = Constants.CollectionViewLayout.horizontalOffSet }
+        layoutIfNeeded()
     }
     
     func configure(with apod: APOD) {
@@ -60,7 +58,7 @@ private extension APODTableViewCell {
     func setImageViewSize(with image: UIImage) {
         let imageHeight = image.size.height
         let imageWidth = image.size.width
-        let newImageWidth = contentView.bounds.width - contentView.layoutMargins.left - contentView.layoutMargins.right
+        let newImageWidth = contentView.bounds.width - 2 * Constants.CollectionViewLayout.horizontalOffSet
         let coeff = imageWidth / newImageWidth
         let newImageHeight = imageHeight / coeff
         imageViewHeight.constant = newImageHeight
@@ -73,8 +71,4 @@ private extension APODTableViewCell {
         descriptionLabelHeight.constant = height
     }
     
-    func calculateFullHeight() {
-        let height: CGFloat = 138.0 + imageViewHeight.constant + descriptionLabelHeight.constant
-        delegate?.apodTableViewCell(self, setHeight: height)
-    }
 }
