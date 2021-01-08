@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17511" systemVersion="19H15" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="19H114" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
     <entity name="APOD" representedClassName="APOD" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="descriptionText" optional="YES" attributeType="String"/>
@@ -12,7 +12,7 @@
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="timeZone" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="currentWeather" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="Weather" inverseName="city" inverseEntity="Weather"/>
-        <relationship name="dailyForecast" optional="YES" toMany="YES" minCount="1" maxCount="40" deletionRule="Cascade" ordered="YES" destinationEntity="Weather" inverseName="cityDailyForecast" inverseEntity="Weather"/>
+        <relationship name="dailyForecast" optional="YES" toMany="YES" minCount="1" maxCount="7" deletionRule="Cascade" ordered="YES" destinationEntity="Weather" inverseName="cityDailyForecast" inverseEntity="Weather"/>
         <relationship name="hourlyForecast" optional="YES" toMany="YES" maxCount="24" deletionRule="Nullify" ordered="YES" destinationEntity="Weather" inverseName="cityHourlyForecast" inverseEntity="Weather"/>
     </entity>
     <entity name="CityName" representedClassName="CityName" syncable="YES">

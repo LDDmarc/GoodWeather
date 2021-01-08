@@ -42,7 +42,7 @@ public class City: NSManagedObject {
         if let dailyForecast = dailyForecast {
             for num in 0..<7 {
                 if let dayWearher = dailyForecast[num] as? Weather {
-                    dayWearher.updateAsDailyForecast(with: dailyJson[num])
+                    dayWearher.updateAsDailyForecast(with: dailyJson[num + 1])
                 }
             }
         }

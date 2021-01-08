@@ -9,10 +9,13 @@
 import UIKit
 import SDWebImage
 
+protocol APODTableViewCellDelegate: class {
+    func apodTableViewCell(updateHeight apodTableViewCell: APODTableViewCell)
+}
+
 class APODTableViewCell: UITableViewCell {
     
     @IBOutlet private weak var apodImageView: UIImageView!
-    @IBOutlet private weak var imageViewHeight: NSLayoutConstraint!
     
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!
@@ -20,6 +23,10 @@ class APODTableViewCell: UITableViewCell {
     @IBOutlet private weak var descriptionLabelHeight: NSLayoutConstraint!
     
     @IBOutlet private var horizontalOffSetConstraints: [NSLayoutConstraint]?
+    
+    weak var delegate: APODTableViewCellDelegate?
+    
+    private var isFirstImageLoading: Bool = true
     
     private var apod: APOD? {
         didSet {
@@ -56,16 +63,18 @@ class APODTableViewCell: UITableViewCell {
 private extension APODTableViewCell {
     
     func setImageViewSize(with image: UIImage) {
-        let imageHeight = image.size.height
-        let imageWidth = image.size.width
-        let newImageWidth = contentView.bounds.width - 2 * Constants.CollectionViewLayout.horizontalOffSet
-        let coeff = imageWidth / newImageWidth
-        let newImageHeight = imageHeight / coeff
-        imageViewHeight.constant = newImageHeight
+        guard isFirstImageLoading else {
+            return
+        }
+        let aspectRatio =  image.size.height / image.size.width
+        apodImageView.heightAnchor.constraint(equalTo: apodImageView.widthAnchor, multiplier: aspectRatio).isActive = true
+        layoutIfNeeded()
+        isFirstImageLoading = false 
+        delegate?.apodTableViewCell(updateHeight: self)
     }
     
     func setDescriotionLabelSize(with text: String?) {
-        guard let height = text?.height(withConstrainedWidth: contentView.bounds.width - contentView.layoutMargins.left - contentView.layoutMargins.right,
+        guard let height = text?.height(withConstrainedWidth: contentView.bounds.width - 2 * Constants.CollectionViewLayout.horizontalOffSet,
                                         font: UIFont.systemFont(ofSize: 17.0)) else { return }
         
         descriptionLabelHeight.constant = height

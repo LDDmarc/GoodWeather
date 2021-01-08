@@ -143,6 +143,7 @@ class ForecastTableViewController: UITableViewController {
             let apod = apodFetchedResultsController.object(at: IndexPath(row: indexPath.row, section: 0))
             cell.configure(with: apod)
             cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: .greatestFiniteMagnitude)
+            cell.delegate = self
             return cell
         }
     }
@@ -174,4 +175,13 @@ extension ForecastTableViewController: NSFetchedResultsControllerDelegate {
 
 protocol CellWithCollectionView: class {
     func invalidateLayout()
+}
+
+//MARK: - APODTableViewCellDelegate -
+extension ForecastTableViewController: APODTableViewCellDelegate {
+    
+    func apodTableViewCell(updateHeight apodTableViewCell: APODTableViewCell) {
+        tableView.beginUpdates()
+        tableView.endUpdates()
+    }
 }

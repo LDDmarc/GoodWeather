@@ -14,7 +14,7 @@ extension DateFormatter {
         let dateFormatter = DateFormatter()
         dateFormatter.locale = Locale(identifier: "ru_RU")
         dateFormatter.timeZone = TimeZone(identifier: "UTC")
-        dateFormatter.dateFormat = "h"
+        dateFormatter.dateFormat = "H"
         return dateFormatter
     }
     
