@@ -27,6 +27,10 @@ class ViewController: UIViewController {
         mainView.addGestureRecognizer(tapGestureRecognizer)
     
         tapGestureRecognizer.addTarget(self, action: #selector(rotateView))
+        
+        
+        let buttonTitle = NSLocalizedString("weather", comment: "The name of the animal")
+        print(buttonTitle)
     }
 
     @objc func rotateView() {

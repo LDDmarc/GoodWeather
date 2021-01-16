@@ -43,7 +43,7 @@ class CurrentWeatherTableViewController: UITableViewController {
         tableView.rowHeight = 60.0
         
         navigationController?.navigationBar.prefersLargeTitles = true
-        title = "Погода"
+        title = NSLocalizedString("weather_title", comment: "")
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(searchForNewCity))
         
@@ -77,11 +77,8 @@ class CurrentWeatherTableViewController: UITableViewController {
         }
     }
     @objc func searchForNewCity() {
-        let autocompleteViewController = GMSAutocompleteViewController()
+        let autocompleteViewController = SearchPlaceViewController()
         autocompleteViewController.delegate = self
-        let filter = GMSAutocompleteFilter()
-        filter.type = .region
-        autocompleteViewController.autocompleteFilter = filter
         present(autocompleteViewController, animated: true, completion: nil)
     }
     

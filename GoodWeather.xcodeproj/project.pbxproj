@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1F8E9CC025A9B659001FBAE7 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1F8E9CC225A9B659001FBAE7 /* Localizable.strings */; };
+		1F8E9CCA25A9D249001FBAE7 /* SearchPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1F8E9CC825A9D249001FBAE7 /* SearchPlaceViewController.swift */; };
+		1F8E9CCB25A9D249001FBAE7 /* SearchPlaceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1F8E9CC925A9D249001FBAE7 /* SearchPlaceViewController.xib */; };
 		BC06808C257A70EE004F25F1 /* HourlyForecastPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC06808B257A70EE004F25F1 /* HourlyForecastPresenter.swift */; };
 		BC068090257A7B97004F25F1 /* UICollectionViewCell+Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC06808F257A7B97004F25F1 /* UICollectionViewCell+Colors.swift */; };
 		BC367364257A68CF00723BD0 /* HourlyForecastTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC367362257A68CF00723BD0 /* HourlyForecastTableViewCell.swift */; };
@@ -66,6 +69,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1F8E9CB925A9B54E001FBAE7 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
+		1F8E9CBA25A9B54E001FBAE7 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		1F8E9CC125A9B659001FBAE7 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1F8E9CC425A9B65B001FBAE7 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1F8E9CC825A9D249001FBAE7 /* SearchPlaceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPlaceViewController.swift; sourceTree = "<group>"; };
+		1F8E9CC925A9D249001FBAE7 /* SearchPlaceViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchPlaceViewController.xib; sourceTree = "<group>"; };
 		44FA8FAEB3604B9B6983D55C /* Pods-GoodWeather.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoodWeather.debug.xcconfig"; path = "Target Support Files/Pods-GoodWeather/Pods-GoodWeather.debug.xcconfig"; sourceTree = "<group>"; };
 		945E6528CE8DA721BF77729F /* Pods-GoodWeather.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GoodWeather.release.xcconfig"; path = "Target Support Files/Pods-GoodWeather/Pods-GoodWeather.release.xcconfig"; sourceTree = "<group>"; };
 		BC06808B257A70EE004F25F1 /* HourlyForecastPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourlyForecastPresenter.swift; sourceTree = "<group>"; };
@@ -141,6 +150,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1F8E9CBF25A9B60E001FBAE7 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1F8E9CC225A9B659001FBAE7 /* Localizable.strings */,
+				BC90FE6524C60E3F00AADACB /* WeatherColors.swift */,
+				BC59AB43257CEDF100956B1B /* Constants.swift */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		74B9FC19360398733676EA21 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -328,8 +347,6 @@
 		BCB256D224C059C4005925E4 /* GoodWeather */ = {
 			isa = PBXGroup;
 			children = (
-				BC90FE6524C60E3F00AADACB /* WeatherColors.swift */,
-				BC59AB43257CEDF100956B1B /* Constants.swift */,
 				BCB256D324C059C4005925E4 /* AppDelegate.swift */,
 				BCB256D524C059C4005925E4 /* SceneDelegate.swift */,
 				BCB256D724C059C4005925E4 /* ViewController.swift */,
@@ -342,6 +359,7 @@
 				BCB256D924C059C4005925E4 /* Main.storyboard */,
 				BCB256DC24C059C7005925E4 /* Assets.xcassets */,
 				BCB256DE24C059C7005925E4 /* LaunchScreen.storyboard */,
+				1F8E9CBF25A9B60E001FBAE7 /* Resources */,
 				BCB256E124C059C7005925E4 /* Info.plist */,
 				BCEB202C24F155C500962DDD /* cities.json */,
 			);
@@ -361,6 +379,8 @@
 		BCE21B3524E5BA450049462F /* Searching */ = {
 			isa = PBXGroup;
 			children = (
+				1F8E9CC825A9D249001FBAE7 /* SearchPlaceViewController.swift */,
+				1F8E9CC925A9D249001FBAE7 /* SearchPlaceViewController.xib */,
 				BCD2141A2531CA7100A5A6E2 /* GoogleAPISearchViewController.swift */,
 				BCD2141B2531CA7100A5A6E2 /* GoogleAPISearchViewController.xib */,
 			);
@@ -420,6 +440,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = BCB256C724C059C4005925E4;
 			productRefGroup = BCB256D124C059C4005925E4 /* Products */;
@@ -442,9 +463,11 @@
 				BC991CE224C5C8690087E303 /* ForecastCollectionViewCell.xib in Resources */,
 				BC991CEA24C5CD5C0087E303 /* ForecastTableViewCell.xib in Resources */,
 				BCB256DD24C059C7005925E4 /* Assets.xcassets in Resources */,
+				1F8E9CCB25A9D249001FBAE7 /* SearchPlaceViewController.xib in Resources */,
 				BCB256DB24C059C4005925E4 /* Main.storyboard in Resources */,
 				BCEB202D24F155C500962DDD /* cities.json in Resources */,
 				BC69EFD224C47C5A00330108 /* DetailCurrentWeatherCollectionViewCell.xib in Resources */,
+				1F8E9CC025A9B659001FBAE7 /* Localizable.strings in Resources */,
 				BC50ED0725160C9300FB3FFB /* APODTableViewCell.xib in Resources */,
 				BCD2141D2531CA7100A5A6E2 /* GoogleAPISearchViewController.xib in Resources */,
 				BC64CCD524C5BF0900EEE8E2 /* DetailWeatherTableViewCell.xib in Resources */,
@@ -549,6 +572,7 @@
 				BC90FE6424C5EF1800AADACB /* ForecastPresenter.swift in Sources */,
 				BC72D00C25767B57003BC17A /* DateFormatter+Styles.swift in Sources */,
 				BC64CCD424C5BF0900EEE8E2 /* DetailWeatherTableViewCell.swift in Sources */,
+				1F8E9CCA25A9D249001FBAE7 /* SearchPlaceViewController.swift in Sources */,
 				BCD214212531CDC500A5A6E2 /* CurrentWeatherTableViewController+GooglePlaces.swift in Sources */,
 				BC59AB3E257BAC9900956B1B /* ColorAssets.swift in Sources */,
 				BC50ED0625160C9300FB3FFB /* APODTableViewCell.swift in Sources */,
@@ -566,10 +590,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		1F8E9CC225A9B659001FBAE7 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1F8E9CC125A9B659001FBAE7 /* en */,
+				1F8E9CC425A9B65B001FBAE7 /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 		BCB256D924C059C4005925E4 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				BCB256DA24C059C4005925E4 /* Base */,
+				1F8E9CB925A9B54E001FBAE7 /* ru */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -578,6 +612,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				BCB256DF24C059C7005925E4 /* Base */,
+				1F8E9CBA25A9B54E001FBAE7 /* ru */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
@@ -589,6 +624,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -649,6 +685,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

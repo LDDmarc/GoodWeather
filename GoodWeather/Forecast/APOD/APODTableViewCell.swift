@@ -15,12 +15,13 @@ protocol APODTableViewCellDelegate: class {
 
 class APODTableViewCell: UITableViewCell {
     
+    @IBOutlet private weak var apodTittleLabel: UILabel!
+    
+    
     @IBOutlet private weak var apodImageView: UIImageView!
     
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var descriptionLabel: UILabel!
-    
-    @IBOutlet private weak var descriptionLabelHeight: NSLayoutConstraint!
     
     @IBOutlet private var horizontalOffSetConstraints: [NSLayoutConstraint]?
     
@@ -32,7 +33,6 @@ class APODTableViewCell: UITableViewCell {
         didSet {
             titleLabel.text = apod?.title
             descriptionLabel.text = apod?.descriptionText
-            setDescriotionLabelSize(with: apod?.descriptionText)
             if let stringURL = apod?.imageURL,
                 let imageURL = URL(string: stringURL) {
                 apodImageView.sd_setImage(with: imageURL) { [weak self] (image, error, _, _) in
@@ -49,6 +49,8 @@ class APODTableViewCell: UITableViewCell {
         
         apodImageView.layer.cornerRadius = 20.0
         apodImageView.layer.cornerCurve = .continuous
+        
+        apodTittleLabel.text = NSLocalizedString("apod_title", comment: "")
         
         horizontalOffSetConstraints?.forEach { $0.constant = Constants.CollectionViewLayout.horizontalOffSet }
         layoutIfNeeded()
@@ -71,13 +73,6 @@ private extension APODTableViewCell {
         layoutIfNeeded()
         isFirstImageLoading = false 
         delegate?.apodTableViewCell(updateHeight: self)
-    }
-    
-    func setDescriotionLabelSize(with text: String?) {
-        guard let height = text?.height(withConstrainedWidth: contentView.bounds.width - 2 * Constants.CollectionViewLayout.horizontalOffSet,
-                                        font: UIFont.systemFont(ofSize: 17.0)) else { return }
-        
-        descriptionLabelHeight.constant = height
     }
     
 }

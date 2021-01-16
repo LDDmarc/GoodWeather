@@ -21,14 +21,12 @@ enum DataManagerError {
     
     func errorTitleMessage() -> (String?, String?) {
         switch self {
-        case .noData:
-            return ("Нет соединения", "Попробуйте повторить запрос позже")
-        case .noConnection:
-            return ("Нет соединения", "Попробуйте повторить запрос позже")
-        case .wrongName:
-            return ("Неверное имя", "К сожалению, мы не знаем такого места :(")
-        case .wrongURL:
-            return ("Неверное имя", "К сожалению, мы не знаем такого места :(")
+        case .noData, .noConnection:
+            return (NSLocalizedString("no_connection_error_title", comment: ""),
+                    NSLocalizedString("try_later_error_message", comment: ""))
+        case .wrongName, .wrongURL:
+            return (NSLocalizedString("wrong_name_error_title", comment: ""),
+                    NSLocalizedString("unknown_place_message", comment: ""))
         default:
             return(nil, nil)
         }
@@ -87,8 +85,34 @@ class DataManager {
         }
     }
     
-    func addNewCity(with cityInfo: CityInfo, completion: @escaping DataManagerCompletionHandler) {
-      
+    func addNewCity(with coordinates: Coordinates, completion: @escaping DataManagerCompletionHandler) {
+        
+        NetworkManager.getPlaceName(for: coordinates) { [weak self] (data, dataManagerError) in
+            let cityName: String
+    
+            if dataManagerError != nil {
+                completion(dataManagerError)
+                return
+            }
+            guard let data = data else {
+                completion(.noData)
+                return
+            }
+            do {
+                let json = try JSON(data: data)
+                cityName = json["name"].stringValue
+                let cityInfo = CityInfo(name: cityName, coordinates: coordinates)
+                self?.addNewCity(with: cityInfo, completion: { (dataManagerError) in
+                    completion(dataManagerError)
+                })
+            } catch {
+                completion(.jsonError)
+                return
+            }
+        }
+    }
+    
+    private func addNewCity(with cityInfo: CityInfo, completion: @escaping DataManagerCompletionHandler) {
         dataBase.createNewCity(by: cityInfo, completion: { (success) in
             guard success else {
                 completion(.dataBaseError)
