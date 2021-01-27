@@ -12,10 +12,13 @@ import SwiftyJSON
 import GooglePlaces
 
 class CurrentWeatherTableViewController: UITableViewController {
-
+    
     let dataManager = DataManager(dataBase: CoreDataBase())
     var timer: Timer?
-
+    
+    let locationManager = CLLocationManager()
+    var currentCoordinates: CLLocationCoordinate2D?
+    
     lazy var fetchedResultsController: NSFetchedResultsController<City> = {
         let request: NSFetchRequest = City.fetchRequest()
         let sort = NSSortDescriptor(key: "name", ascending: true)
@@ -31,7 +34,7 @@ class CurrentWeatherTableViewController: UITableViewController {
         frc.delegate = self
         return frc
     }()
-
+    
     // MARK: - View Life Cycle
     
     override func viewDidLoad() {
@@ -48,6 +51,7 @@ class CurrentWeatherTableViewController: UITableViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(searchForNewCity))
         
         detectFirstLaunch()
+        setupLocationManager()
         
         timer = Timer.scheduledTimer(timeInterval: 1800,
                                      target: self,
@@ -60,6 +64,20 @@ class CurrentWeatherTableViewController: UITableViewController {
                 self?.tableView.refreshControl?.endRefreshing()
                 self?.showErrorAlert(withError: dataManagerError)
             }
+        }
+    }
+    
+    private func setupLocationManager() {
+        // Ask for Authorisation from the User.
+        self.locationManager.requestAlwaysAuthorization()
+        
+        // For use in foreground
+        self.locationManager.requestWhenInUseAuthorization()
+        
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager.delegate = self
+            locationManager.desiredAccuracy = kCLLocationAccuracyNearestTenMeters
+            locationManager.startUpdatingLocation()
         }
     }
     
@@ -82,11 +100,11 @@ class CurrentWeatherTableViewController: UITableViewController {
         present(autocompleteViewController, animated: true, completion: nil)
     }
     
-// MARK: - Table view data source, Table view delegate
+    // MARK: - Table view data source, Table view delegate
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return fetchedResultsController.sections?[section].numberOfObjects ?? 0
     }
-
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as? CurrentWeatherTableViewCell else {
             return UITableViewCell()
@@ -119,7 +137,7 @@ extension CurrentWeatherTableViewController: NSFetchedResultsControllerDelegate 
     func controllerWillChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.beginUpdates()
     }
-
+    
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
                     didChange anObject: Any,
                     at indexPath: IndexPath?,
@@ -141,7 +159,7 @@ extension CurrentWeatherTableViewController: NSFetchedResultsControllerDelegate 
             tableView.reloadData()
         }
     }
-
+    
     func controller(_ controller: NSFetchedResultsController<NSFetchRequestResult>,
                     didChange sectionInfo: NSFetchedResultsSectionInfo,
                     atSectionIndex sectionIndex: Int,
@@ -155,24 +173,26 @@ extension CurrentWeatherTableViewController: NSFetchedResultsControllerDelegate 
             break
         }
     }
-
+    
     func controllerDidChangeContent(_ controller: NSFetchedResultsController<NSFetchRequestResult>) {
         tableView.endUpdates()
     }
 }
 
 
+
+
 //MARK: - Private -
 private extension CurrentWeatherTableViewController {
     
-     func detectFirstLaunch() {
+    func detectFirstLaunch() {
         let defaults = UserDefaults.standard
         if !defaults.bool(forKey: "First launch") {
             defaults.set(true, forKey: "First launch")
         }
     }
     
-     func fillCities() {
+    func fillCities() {
         guard let url = Bundle.main.url(forResource: "cities", withExtension: "json") else {
             print("no file")
             return
@@ -193,6 +213,6 @@ private extension CurrentWeatherTableViewController {
             print("data.error")
         }
     }
-
+    
 }
 

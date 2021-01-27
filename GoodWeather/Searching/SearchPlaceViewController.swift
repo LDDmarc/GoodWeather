@@ -12,6 +12,7 @@ import MapKit
 protocol SearchPlaceViewControllerAutocompleteDelegate: class {
     func viewController(_ viewController: SearchPlaceViewController, didAutocompleteWith place: MKLocalSearch.Response?)
     func viewController(_ viewController: SearchPlaceViewController, didFailAutocompleteWithError error: Error)
+    func getCurrentLocation(_ viewController: SearchPlaceViewController)
     func wasCancelled(_ viewController: SearchPlaceViewController)
 }
 
@@ -49,8 +50,12 @@ class SearchPlaceViewController: UIViewController {
         searchBar.placeholder = NSLocalizedString("placeholder_city", comment: "")
     }
     
-    @IBAction func cancelButtonTap(_ sender: UIButton) {
+    @IBAction private func cancelButtonTap(_ sender: UIButton) {
         delegate?.wasCancelled(self)
+    }
+    
+    @IBAction private func getLocation(_ sender: UIButton) {
+        delegate?.getCurrentLocation(self)
     }
 }
 

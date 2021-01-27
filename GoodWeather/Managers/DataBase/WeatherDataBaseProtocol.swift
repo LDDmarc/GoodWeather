@@ -12,6 +12,7 @@ import SwiftyJSON
 struct CityInfo {
     var name: String
     var coordinates: Coordinates
+    let id: Int64
 }
 
 struct Coordinates {

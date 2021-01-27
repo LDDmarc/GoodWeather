@@ -55,7 +55,33 @@ extension CurrentWeatherTableViewController: SearchPlaceViewControllerAutocomple
         let placeLon = "\(placeCoordinates.longitude)"
         
         let coordinates = Coordinates(lat: placeLat, lon: placeLon)
+        addNewCity(with: coordinates)
+    }
+    
+    func getCurrentLocation(_ viewController: SearchPlaceViewController) {
+        dismiss(animated: true)
         
+        guard CLLocationManager.locationServicesEnabled() else {
+            showInfoAlert(title: NSLocalizedString("location_serivicies_not_enabled", comment: ""), message: "")
+            return
+        }
+        
+        switch CLLocationManager.authorizationStatus() {
+        case .notDetermined, .restricted, .denied:
+            accessPermissionForGettingLocation()
+        default:
+            break
+        }
+        
+        guard let placeCoordinates = currentCoordinates else { return }
+        let placeLat = "\(placeCoordinates.latitude)"
+        let placeLon = "\(placeCoordinates.longitude)"
+        
+        let coordinates = Coordinates(lat: placeLat, lon: placeLon)
+        addNewCity(with: coordinates)
+    }
+    
+    func addNewCity(with coordinates: Coordinates) {
         dataManager.addNewCity(with: coordinates) { (error) in
             if error == nil {
                 DispatchQueue.main.async { [weak self] in
@@ -82,7 +108,9 @@ extension CurrentWeatherTableViewController: SearchPlaceViewControllerAutocomple
     }
 }
 
+
 extension UIViewController {
+    
     func showInfoAlert(title: String?, message: String) {
         let ac = UIAlertController(title: title, message: message, preferredStyle: .alert)
         ac.addAction(UIAlertAction(title: NSLocalizedString("ok_message", comment: ""), style: .cancel))

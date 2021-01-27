@@ -1,0 +1,11 @@
+/* 
+  InfoPlist.strings
+  GoodWeather
+
+  Created by d.leonova on 17.01.2021.
+  Copyright © 2021 Дарья Леонова. All rights reserved.
+*/
+
+NSLocationWhenInUseUsageDescription = "Разрешите доступ к геопозиции, чтобы мы могли найти подходящую погоду";
+NSLocationAlwaysAndWhenInUseUsageDescription = "Разрешите доступ к геопозиции, чтобы мы могли найти подходящую погоду";
+NSLocationAlwaysUsageDescription = "Разрешите доступ к геопозиции, чтобы мы могли найти подходящую погоду";

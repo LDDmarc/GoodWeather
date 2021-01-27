@@ -26,6 +26,15 @@
             <subviews>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cNh-m4-Rcs">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="145.5"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hVC-3r-Jxs">
+                            <rect key="frame" x="378" y="59.5" width="20" height="22"/>
+                            <state key="normal" image="location" catalog="system"/>
+                            <connections>
+                                <action selector="getLocation:" destination="-1" eventType="touchUpInside" id="CTR-pj-MLv"/>
+                            </connections>
+                        </button>
+                    </subviews>
                     <color key="backgroundColor" red="0.93717283009999997" green="0.93730747699999994" blue="0.9410645366" alpha="0.1981770833" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Давайте найдем город" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Wu-dM-pnV">
@@ -35,14 +44,11 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <searchBar contentMode="redraw" searchBarStyle="minimal" placeholder="Москва" translatesAutoresizingMaskIntoConstraints="NO" id="F4m-Rd-xRG">
-                    <rect key="frame" x="0.0" y="88.5" width="310" height="56"/>
+                    <rect key="frame" x="0.0" y="88.5" width="311" height="56"/>
                     <textInputTraits key="textInputTraits"/>
                 </searchBar>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="00f-RE-y58">
-                    <rect key="frame" x="318" y="100" width="80" height="33"/>
-                    <constraints>
-                        <constraint firstAttribute="width" constant="80" id="M3y-dp-Cl1"/>
-                    </constraints>
+                    <rect key="frame" x="319" y="100" width="79" height="33"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <state key="normal" title="Отменить"/>
                     <connections>
@@ -82,8 +88,10 @@
                 <constraint firstItem="UXr-gV-dNL" firstAttribute="centerX" secondItem="udn-nG-INL" secondAttribute="centerX" id="co4-xv-LPZ"/>
                 <constraint firstItem="cNh-m4-Rcs" firstAttribute="leading" secondItem="dhv-yZ-GrX" secondAttribute="leading" id="d8U-2k-GJp"/>
                 <constraint firstItem="6Wu-dM-pnV" firstAttribute="top" secondItem="dhv-yZ-GrX" secondAttribute="top" constant="16" id="eY5-gn-5OI"/>
+                <constraint firstItem="hVC-3r-Jxs" firstAttribute="centerY" secondItem="6Wu-dM-pnV" secondAttribute="centerY" id="fEc-ip-joZ"/>
                 <constraint firstItem="cNh-m4-Rcs" firstAttribute="trailing" secondItem="dhv-yZ-GrX" secondAttribute="trailing" id="gQU-J9-81j"/>
                 <constraint firstAttribute="trailing" secondItem="tsR-dF-iYC" secondAttribute="trailing" id="haa-66-sxq"/>
+                <constraint firstItem="hVC-3r-Jxs" firstAttribute="trailing" secondItem="00f-RE-y58" secondAttribute="trailing" id="qqM-nv-XQu"/>
                 <constraint firstItem="cNh-m4-Rcs" firstAttribute="top" secondItem="udn-nG-INL" secondAttribute="top" id="sA8-W2-QZd"/>
                 <constraint firstItem="F4m-Rd-xRG" firstAttribute="leading" secondItem="dhv-yZ-GrX" secondAttribute="leading" id="ske-bu-e0z"/>
                 <constraint firstItem="UXr-gV-dNL" firstAttribute="centerY" secondItem="udn-nG-INL" secondAttribute="centerY" id="wEi-eH-yRB"/>
@@ -92,6 +100,7 @@
         </view>
     </objects>
     <resources>
+        <image name="location" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

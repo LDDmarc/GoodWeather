@@ -15,6 +15,7 @@ import SwiftyJSON
 public class City: NSManagedObject {
     
     enum CodingKeys: String {
+        case id
         case coord
         case lat
         case lon
@@ -31,6 +32,7 @@ public class City: NSManagedObject {
         name = cityInfo.name
         lat = cityInfo.coordinates.lat
         lon = cityInfo.coordinates.lon
+        id = cityInfo.id
     }
     
     func updateWeather(with json: JSON) {

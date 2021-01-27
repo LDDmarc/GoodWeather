@@ -2,8 +2,8 @@
 //  City+CoreDataProperties.swift
 //  GoodWeather
 //
-//  Created by Дарья Леонова on 03.12.2020.
-//  Copyright © 2020 Дарья Леонова. All rights reserved.
+//  Created by d.leonova on 16.01.2021.
+//  Copyright © 2021 Дарья Леонова. All rights reserved.
 //
 //
 
@@ -21,6 +21,7 @@ extension City {
     @NSManaged public var lon: String?
     @NSManaged public var name: String?
     @NSManaged public var timeZone: Int64
+    @NSManaged public var id: Int64
     @NSManaged public var currentWeather: Weather?
     @NSManaged public var dailyForecast: NSOrderedSet?
     @NSManaged public var hourlyForecast: NSOrderedSet?

@@ -9,6 +9,7 @@
 //MARK: - Common -
 "cancel_title" = "Отмена";
 "placeholder_city" = "Москва";
+"go_to_settings" = "Перейти в настройки";
 
 //MARK: - Titles -
 "weather_title" = "Погода";
@@ -28,3 +29,8 @@
 "wrong_name_error_title" = "Неверное имя";
 
 "try_later_error_message" = "Попробуйте повторить запрос позже";
+
+//MARK: - Location -
+"access_location_denied" = "Доступ к геопозиции запрещен";
+"get_access_location" = "Разрешить доступ?";
+"location_serivicies_not_enabled" = "Службы геопозиции не доступны";

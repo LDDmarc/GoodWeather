@@ -1,0 +1,11 @@
+/* 
+  InfoPlist.strings
+  GoodWeather
+
+  Created by d.leonova on 17.01.2021.
+  Copyright © 2021 Дарья Леонова. All rights reserved.
+*/
+
+NSLocationWhenInUseUsageDescription = "Allow access to get weather for your current plece";
+NSLocationAlwaysAndWhenInUseUsageDescription = "Allow access to get weather for your current plece";
+NSLocationAlwaysUsageDescription = "Allow access to get weather for your current plece";

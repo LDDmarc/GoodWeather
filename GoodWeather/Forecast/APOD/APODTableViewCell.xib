@@ -45,22 +45,32 @@
                         <color key="textColor" red="0.0039215686274509803" green="0.47843137254901957" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7K9-0e-cS1">
+                        <rect key="frame" x="20" y="336" width="318" height="17"/>
+                        <connections>
+                            <action selector="linkTap:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="drr-p5-Trp"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
                     <constraint firstItem="aZO-CO-ddX" firstAttribute="top" secondItem="GjG-ck-Rhd" secondAttribute="bottom" id="0Kc-AZ-I6d"/>
                     <constraint firstItem="GjG-ck-Rhd" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="4Ub-9z-LRx"/>
                     <constraint firstItem="08y-GC-Tli" firstAttribute="trailing" secondItem="GjG-ck-Rhd" secondAttribute="trailing" id="78g-I8-1Eb"/>
                     <constraint firstItem="27D-Vm-yBr" firstAttribute="top" secondItem="ahh-Pu-Ned" secondAttribute="bottom" constant="11" id="H7N-Bz-Tt2"/>
+                    <constraint firstItem="7K9-0e-cS1" firstAttribute="trailing" secondItem="08y-GC-Tli" secondAttribute="trailing" id="IqB-sp-ClU"/>
                     <constraint firstItem="08y-GC-Tli" firstAttribute="top" secondItem="aZO-CO-ddX" secondAttribute="bottom" constant="3" id="S75-KU-3c9"/>
                     <constraint firstItem="ahh-Pu-Ned" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="T2s-kl-hZX"/>
                     <constraint firstItem="27D-Vm-yBr" firstAttribute="leading" secondItem="GjG-ck-Rhd" secondAttribute="leading" id="TQN-Mi-9s4"/>
                     <constraint firstItem="27D-Vm-yBr" firstAttribute="trailing" secondItem="GjG-ck-Rhd" secondAttribute="trailing" id="YAv-OJ-8c7"/>
+                    <constraint firstItem="7K9-0e-cS1" firstAttribute="top" secondItem="08y-GC-Tli" secondAttribute="top" id="dHI-6z-lef"/>
+                    <constraint firstItem="7K9-0e-cS1" firstAttribute="leading" secondItem="08y-GC-Tli" secondAttribute="leading" id="dmY-9G-PZG"/>
                     <constraint firstItem="aZO-CO-ddX" firstAttribute="leading" secondItem="GjG-ck-Rhd" secondAttribute="leading" id="dng-Xe-WUQ"/>
                     <constraint firstAttribute="bottomMargin" secondItem="08y-GC-Tli" secondAttribute="bottom" priority="750" constant="20" id="gRm-RV-cBM"/>
                     <constraint firstItem="GjG-ck-Rhd" firstAttribute="top" secondItem="27D-Vm-yBr" secondAttribute="bottom" constant="20" id="imV-YG-EF5"/>
                     <constraint firstItem="08y-GC-Tli" firstAttribute="leading" secondItem="GjG-ck-Rhd" secondAttribute="leading" id="jkI-Gl-TaQ"/>
                     <constraint firstAttribute="trailing" secondItem="GjG-ck-Rhd" secondAttribute="trailing" constant="20" id="peG-P9-coj"/>
                     <constraint firstItem="ahh-Pu-Ned" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="qLe-hn-ebH"/>
+                    <constraint firstItem="7K9-0e-cS1" firstAttribute="bottom" secondItem="08y-GC-Tli" secondAttribute="bottom" id="skn-pQ-hDi"/>
                     <constraint firstItem="aZO-CO-ddX" firstAttribute="trailing" secondItem="GjG-ck-Rhd" secondAttribute="trailing" id="vmx-Ym-c1l"/>
                 </constraints>
             </tableViewCellContentView>

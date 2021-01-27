@@ -26,16 +26,24 @@ class CoreDataBase: DataBaseProtocol {
             return []
         }
     }
-  
+    
     func createNewCity(by info: CityInfo, completion: @escaping WeatherDataBaseCompletionHandler) {
         var isSuccess = false
         defer { completion(isSuccess) }
+        
+        let request = NSFetchRequest<City>(entityName: "City")
+        request.predicate = NSPredicate(format: "id = %i", info.id)
+        if let cities = try? persistentContainer.viewContext.fetch(request), !cities.isEmpty {
+            isSuccess = true
+            return
+        }
         
         let backgroundContext = self.persistentContainer.newBackgroundContext()
         backgroundContext.mergePolicy = NSMergeByPropertyObjectTrumpMergePolicy
         backgroundContext.undoManager = nil
         
         backgroundContext.performAndWait {
+            
             
             guard let city = NSEntityDescription.insertNewObject(forEntityName: "City", into: backgroundContext) as? City else { return }
             city.update(with: info)
@@ -80,7 +88,7 @@ class CoreDataBase: DataBaseProtocol {
             do {
                 let citiesForUpdate = try backgroundContext.fetch(req) as? [City]
                 if let cities = citiesForUpdate,
-                    let cityForUpdate = cities.first {
+                   let cityForUpdate = cities.first {
                     cityForUpdate.updateWeather(with: json)
                 }
                 if backgroundContext.hasChanges {
@@ -95,8 +103,8 @@ class CoreDataBase: DataBaseProtocol {
         
         return isSuccess
     }
-
-//MARK: -APODDataBaseProtocol
+    
+    //MARK: -APODDataBaseProtocol
     func updateAPOD(with json: JSON) -> Bool {
         var isSuccess = false
         let backgroundContext = self.persistentContainer.newBackgroundContext()

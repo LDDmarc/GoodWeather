@@ -8,6 +8,7 @@
 
 import UIKit
 import CoreData
+import SafariServices
 
 class ForecastTableViewController: UITableViewController {
     
@@ -40,7 +41,7 @@ class ForecastTableViewController: UITableViewController {
         let request: NSFetchRequest = APOD.fetchRequest()
         request.fetchBatchSize = 1
         let sort = NSSortDescriptor(key: "date", ascending: true)
-               request.sortDescriptors = [sort]
+        request.sortDescriptors = [sort]
         let frc = NSFetchedResultsController(fetchRequest: request,
                                              managedObjectContext: dataManager.context,
                                              sectionNameKeyPath: nil,
@@ -54,20 +55,20 @@ class ForecastTableViewController: UITableViewController {
         frc.delegate = self
         return frc
     }()
-   
+    
     required init?(coder: NSCoder) {
         fatalError()
     }
-
+    
     init(dataManager: DataManager, city: City) {
         self.dataManager = dataManager
         self.city = city
         super.init(style: .plain)
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-    
+        
         tableView.register(UINib(nibName: String(describing: DetailWeatherTableViewCell.self), bundle: nil),
                            forCellReuseIdentifier: String(describing: DetailWeatherTableViewCell.self))
         tableView.register(UINib(nibName: String(describing: HourlyForecastTableViewCell.self), bundle: nil),
@@ -83,7 +84,7 @@ class ForecastTableViewController: UITableViewController {
                                                 left: Constants.CollectionViewLayout.horizontalOffSet,
                                                 bottom: 0,
                                                 right: Constants.CollectionViewLayout.horizontalOffSet)
-   
+        
         title = city.name
     }
     
@@ -94,11 +95,11 @@ class ForecastTableViewController: UITableViewController {
     }
     
     // MARK: - Table view data source
-
+    
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 4
     }
-
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         switch section {
@@ -112,8 +113,8 @@ class ForecastTableViewController: UITableViewController {
             return 0
         }
     }
-
-
+    
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.section == 0 {
             guard let cell = tableView.dequeueReusableCell(withIdentifier: String(describing: DetailWeatherTableViewCell.self), for: indexPath) as? DetailWeatherTableViewCell else {
@@ -147,7 +148,7 @@ class ForecastTableViewController: UITableViewController {
             return cell
         }
     }
-
+    
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         switch indexPath.section {
         case 0:
@@ -161,7 +162,7 @@ class ForecastTableViewController: UITableViewController {
         default:
             return 0
         }
-     
+        
     }
     
 }
@@ -179,6 +180,16 @@ protocol CellWithCollectionView: class {
 
 //MARK: - APODTableViewCellDelegate -
 extension ForecastTableViewController: APODTableViewCellDelegate {
+    
+    func showNASAwebsite() {
+        if let url = URL(string: "https://api.nasa.gov/index.html") {
+            let config = SFSafariViewController.Configuration()
+            config.entersReaderIfAvailable = true
+            
+            let vc = SFSafariViewController(url: url, configuration: config)
+            present(vc, animated: true)
+        }
+    }
     
     func apodTableViewCell(updateHeight apodTableViewCell: APODTableViewCell) {
         tableView.beginUpdates()

@@ -101,7 +101,8 @@ class DataManager {
             do {
                 let json = try JSON(data: data)
                 cityName = json["name"].stringValue
-                let cityInfo = CityInfo(name: cityName, coordinates: coordinates)
+                let id = json["id"].int64Value
+                let cityInfo = CityInfo(name: cityName, coordinates: coordinates, id: id)
                 self?.addNewCity(with: cityInfo, completion: { (dataManagerError) in
                     completion(dataManagerError)
                 })

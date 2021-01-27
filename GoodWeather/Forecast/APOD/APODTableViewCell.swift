@@ -11,6 +11,7 @@ import SDWebImage
 
 protocol APODTableViewCellDelegate: class {
     func apodTableViewCell(updateHeight apodTableViewCell: APODTableViewCell)
+    func showNASAwebsite()
 }
 
 class APODTableViewCell: UITableViewCell {
@@ -34,10 +35,10 @@ class APODTableViewCell: UITableViewCell {
             titleLabel.text = apod?.title
             descriptionLabel.text = apod?.descriptionText
             if let stringURL = apod?.imageURL,
-                let imageURL = URL(string: stringURL) {
+               let imageURL = URL(string: stringURL) {
                 apodImageView.sd_setImage(with: imageURL) { [weak self] (image, error, _, _) in
                     guard error == nil,
-                        let image = image else { return }
+                          let image = image else { return }
                     self?.setImageViewSize(with: image)
                 }
             }
@@ -60,6 +61,9 @@ class APODTableViewCell: UITableViewCell {
         self.apod = apod
     }
     
+    @IBAction private func linkTap(_ sender: UIButton) {
+        delegate?.showNASAwebsite()
+    }
 }
 
 private extension APODTableViewCell {
