@@ -10,4 +10,4 @@
 <li>
   Displaying local time
   
- ![Screenshots](https://github.com/LDDmarc/GoodWeather/blob/master/Design/ScreenShots/Simulator%20Screen%20Shot%20-%20iPhone%208%20Plus%20-%202021-01-27%20at%2018.52.38.png)
+ ![Screenshots](https://github.com/LDDmarc/GoodWeather/blob/master/Design/ScreenShots/Screenshot%202022-06-16%20at%2010.56.29.png)
