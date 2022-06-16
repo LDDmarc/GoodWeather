@@ -1,5 +1,4 @@
-# GoodWeather
-## Simple weather app
+# GoodWeather, ## Simple weather app
 
 ### Main functionality
 <li>
