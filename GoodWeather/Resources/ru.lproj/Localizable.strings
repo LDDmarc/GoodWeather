@@ -1,0 +1,36 @@
+/* 
+  Localizable.strings
+  GoodWeather
+
+  Created by d.leonova on 09.01.2021.
+  Copyright © 2021 Дарья Леонова. All rights reserved.
+*/
+
+//MARK: - Common -
+"cancel_title" = "Отмена";
+"placeholder_city" = "Москва";
+"go_to_settings" = "Перейти в настройки";
+
+//MARK: - Titles -
+"weather_title" = "Погода";
+"apod_title" = "Фото дня";
+"SearchPlaceViewController_title" = "Давайте найдем город";
+
+//MARK: - Network -
+"language_request" = "ru";
+
+//MARK: - Errors -
+"unknown_place_title" = "Неизвестное место";
+"unknown_place_message" = "К сожалению, нам не ведомы эти места";
+"common_error_title" = "Что-то пошло не так";
+"ok_message" = "Ок";
+
+"no_connection_error_title" = "Нет соединения";
+"wrong_name_error_title" = "Неверное имя";
+
+"try_later_error_message" = "Попробуйте повторить запрос позже";
+
+//MARK: - Location -
+"access_location_denied" = "Доступ к геопозиции запрещен";
+"get_access_location" = "Разрешить доступ?";
+"location_serivicies_not_enabled" = "Службы геопозиции не доступны";
